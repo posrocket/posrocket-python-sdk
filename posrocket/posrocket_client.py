@@ -46,7 +46,7 @@ class POSRocketOAuthClient(object):
         :rtype: list
         """
         authorization_url, state = self.oauth_client.authorization_url(
-            'http://localhost:8200/oauth/authorize/',
+            'http://52.208.64.108/oauth/authorize/',
             access_type="offline"
         )
         self._state = state
@@ -61,7 +61,7 @@ class POSRocketOAuthClient(object):
         :rtype: dict
         """
         token = self.oauth_client.fetch_token(
-            'http://host.docker.internal:8200/oauth/token/',
+            'http://52.208.64.108/oauth/token/',
             authorization_response=authorization_response_url,
             client_secret=self.client_secret
         )
