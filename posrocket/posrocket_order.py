@@ -2,7 +2,8 @@
 POS Rocket Order Module
 """
 import json
-from posrocket.utils import Singleton
+
+from posrocket.utils.singleton import Singleton
 
 
 class POSRocketOrder(object):

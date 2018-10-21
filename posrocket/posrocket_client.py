@@ -3,7 +3,7 @@ POS Rocket Oauth client Module
 """
 from requests_oauthlib import OAuth2Session
 
-from posrocket.utils import Singleton
+from posrocket.utils.singleton import Singleton
 
 
 class POSRocketOAuthClient(object):
@@ -13,7 +13,7 @@ class POSRocketOAuthClient(object):
     Oauth class connect to POSRocket oauth server
     """
 
-    def __init__(self, client_id, client_secret, scopes, redirect_uri):
+    def __init__(self, client_id, client_secret, redirect_uri):
         """
 
         :param client_id: POSRocket oauth app client id
@@ -27,11 +27,9 @@ class POSRocketOAuthClient(object):
         """
         self.client_id = client_id
         self.client_secret = client_secret
-        self.scopes = scopes
         self.redirect_uri = redirect_uri
         self._state = None
         self.oauth_client = OAuth2Session(client_id=self.client_id,
-                                          scope=self.scopes,
                                           redirect_uri=self.redirect_uri)
 
     @property
@@ -61,8 +59,22 @@ class POSRocketOAuthClient(object):
         :rtype: dict
         """
         token = self.oauth_client.fetch_token(
-            'http://localhost:8200/oauth/token/',
+            'http://host.docker.internal:8200/oauth/token/',
             authorization_response=authorization_response_url,
             client_secret=self.client_secret
+        )
+        return token
+
+    def refresh_token(self, refresh_token):
+        """
+
+        :param refresh_token: User refresh token.
+        :type refresh_token: str
+        :return: A token dict
+        :rtype: dict
+        """
+        token = self.oauth_client.refresh_token(
+            token_url='http://host.docker.internal:8200/oauth/token/',
+            refresh_token=refresh_token
         )
         return token
