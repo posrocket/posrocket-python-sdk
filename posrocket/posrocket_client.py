@@ -5,7 +5,6 @@ import requests
 from requests_oauthlib import OAuth2Session
 
 from posrocket.services import BusinessService, LocationService
-from posrocket.services.base_service import BaseServiceFactory
 from posrocket.services.catalog import CatalogItemService
 
 
@@ -18,8 +17,6 @@ class POSRocketClient(object):
     _business_service = None
 
     def __init__(self, client_id, client_secret, token=None):
-        x = BaseServiceFactory()
-
         """
 
         :param client_id: POSRocket oauth app client id
