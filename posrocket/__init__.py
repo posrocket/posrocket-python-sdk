@@ -1,3 +1,4 @@
+from posrocket.posrocket_client import POSRocketClient
 from posrocket.posrocket_order import POSRocketOrder
-from posrocket.posrocket_client import POSRocketOAuthClient
 from posrocket.posrocket_requests import POSRocketRequest
+

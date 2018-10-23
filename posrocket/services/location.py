@@ -1,13 +1,10 @@
 from posrocket.models import LocationModel
+from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 
 
 class LocationService(Requests):
-    location_url = "/locations"
-
-    def get_locations(self, page=1):
-        response = self.get(self.location_url)
-        result = []
-        for json_location in response['data']:
-            result.append(LocationModel(**json_location))
-        return result
+    service_url = "/locations"
+    model_cls = LocationModel
+    get_locations = BaseServiceFactory.make_list_items_response()
+    get_location_by_id = BaseServiceFactory.make_detail_item_response()

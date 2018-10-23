@@ -33,13 +33,6 @@ class Requests:
         self.access_token = access_token
         self.client = OAuth2Session(token=access_token)
 
-    def _set_headers(self):
-        headers = {
-            'content-type': 'application/json',
-            'Authorization': f'Bearer {self.access_token}',
-        }
-        return headers
-
     def _generate_url(self, url):
         if url.startswith("http"):
             return url
