@@ -3,6 +3,7 @@ import logging
 from requests_oauthlib import OAuth2Session
 
 from posrocket.excaptions import NotFoundException
+from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedException
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
 
 logger = logging.getLogger("django")
@@ -11,10 +12,13 @@ logger = logging.getLogger("django")
 def _handle_response(result):
     if result.status_code == 404:
         raise NotFoundException("The endpoint you requested does not exist")
-    if result.status_code == 401:
+    if result.status_code == 403:
         raise NotAuthorizedException(
             "You don't have access to this endpoint, "
             "please check if you provide a valid and active token and your have the correct scopes.")
+    if result.status_code == 401:
+        raise NotAuthenticatedException(
+            "Invalid Access Token")
 
     if result.content:
         return result.json()

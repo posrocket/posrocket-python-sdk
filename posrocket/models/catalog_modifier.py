@@ -1,9 +1,10 @@
 from uuid import UUID
 
 from posrocket.models.catalog_pricing import CatalogPricingModel
+from posrocket.utils.prices_mixin import PricingMixin
 
 
-class CatalogModifierModel:
+class CatalogModifierModel(PricingMixin):
     id: UUID = None
     name: str = None
     _pricing: list = []

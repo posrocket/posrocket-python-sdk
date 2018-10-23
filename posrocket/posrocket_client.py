@@ -1,6 +1,7 @@
 """
 POS Rocket Oauth client Module
 """
+import requests
 from requests_oauthlib import OAuth2Session
 
 from posrocket.utils.singleton import Singleton
@@ -73,8 +74,11 @@ class POSRocketOAuthClient(object):
         :return: A token dict
         :rtype: dict
         """
+
+        auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         token = self.oauth_client.refresh_token(
             token_url='http://host.docker.internal:8200/oauth/token/',
-            refresh_token=refresh_token
+            refresh_token=refresh_token,
+            auth=auth
         )
         return token
