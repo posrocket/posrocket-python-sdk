@@ -27,6 +27,10 @@ from .location_order_options import LocationOrderOptionModel
 from .location_tab import TabModel
 from .location_tab_pickup import LocationTabPickupModel
 from .location_tab_creator import LocationTabCreatorModel
+from .location_tab_item import LocationTabItemModel
+from .location_tab_item_variation import LocationTabItemVariationModel
+from .location_tab_item_discount import LocationTabItemDiscountModel
+from .location_tab_item_modifier import LocationTabItemModifierModel
 
 __all__ = [
     'BusinessModel',
@@ -58,4 +62,8 @@ __all__ = [
     'LocationOrderOptionModel',
     'LocationTabPickupModel',
     'LocationTabCreatorModel',
+    'LocationTabItemModel',
+    'LocationTabItemVariationModel',
+    'LocationTabItemDiscountModel',
+    'LocationTabItemModifierModel',
 ]

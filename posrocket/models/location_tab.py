@@ -1,5 +1,5 @@
-from posrocket.models import LocationOrderOptionModel, CatalogItemModel, DirectoryCustomerModel, LocationTabCreatorModel
-from posrocket.models.location_tab_pickup import LocationTabPickupModel
+from posrocket.models import LocationOrderOptionModel, CatalogItemModel, DirectoryCustomerModel, \
+    LocationTabCreatorModel, LocationTabPickupModel
 
 
 class TabModel:

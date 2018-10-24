@@ -1,6 +1,4 @@
-from uuid import UUID
-
-from posrocket.models.catalog_pricing import CatalogPricingModel
+from posrocket.models import CatalogPricingModel
 from posrocket.utils.prices_mixin import PricingMixin
 
 
