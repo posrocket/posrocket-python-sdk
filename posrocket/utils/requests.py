@@ -27,7 +27,7 @@ def _handle_response(result):
 
 
 class Requests:
-    base_url = 'http://host.docker.internal:8200/api'
+    base_url = 'http://172.18.0.1:8200/api'
 
     def __init__(self, access_token):
         self.access_token = access_token
