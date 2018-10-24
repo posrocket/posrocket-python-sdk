@@ -7,8 +7,8 @@ from posrocket.utils.requests import LocationRequiredMixin, Requests
 logger = logging.getLogger("django")
 
 
-class LocationDrawerService(Requests, LocationRequiredMixin):
-    service_url = "/location/%s/drawers"
+class LocationDrawerService(LocationRequiredMixin, Requests):
+    service_url = "/locations/%s/drawers"
     model_cls = LocationDrawerModel
-    get_customers = BaseServiceFactory.make_list_items_response()
-    get_customer_by_id = BaseServiceFactory.make_detail_item_response()
+    get_drawers = BaseServiceFactory.make_list_items_response()
+    get_drawer_by_id = BaseServiceFactory.make_detail_item_response()

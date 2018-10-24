@@ -1,5 +1,7 @@
-from posrocket.models import LocationDrawerCreatorModel, LocationDrawerPaymentMethodModel, LocationDrawerPaymentModel, \
-    LocationInitialMoneyModel
+from posrocket.models.location_drawer_creator import LocationDrawerCreatorModel
+from posrocket.models.location_drawer_payment import LocationDrawerPaymentModel
+from posrocket.models.location_drawer_payment_method import LocationDrawerPaymentMethodModel
+from posrocket.models.location_initial_money import LocationInitialMoneyModel
 
 
 class LocationDrawerModel:

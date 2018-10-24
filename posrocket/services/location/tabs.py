@@ -4,7 +4,7 @@ from posrocket.utils.requests import LocationRequiredMixin, Requests
 
 
 class TabService(Requests, LocationRequiredMixin):
-    service_url = "/location/%s/tabs"
+    service_url = "/locations/%s/tabs"
     model_cls = TabModel
     get_tabs = BaseServiceFactory.make_list_items_response()
     get_tab_by_id = BaseServiceFactory.make_detail_item_response()

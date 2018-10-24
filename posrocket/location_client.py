@@ -2,7 +2,11 @@
 POS Rocket Oauth client Module
 """
 
-from posrocket.services import LocationService
+from posrocket.services import TabService
+from posrocket.services.location.discount import LocationDiscountService
+from posrocket.services.location.drawer import LocationDrawerService
+from posrocket.services.location.extra_charge import LocationExtraChargeService
+from posrocket.services.location.order_option import LocationOrderOptionService
 
 
 class LocationClient(object):
@@ -32,33 +36,33 @@ class LocationClient(object):
     def tab_service(self):
         assert self.pos_client.token, "User Token Not Set"
         if not self._tab_service:
-            self._tab_service = LocationService(self.pos_client.token, self.location_id)
+            self._tab_service = TabService(self.pos_client.token, self.location_id)
         return self._tab_service
 
     @property
     def discount_service(self):
         assert self.pos_client.token, "User Token Not Set"
         if not self._discount_service:
-            self._discount_service = LocationService(self.pos_client.token, self.location_id)
+            self._discount_service = LocationDiscountService(self.pos_client.token, self.location_id)
         return self._discount_service
 
     @property
     def drawer_service(self):
         assert self.pos_client.token, "User Token Not Set"
         if not self._drawer_service:
-            self._drawer_service = LocationService(self.pos_client.token, self.location_id)
+            self._drawer_service = LocationDrawerService(self.pos_client.token, self.location_id)
         return self._drawer_service
 
     @property
     def extra_charge_service(self):
         assert self.pos_client.token, "User Token Not Set"
         if not self._extra_charge_service:
-            self._extra_charge_service = LocationService(self.pos_client.token, self.location_id)
+            self._extra_charge_service = LocationExtraChargeService(self.pos_client.token, self.location_id)
         return self._extra_charge_service
 
     @property
     def order_option_service(self):
         assert self.pos_client.token, "User Token Not Set"
         if not self._order_option_service:
-            self._order_option_service = LocationService(self.pos_client.token, self.location_id)
+            self._order_option_service = LocationOrderOptionService(self.pos_client.token, self.location_id)
         return self._order_option_service

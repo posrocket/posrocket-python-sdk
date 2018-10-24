@@ -1,4 +1,4 @@
-from posrocket.models import LocationExtraChargeTaxModel
+from posrocket.models.location_extra_charge_tax import LocationExtraChargeTaxModel
 
 
 class LocationExtraChargeModel:
