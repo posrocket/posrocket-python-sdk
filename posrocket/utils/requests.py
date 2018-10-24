@@ -26,12 +26,25 @@ def _handle_response(result):
         return ""
 
 
+class LocationRequiredMixin:
+
+    def __init__(self, access_token, location_id):
+        self.location_id = location_id
+        super(LocationRequiredMixin, self).__init__(access_token)
+
+    def get_service_url(self):
+        return self.service_url % self.location_id
+
+
 class Requests:
     base_url = 'http://172.18.0.1:8200/api'
 
     def __init__(self, access_token):
         self.access_token = access_token
         self.client = OAuth2Session(token=access_token)
+
+    def get_service_url(self):
+        return self.service_url
 
     def _generate_url(self, url):
         if url.startswith("http"):

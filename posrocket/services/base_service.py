@@ -5,7 +5,8 @@ class BaseServiceFactory:
     @staticmethod
     def make_list_items_response():
         def list_items_response(self):
-            response = self.get(self.service_url)
+            url = self.get_service_url()
+            response = self.get(url)
             result = []
             for json_location in response['data']:
                 result.append(self.model_cls(**json_location))
@@ -16,7 +17,8 @@ class BaseServiceFactory:
     @staticmethod
     def make_detail_item_response():
         def detail_item_response(self, pk):
-            response = self.get(f"{self.service_url}/{pk}")
+            url = self.get_service_url()
+            response = self.get(f"{url}/{pk}")
             return self.model_cls(**response)
 
         return detail_item_response
