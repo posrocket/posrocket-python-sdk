@@ -5,13 +5,13 @@ from posrocket.utils.prices_mixin import PricingMixin
 
 
 class CatalogVariationModel(PricingMixin):
-    id: UUID = None
-    name: str = None
-    pricing_type: str = None
-    barcode: str = None
-    sku: str = None
-    image: str = None
-    _pricing: list = None
+    id = None
+    name = None
+    pricing_type = None
+    barcode = None
+    sku = None
+    image = None
+    _pricing = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

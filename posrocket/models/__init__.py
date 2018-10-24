@@ -25,6 +25,8 @@ from .location_extra_charge_tax import LocationExtraChargeTaxModel
 from .location_initial_money import LocationInitialMoneyModel
 from .location_order_options import LocationOrderOptionModel
 from .location_tab import TabModel
+from .location_tab_pickup import LocationTabPickupModel
+from .location_tab_creator import LocationTabCreatorModel
 
 __all__ = [
     'BusinessModel',
@@ -54,4 +56,6 @@ __all__ = [
     'LocationExtraChargeModel',
     'LocationExtraChargeTaxModel',
     'LocationOrderOptionModel',
+    'LocationTabPickupModel',
+    'LocationTabCreatorModel',
 ]

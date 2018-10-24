@@ -1,5 +1,4 @@
 import logging
-from uuid import UUID
 
 from posrocket.models.catalog_category import CatalogCategoryModel
 from posrocket.models.catalog_modifier_list import CatalogModifierListModel
@@ -11,16 +10,16 @@ logger = logging.getLogger("django")
 
 
 class CatalogItemModel:
-    id: UUID = None
-    name: str = None
-    color: str = None
-    description: str = None
-    image: str = None
-    _category: CatalogCategoryModel = None
-    _variations: list = []
-    _modifier_lists: list = []
-    _taxes: list = None
-    _tags: list = None
+    id = None
+    name = None
+    color = None
+    description = None
+    image = None
+    _category = None
+    _variations = []
+    _modifier_lists = []
+    _taxes = None
+    _tags = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

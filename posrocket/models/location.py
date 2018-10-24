@@ -1,12 +1,9 @@
-from uuid import UUID
-
-
 class LocationModel:
-    id: UUID = None
-    name: str = None
-    tax_number: str = None
-    phone: str = None
-    address: str = None
+    id = None
+    name = None
+    tax_number = None
+    phone = None
+    address = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

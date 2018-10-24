@@ -1,18 +1,15 @@
-from uuid import UUID
-
-
 class BusinessModel:
-    id: UUID = None
-    sub_domain: str = None
-    name: str = None
-    type: str = None
-    country: str = None
-    currency: str = None
-    end_of_fiscal_day: str = None
-    time_offset: int = None
-    phone: str = None
-    address: str = None
-    image: str = None
+    id = None
+    sub_domain = None
+    name = None
+    type = None
+    country = None
+    currency = None
+    end_of_fiscal_day = None
+    time_offset = None
+    phone = None
+    address = None
+    image = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

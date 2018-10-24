@@ -1,11 +1,8 @@
-from uuid import UUID
-
-
 class CatalogTaxModel:
-    id: UUID = None
-    name: str = None
-    rate: float = None
-    inclusion_type: str = None
+    id = None
+    name = None
+    rate = None
+    inclusion_type = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

@@ -1,16 +1,14 @@
-from uuid import UUID
-
 from posrocket.models.catalog_modifier import CatalogModifierModel
 
 
 class CatalogModifierListModel:
-    id: UUID = None
-    name: str = None
-    type: str = None
-    quantifiable: bool = None
-    order: int = None
-    price: float = None
-    _modifiers: list = []
+    id = None
+    name = None
+    type = None
+    quantifiable = None
+    order = None
+    price = None
+    _modifiers = []
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
