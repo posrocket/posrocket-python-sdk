@@ -4,6 +4,7 @@ POS Rocket Oauth client Module
 import requests
 from requests_oauthlib import OAuth2Session
 
+from posrocket.location_client import LocationClient
 from posrocket.services import BusinessService, LocationService, TabService
 from posrocket.services.catalog import CatalogItemService
 
@@ -87,6 +88,9 @@ class POSRocketClient(object):
             auth=auth
         )
         return token
+
+    def location(self, location_id):
+        return LocationClient(location_id, self)
 
     @property
     def location_service(self):

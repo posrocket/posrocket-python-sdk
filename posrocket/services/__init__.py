@@ -1,6 +1,5 @@
 from .business import BusinessService
-from .location import LocationService
-from .tabs import TabService
+from posrocket.services.location.tabs import TabService
 
 __all__ = [
     "BusinessService",
