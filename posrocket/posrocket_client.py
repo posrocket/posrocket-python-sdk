@@ -4,7 +4,7 @@ POS Rocket Oauth client Module
 import requests
 from requests_oauthlib import OAuth2Session
 
-from posrocket.services import BusinessService, LocationService
+from posrocket.services import BusinessService, LocationService, TabService
 from posrocket.services.catalog import CatalogItemService
 
 
@@ -15,6 +15,7 @@ class POSRocketClient(object):
     _location_service = None
     _catalog_item_service = None
     _business_service = None
+    _tab_service = None
 
     def __init__(self, client_id, client_secret, token=None):
         """
@@ -54,8 +55,10 @@ class POSRocketClient(object):
     def get_token(self, authorization_response_url, redirect_uri):
         """
 
-        :param authorization_response_url: full url for the redirect url after the user came back from the oauth flow.
+        :param authorization_response_url: full url where the user will start the oauth flow.
         :type authorization_response_url: str
+        :param redirect_uri: full url for the redirect url after the user came back from the oauth flow.
+        :type redirect_uri: str
         :return: A token dict
         :rtype: dict
         """
@@ -105,3 +108,10 @@ class POSRocketClient(object):
         if not self._business_service:
             self._business_service = BusinessService(self.token)
         return self._business_service
+
+    @property
+    def tab_service(self):
+        assert self.token, "User Token Not Set"
+        if not self._tab_service:
+            self._tab_service = TabService(self.token)
+        return self._tab_service

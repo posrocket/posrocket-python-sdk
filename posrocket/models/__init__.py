@@ -9,10 +9,12 @@ from .catalog_tax import CatalogTaxModel
 from .catalog_variation import CatalogVariationModel
 from .country import CountryModel
 from .location import LocationModel
+from .location_tab import TabModel
 
 __all__ = [
     'BusinessModel',
     'LocationModel',
+    'TabModel',
     'CatalogItemModel',
     'CatalogCategoryModel',
     'CatalogModifierModel',
