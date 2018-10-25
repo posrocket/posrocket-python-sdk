@@ -47,7 +47,7 @@ class POSRocketClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         authorization_url, state = self.oauth_client.authorization_url(
-            'http://localhost:8200/oauth/authorize/',
+            'http://127.0.0.1:8200/oauth/authorize/',
             access_type="offline"
         )
         self._state = state
@@ -65,7 +65,7 @@ class POSRocketClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         token = self.oauth_client.fetch_token(
-            'http://host.docker.internal:8200/oauth/token/',
+            'http://172.18.0.1:8200/oauth/token/',
             authorization_response=authorization_response_url,
             client_secret=self.client_secret
         )
@@ -83,7 +83,7 @@ class POSRocketClient(object):
 
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         token = self.oauth_client.refresh_token(
-            token_url='http://host.docker.internal:8200/oauth/token/',
+            token_url='http://172.18.0.1:8200/oauth/token/',
             refresh_token=refresh_token,
             auth=auth
         )

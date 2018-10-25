@@ -1,9 +1,6 @@
-from uuid import UUID
-
-
 class CatalogTagModel:
-    id: UUID = None
-    name: str = None
+    id = None
+    name = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

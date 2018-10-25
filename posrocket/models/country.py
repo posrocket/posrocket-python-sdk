@@ -1,5 +1,5 @@
 class CountryModel:
-    country: str = None
+    country = None
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

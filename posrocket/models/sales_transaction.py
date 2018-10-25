@@ -1,5 +1,5 @@
-from posrocket.models import LocationDrawerCreatorModel, LocationDrawerPaymentMethodModel, LocationDrawerPaymentModel, \
-    LocationInitialMoneyModel
+from posrocket.models import LocationInitialMoneyModel, LocationTabCreatorModel, DirectoryCustomerModel, \
+    LocationTabModel, SalesTransactionTenderModel, SalesTransactionTaxModel, SalesTransactionItemizationModel
 
 
 class SalesTransactionModel:
@@ -31,120 +31,149 @@ class SalesTransactionModel:
             setattr(self, key, value)
 
     def __str__(self):
-        return f'{self.reference}'
+        return f'{self.id}'
 
     @property
-    def initial_money(self):
-        return self._initial_money
+    def discount_money(self):
+        return self._discount_money
 
-    @initial_money.setter
-    def initial_money(self, json_initial_money):
-        self._initial_money = LocationInitialMoneyModel(**json_initial_money)
-
-    @property
-    def card_sales_money(self):
-        return self._card_sales_money
-
-    @card_sales_money.setter
-    def card_sales_money(self, json_card_sales_money):
-        self._card_sales_money = LocationInitialMoneyModel(**json_card_sales_money)
+    @discount_money.setter
+    def discount_money(self, discount_money_dict):
+        self._discount_money = LocationInitialMoneyModel(**discount_money_dict)
 
     @property
-    def card_refunds_money(self):
-        return self._card_refunds_money
+    def refunded_money(self):
+        return self._refunded_money
 
-    @card_refunds_money.setter
-    def card_refunds_money(self, json_card_refunds_money):
-        self._card_refunds_money = LocationInitialMoneyModel(**json_card_refunds_money)
-
-    @property
-    def other_sales_money(self):
-        return self._other_sales_money
-
-    @other_sales_money.setter
-    def other_sales_money(self, json_other_sales_money):
-        self._other_sales_money = LocationInitialMoneyModel(**json_other_sales_money)
+    @refunded_money.setter
+    def refunded_money(self, refunded_money_dict):
+        self._refunded_money = LocationInitialMoneyModel(**refunded_money_dict)
 
     @property
-    def other_refunds_money(self):
-        return self._other_refunds_money
+    def additive_tax_money(self):
+        return self._additive_tax_money
 
-    @other_refunds_money.setter
-    def other_refunds_money(self, json_other_refunds_money):
-        self._other_refunds_money = LocationInitialMoneyModel(**json_other_refunds_money)
-
-    @property
-    def sales_money(self):
-        return self._sales_money
-
-    @sales_money.setter
-    def sales_money(self, json_sales_money):
-        self._sales_money = LocationInitialMoneyModel(**json_sales_money)
+    @additive_tax_money.setter
+    def additive_tax_money(self, additive_tax_money_dict):
+        self._additive_tax_money = LocationInitialMoneyModel(**additive_tax_money_dict)
 
     @property
-    def refunds_money(self):
-        return self._refunds_money
+    def inclusive_tax_money(self):
+        return self._inclusive_tax_money
 
-    @refunds_money.setter
-    def refunds_money(self, json_refunds_money):
-        self._refunds_money = LocationInitialMoneyModel(**json_refunds_money)
-
-    @property
-    def paid_in_out_money(self):
-        return self._paid_in_out_money
-
-    @paid_in_out_money.setter
-    def paid_in_out_money(self, json_paid_in_out_money):
-        self._paid_in_out_money = LocationInitialMoneyModel(**json_paid_in_out_money)
+    @inclusive_tax_money.setter
+    def inclusive_tax_money(self, inclusive_tax_money_dict):
+        self._inclusive_tax_money = LocationInitialMoneyModel(**inclusive_tax_money_dict)
 
     @property
-    def expected_money(self):
-        return self._expected_money
+    def tax_money(self):
+        return self._tax_money
 
-    @expected_money.setter
-    def expected_money(self, json_expected_money):
-        self._expected_money = LocationInitialMoneyModel(**json_expected_money)
-
-    @property
-    def actual_money(self):
-        return self._actual_money
-
-    @actual_money.setter
-    def actual_money(self, json_actual_money):
-        self._actual_money = LocationInitialMoneyModel(**json_actual_money)
+    @tax_money.setter
+    def tax_money(self, tax_money_dict):
+        self._tax_money = LocationInitialMoneyModel(**tax_money_dict)
 
     @property
-    def difference_money(self):
-        return self._difference_money
+    def tip_money(self):
+        return self._tip_money
 
-    @difference_money.setter
-    def difference_money(self, json_difference_money):
-        self._difference_money = LocationInitialMoneyModel(**json_difference_money)
+    @tip_money.setter
+    def tip_money(self, tip_money_dict):
+        self._tip_money = LocationInitialMoneyModel(**tip_money_dict)
+
+    @property
+    def received_money(self):
+        return self._received_money
+
+    @received_money.setter
+    def received_money(self, received_money_dict):
+        self._received_money = LocationInitialMoneyModel(**received_money_dict)
+
+    @property
+    def total_collected_money(self):
+        return self._total_collected_money
+
+    @total_collected_money.setter
+    def total_collected_money(self, total_collected_money_dict):
+        self._total_collected_money = LocationInitialMoneyModel(**total_collected_money_dict)
+
+    @property
+    def extra_charges_money(self):
+        return self._extra_charges_money
+
+    @extra_charges_money.setter
+    def extra_charges_money(self, extra_charges_money_dict):
+        self._extra_charges_money = LocationInitialMoneyModel(**extra_charges_money_dict)
 
     @property
     def creator(self):
         return self._creator
 
     @creator.setter
-    def creator(self, json_creator):
-        self._creator = LocationDrawerCreatorModel(**json_creator)
+    def creator(self, creator_dict):
+        self._creator = LocationTabCreatorModel(**creator_dict)
 
     @property
-    def payments(self):
-        return self._payments
+    def customer(self):
+        return self._customer
 
-    @payments.setter
-    def payments(self, json_payments):
-        self._payments = []
-        for json_payment in json_payments:
-            self._payments.append(LocationDrawerPaymentModel(**json_payment))
+    @customer.setter
+    def customer(self, customer_dict):
+        self._customer = DirectoryCustomerModel(**customer_dict)
 
     @property
-    def payment_methods(self):
-        return self._payment_methods
+    def tab(self):
+        return self._tab
 
-    @payment_methods.setter
-    def payment_methods(self, json_payment_methods):
-        self._payment_methods = []
-        for json_payment_method in json_payment_methods:
-            self._payment_methods.append(LocationDrawerPaymentMethodModel(**json_payment_method))
+    @tab.setter
+    def tab(self, customer_dict):
+        self._tab = LocationTabModel(**customer_dict)
+
+    @property
+    def tenders(self):
+        return self._tenders
+
+    @tenders.setter
+    def tenders(self, tenders_dict):
+        self._tenders = SalesTransactionTenderModel(**tenders_dict)
+
+    @property
+    def extra_charges(self):
+        return self._extra_charges
+
+    @extra_charges.setter
+    def extra_charges(self, extra_charges_list):
+        self._extra_charges = []
+        for extra_charge in extra_charges_list:
+            self._extra_charges.append(SalesTransactionTenderModel(**extra_charge))
+
+    @property
+    def itemization(self):
+        return self._itemization
+
+    @itemization.setter
+    def itemization(self, itemization_list):
+        self._itemization = []
+        for itemization in itemization_list:
+            self._itemization.append(SalesTransactionItemizationModel(**itemization))
+
+    @property
+    def taxes(self):
+        return self._taxes
+
+    @taxes.setter
+    def taxes(self, taxes_list):
+        self._taxes = []
+        for tax in taxes_list:
+            self._taxes.append(SalesTransactionTaxModel(**tax))
+
+    @property
+    def refunds(self):
+        return self._refunds
+
+    @refunds.setter
+    def refunds(self, refunds_list):
+        self._refunds = []
+        for refund in refunds_list:
+            self._refunds.append(SalesTransactionTaxModel(**refund))
+
