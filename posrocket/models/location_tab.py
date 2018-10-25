@@ -2,7 +2,7 @@ from posrocket.models import LocationOrderOptionModel, CatalogItemModel, Directo
     LocationTabCreatorModel, LocationTabPickupModel
 
 
-class TabModel:
+class LocationTabModel:
     id = None
     location_id = None
     issuer_id = None
