@@ -22,6 +22,7 @@ setup(
         'requests-oauthlib >= 0.3.0',
         "requests"
     ],
+    tests_require=['tox'],
     classifiers=[
         # 'Development Status :: 5 - Production/Stable',
         # 'Environment :: Web Environment',
