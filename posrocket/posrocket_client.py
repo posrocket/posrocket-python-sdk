@@ -25,8 +25,8 @@ class POSRocketClient(object):
         :type client_id: str
         :param client_secret:POSRocket oauth app client secret
         :type client_secret: str
-        :param scopes:POSRocket Required scopes
-        :type scopes: list
+        :param token:POSRocket Required scopes
+        :type token: list
         """
         self.client_id = client_id
         self.client_secret = client_secret
