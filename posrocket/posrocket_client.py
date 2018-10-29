@@ -1,32 +1,58 @@
-"""
-POS Rocket Oauth client Module
+# -*- coding: utf-8 -*-
+"""LunchPad Python SDK.
+This is the Official python SDK for POSRocket Developer portal API aka "LunchPad"
+which allow developer to access the resource server with ease.
+
+quick start:
+    - install pos python sdk using:
+        `pip install pos-python-sdk`
+    - import pos module in your python script:
+        `from posrocket import LunchPadClient`
+    - create client object:
+        `pos_client = LunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)`
+    - generate authorization url:
+        `auth_url = pos_client.get_authorization_url(<your_redirect_url>)`
+    - After the user authorize the app on Lunchpad we will redirect him back to the return url.
+    - retrieve the access_token from the return url by using the following function:
+        `token = pos_client.get_token(<full_return_url_with_queryparams>,<your_redirect_url>)`
+    - now you can call any API endpoint by calling the corresponding service
+        `business_info = pos_client.business_service.get_business_info()`
+
+
+
 """
 import requests
 from requests_oauthlib import OAuth2Session
 
 from posrocket.location_client import LocationClient
-from posrocket.services import BusinessService, LocationService, TabService
+from posrocket.services import BusinessService, LocationService
 from posrocket.services.catalog import CatalogItemService
 
+__author__ = "Ahmad Bazadough, Hamzah Darwish"
+__copyright__ = "Copyright 2019, POSRocket"
+__credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
+__email__ = "a.bazadough@posrocket.com"
+__status__ = "Beta"
 
-class POSRocketClient(object):
-    """
-    Oauth class connect to POSRocket oauth server
+
+class LunchPadClient(object):
+    """Lunchpad main client class which is the starting point for integrating with POSRocket
     """
     _location_service = None
     _catalog_item_service = None
     _business_service = None
     _tab_service = None
 
-    def __init__(self, client_id, client_secret, token=None):
+    def __init__(self, client_id: str, client_secret: str, token: str = None):
         """
-
-        :param client_id: POSRocket oauth app client id
-        :type client_id: str
-        :param client_secret:POSRocket oauth app client secret
-        :type client_secret: str
-        :param token:POSRocket Required scopes
-        :type token: list
+        define client object for communicating with LunchPad API
+        :param client_id: LunchPad Oauth Client id
+        :param client_secret: LunchPad OAuth Client Secret
+        :param token: optional LunchPad OAuth Access Token if you already have it stored
+        and don't wanna go through the OAuth flow again
         """
         self.client_id = client_id
         self.client_secret = client_secret
@@ -35,15 +61,21 @@ class POSRocketClient(object):
         self.oauth_client = OAuth2Session(client_id=self.client_id)
 
     @property
-    def state(self):
+    def state(self) -> str:
+        """The state parameter is used to protect against XSRF.
+        Your application generates a random string and send it to the authorization server using the state parameter.
+        The authorization server send back the state parameter. If both state are the same => OK.
+        If state parameters are different, someone else has initiated the request.
+        :return: state string
+        """
         assert self._state is not None, "cant get state before calling get_authorization_url"
         return self._state
 
-    def get_authorization_url(self, redirect_uri):
-        """
+    def get_authorization_url(self, redirect_uri: str) -> str:
+        """Form an authorization URL.
 
-        :return: return the authorization url where the user will start the oauth flow
-        :rtype: list
+        :param redirect_uri: Redirect URI you registered as callback
+        :return: authorization_url
         """
         self.oauth_client.redirect_uri = redirect_uri
         authorization_url, state = self.oauth_client.authorization_url(
@@ -53,15 +85,13 @@ class POSRocketClient(object):
         self._state = state
         return authorization_url
 
-    def get_token(self, authorization_response_url, redirect_uri):
-        """
+    def get_token(self, authorization_response_url: str, redirect_uri: str) -> dict:
+        """Method for fetching an access token from the token endpoint.
 
-        :param authorization_response_url: full url where the user will start the oauth flow.
-        :type authorization_response_url: str
-        :param redirect_uri: full url for the redirect url after the user came back from the oauth flow.
-        :type redirect_uri: str
+        :param authorization_response_url: Authorization response URL, the callback
+                                           URL of the request back to you.
+        :param redirect_uri:Redirect URI you registered as callback
         :return: A token dict
-        :rtype: dict
         """
         self.oauth_client.redirect_uri = redirect_uri
         token = self.oauth_client.fetch_token(
@@ -72,50 +102,58 @@ class POSRocketClient(object):
         self.token = token
         return token
 
-    def refresh_token(self, refresh_token):
-        """
+    def refresh_token(self, token: dict) -> dict:
+        """Fetch a new access token using a refresh token.
 
-        :param refresh_token: User refresh token.
-        :type refresh_token: str
+        :param token:The token to use.
         :return: A token dict
-        :rtype: dict
         """
 
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         token = self.oauth_client.refresh_token(
             token_url='http://172.18.0.1:8200/oauth/token/',
-            refresh_token=refresh_token,
+            refresh_token=token['refresh_token'],
             auth=auth
         )
         return token
 
-    def location(self, location_id):
+    def location(self, location_id: str) -> LocationClient:
+        """ build location client to allow access to that location data
+
+        :param location_id: POSRocket location id
+        :return: location client object
+        """
         return LocationClient(location_id, self)
 
     @property
-    def location_service(self):
+    def location_service(self) -> LocationService:
+        """ build location service object to inquire about locations
+
+        :return: locatio service object
+        """
         assert self.token, "User Token Not Set"
         if not self._location_service:
             self._location_service = LocationService(self.token)
         return self._location_service
 
     @property
-    def catalog_item_service(self):
+    def catalog_item_service(self) -> CatalogItemService:
+        """build catalog item service to inquire about catalog item
+
+        :return: catalog item service
+        """
         assert self.token, "User Token Not Set"
         if not self._catalog_item_service:
             self._catalog_item_service = CatalogItemService(self.token)
         return self._catalog_item_service
 
     @property
-    def business_service(self):
+    def business_service(self) -> BusinessService:
+        """build business service object to inquire about current business
+
+        :return: business service object
+        """
         assert self.token, "User Token Not Set"
         if not self._business_service:
             self._business_service = BusinessService(self.token)
         return self._business_service
-
-    @property
-    def tab_service(self):
-        assert self.token, "User Token Not Set"
-        if not self._tab_service:
-            self._tab_service = TabService(self.token)
-        return self._tab_service

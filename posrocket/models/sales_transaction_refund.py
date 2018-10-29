@@ -1,5 +1,8 @@
-from posrocket.models import DirectoryCustomerModel, SalesTransactionTenderModel, \
-    SalesTransactionRefundCreatorModel, SalesTransactionItemizationModel, SalesTransactionExtraChargeModel
+from posrocket.models.directory_customer import DirectoryCustomerModel
+from posrocket.models.sales_transaction_extra_charges import SalesTransactionExtraChargeModel
+from posrocket.models.sales_transaction_itemization import SalesTransactionItemizationModel
+from posrocket.models.sales_transaction_refund_creator import SalesTransactionRefundCreatorModel
+from posrocket.models.sales_transaction_tender import SalesTransactionTenderModel
 
 
 class SalesTransactionRefundModel:

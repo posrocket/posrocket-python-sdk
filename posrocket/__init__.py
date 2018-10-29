@@ -1,2 +1,2 @@
-from posrocket.posrocket_client import POSRocketClient
+from posrocket.posrocket_client import LunchPadClient
 

@@ -1,20 +1,47 @@
-from posrocket.models import LocationTabItemVariationModel, LocationTabItemDiscountModel, LocationTabItemModifierModel
+"""Location Tab Item Python model
+
+"""
+from typing import List
+
+from posrocket.models.location_tab_item_discount import LocationTabItemDiscountModel
+from posrocket.models.location_tab_item_modifier import LocationTabItemModifierModel
+from posrocket.models.location_tab_item_variation import LocationTabItemVariationModel
+
+__author__ = "Ahmad Bazadough, Hamzah Darwish"
+__copyright__ = "Copyright 2019, POSRocket"
+__credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
+__license__ = "GPL"
+__version__ = "1.0.1"
+__maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
+__email__ = "a.bazadough@posrocket.com"
+__status__ = "Beta"
 
 
 class LocationTabItemModel:
-    id = None
-    name = None
-    quantity = None
-    notes = None
-    _variation = None
-    _discounts = []
-    _modifiers = []
+    """ mapper class for Location Tab Item object from Json Dict
 
-    def __init__(self, **kwargs):
+    """
+    id: str = None
+    name: str = None
+    quantity: int = None
+    notes: str = None
+    _variation: LocationTabItemVariationModel = None
+    _discounts: List[LocationTabItemDiscountModel] = []
+    _modifiers: List[LocationTabItemModifierModel] = []
+
+    def __init__(self, **kwargs: dict):
+        """ map a dict to Location Tab Item object
+
+        :param kwargs: Location Tab json Item dict
+        """
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """ String representation for the Location Tab Item model
+
+        :return: Directory Location Tab Item name
+        """
         return f'{self.name}'
 
     @property

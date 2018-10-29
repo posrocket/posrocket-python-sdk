@@ -1,5 +1,8 @@
-from posrocket.models import SalesTransactionTaxModel, LocationInitialMoneyModel, CatalogCategoryModel, \
-    CatalogVariationModel, SalesTransactionItemizationModifierModel
+from posrocket.models.catalog_category import CatalogCategoryModel
+from posrocket.models.catalog_variation import CatalogVariationModel
+from posrocket.models.location_initial_money import LocationInitialMoneyModel
+from posrocket.models.sales_transaction_itemization_modifier import SalesTransactionItemizationModifierModel
+from posrocket.models.sales_transaction_tax import SalesTransactionTaxModel
 
 
 class SalesTransactionItemizationModel:
@@ -7,7 +10,7 @@ class SalesTransactionItemizationModel:
     name = None
     quantity = None
     notes = None
-    _total_money = None#
+    _total_money = None  #
     _single_quantity_money = None
     _gross_sales_money = None
     _discount_money = None
