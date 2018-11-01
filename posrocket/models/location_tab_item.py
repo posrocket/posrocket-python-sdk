@@ -47,29 +47,56 @@ class LocationTabItemModel:
         return f'{self.name}'
 
     @property
-    def variation(self):
+    def variation(self) -> LocationTabItemVariationModel:
+        """getter for Tab item variation
+
+        :return: Tab item variation object
+        """
         return self._variation
 
     @variation.setter
-    def variation(self, variation_dict):
+    def variation(self, variation_dict: dict):
+        """setter for Tab item variation
+
+        :param variation_dict: json dict for Customer
+        :return: None
+        """
         self._variation = LocationTabItemVariationModel(**variation_dict)
 
     @property
-    def discounts(self):
+    def discounts(self) -> List[LocationTabItemDiscountModel]:
+        """getter for Tab item discounts
+
+        :return: list of discounts for the Tab item
+        """
         return self._discounts
 
     @discounts.setter
-    def discounts(self, discounts_list):
+    def discounts(self, discounts_list: list):
+        """setter for Tab item discounts
+
+        :param discounts_list:json list of discount dicts
+        :return: None
+        """
         self._discounts = []
         for discount in discounts_list:
             self._discounts.append(LocationTabItemDiscountModel(**discount))
 
     @property
-    def modifiers(self):
+    def modifiers(self) -> List[LocationTabItemModifierModel]:
+        """getter for Tab item modifiers
+
+        :return: list of modifiers for the Tab item
+        """
         return self._modifiers
 
     @modifiers.setter
-    def modifiers(self, modifiers_list):
+    def modifiers(self, modifiers_list: list):
+        """setter for Tab item modifiers
+
+        :param modifiers_list:json list of modifier dicts
+        :return: None
+        """
         self._modifiers = []
         for modifier in modifiers_list:
             self._modifiers.append(LocationTabItemModifierModel(**modifier))

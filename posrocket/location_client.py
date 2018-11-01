@@ -1,5 +1,5 @@
 """
-Lunchpad Location Client
+Launchpad Location Client
 """
 from posrocket.services import TabService
 from posrocket.services.location.discount import LocationDiscountService
