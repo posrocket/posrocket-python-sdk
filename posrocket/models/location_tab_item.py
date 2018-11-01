@@ -3,6 +3,8 @@
 """
 from typing import List
 
+from posrocket.models.catalog_modifier import CatalogModifierModel
+from posrocket.models.catalog_variation import CatalogVariationModel
 from posrocket.models.location_tab_item_discount import LocationTabItemDiscountModel
 from posrocket.models.location_tab_item_modifier import LocationTabItemModifierModel
 from posrocket.models.location_tab_item_variation import LocationTabItemVariationModel
@@ -29,7 +31,7 @@ class LocationTabItemModel:
     _discounts: List[LocationTabItemDiscountModel] = []
     _modifiers: List[LocationTabItemModifierModel] = []
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self, **kwargs):
         """ map a dict to Location Tab Item object
 
         :param kwargs: Location Tab json Item dict
@@ -71,3 +73,12 @@ class LocationTabItemModel:
         self._modifiers = []
         for modifier in modifiers_list:
             self._modifiers.append(LocationTabItemModifierModel(**modifier))
+
+    def add_variation(self, variation: CatalogVariationModel, location_id: str):
+        self._variation = LocationTabItemVariationModel(id=variation.id, name=variation.name,
+                                                        type=variation.pricing_type,
+                                                        price=variation.get_price_for_location(location_id))
+
+    def add_modifier(self, modifier: CatalogModifierModel, quantity: int, location_id: str):
+        self._modifiers.append(LocationTabItemModifierModel(id=modifier.id, name=modifier.name, quantity=quantity,
+                                                            price=modifier.get_price_for_location(location_id)))

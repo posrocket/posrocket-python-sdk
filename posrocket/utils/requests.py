@@ -1,10 +1,9 @@
 import logging
 
-from requests_oauthlib import OAuth2Session
-
 from posrocket.excaptions import NotFoundException
 from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedException
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
+from requests_oauthlib import OAuth2Session
 
 logger = logging.getLogger("django")
 
@@ -37,7 +36,7 @@ class LocationRequiredMixin:
 
 
 class Requests:
-    base_url = 'http://172.18.0.1:8200/api'
+    base_url = 'http://52.208.64.108/api'
 
     def __init__(self, access_token):
         self.access_token = access_token
@@ -57,6 +56,7 @@ class Requests:
     def request(self, method, url, params=None, **kwargs):
         params = params if params else {}
         result = self.client.request(method, self._generate_url(url), params=params, **kwargs)
+        print(result.content)
         return _handle_response(result)
 
     def get(self, url, params=None, **kwargs):

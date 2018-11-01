@@ -72,7 +72,10 @@ class DirectoryCustomerModel:
         """
         self._addresses = []
         for json_address in json_addresses:
-            self._addresses.append(DirectoryAddressModel(**json_address))
+            if isinstance(json_address, DirectoryAddressModel):
+                self._addresses.append(json_address)
+            else:
+                self._addresses.append(DirectoryAddressModel(**json_address))
 
     @property
     def phone_numbers(self) -> List[DirectoryPhoneModel]:
@@ -91,7 +94,10 @@ class DirectoryCustomerModel:
         """
         self._phone_numbers = []
         for json_phone_number in json_phone_numbers:
-            self._phone_numbers.append(DirectoryPhoneModel(**json_phone_number))
+            if isinstance(json_phone_number, DirectoryPhoneModel):
+                self._phone_numbers.append(json_phone_number)
+            else:
+                self._phone_numbers.append(DirectoryPhoneModel(**json_phone_number))
 
     @property
     def tags(self) -> List[DirectoryTagModel]:

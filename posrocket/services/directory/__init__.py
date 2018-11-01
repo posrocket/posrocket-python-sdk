@@ -1,7 +1,7 @@
 from .customer import DirectoryCustomerService
-from .tags import DirectoryCustomerService
+from .tags import DirectoryTagService
 
 __all__ = [
     "DirectoryCustomerService",
-    "DirectoryCustomerService",
+    "DirectoryTagService",
 ]

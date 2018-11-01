@@ -22,11 +22,12 @@ quick start:
 
 """
 import requests
-from requests_oauthlib import OAuth2Session
-
 from posrocket.location_client import LocationClient
 from posrocket.services import BusinessService, LocationService
 from posrocket.services.catalog import CatalogItemService
+from posrocket.services.directory import DirectoryCustomerService
+from posrocket.services.geo import CountryService
+from requests_oauthlib import OAuth2Session
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -45,6 +46,8 @@ class LunchPadClient(object):
     _catalog_item_service = None
     _business_service = None
     _tab_service = None
+    _directory_customers_service = None
+    _country_service = None
 
     def __init__(self, client_id: str, client_secret: str, token: str = None):
         """
@@ -79,7 +82,7 @@ class LunchPadClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         authorization_url, state = self.oauth_client.authorization_url(
-            'http://127.0.0.1:8200/oauth/authorize/',
+            'http://52.208.64.108/oauth/authorize/',
             access_type="offline"
         )
         self._state = state
@@ -95,7 +98,7 @@ class LunchPadClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         token = self.oauth_client.fetch_token(
-            'http://172.18.0.1:8200/oauth/token/',
+            'http://52.208.64.108/oauth/token/',
             authorization_response=authorization_response_url,
             client_secret=self.client_secret
         )
@@ -111,7 +114,7 @@ class LunchPadClient(object):
 
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         token = self.oauth_client.refresh_token(
-            token_url='http://172.18.0.1:8200/oauth/token/',
+            token_url='http://52.208.64.108/oauth/token/',
             refresh_token=token['refresh_token'],
             auth=auth
         )
@@ -157,3 +160,25 @@ class LunchPadClient(object):
         if not self._business_service:
             self._business_service = BusinessService(self.token)
         return self._business_service
+
+    @property
+    def directory_customers_service(self) -> DirectoryCustomerService:
+        """build business service object to inquire about current business
+
+        :return: business service object
+        """
+        assert self.token, "User Token Not Set"
+        if not self._directory_customers_service:
+            self._directory_customers_service = DirectoryCustomerService(self.token)
+        return self._directory_customers_service
+
+    @property
+    def country_service(self) -> CountryService:
+        """build business service object to inquire about current business
+
+        :return: business service object
+        """
+        assert self.token, "User Token Not Set"
+        if not self._country_service:
+            self._country_service = CountryService(self.token)
+        return self._country_service

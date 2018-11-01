@@ -7,7 +7,7 @@ from posrocket.utils.requests import LocationRequiredMixin, Requests
 logger = logging.getLogger("django")
 
 
-class LocationExtraChargeService(Requests, LocationRequiredMixin):
+class LocationExtraChargeService(LocationRequiredMixin, Requests):
     service_url = "/locations/%s/extra-charges"
     model_cls = LocationExtraChargeModel
     get_customers = BaseServiceFactory.make_list_items_response()

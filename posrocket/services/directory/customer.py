@@ -8,7 +8,52 @@ logger = logging.getLogger("django")
 
 
 class DirectoryCustomerService(Requests):
-    service_url = "/directory/customers"
+    service_url = "/directory/customers/"
     model_cls = DirectoryCustomerModel
     get_customers = BaseServiceFactory.make_list_items_response()
     get_customer_by_id = BaseServiceFactory.make_detail_item_response()
+
+    def create(self, customer: DirectoryCustomerModel):
+        data = {
+            "first_name": customer.first_name,
+            "last_name": customer.last_name,
+            "email": customer.email,
+            "gender": customer.gender,
+            "dob": customer.dob,
+            "country": customer.country,
+            "addresses": [],
+            "phone_numbers": []
+        }
+        for address in customer.addresses:
+            data['addresses'].append(
+                {
+                    "label": address.label,
+                    "residence": address.residence,
+                    "street": address.street,
+                    "building": address.building,
+                    "floor": address.floor,
+                    "apartment": address.apartment,
+                    "extras": address.extras,
+                    "is_primary": address.is_primary,
+                    "is_verified": address.is_verified,
+                    "city": {
+                        "id": "7c9a833f-9fca-4831-81b3-fe9084dd7437",
+                    },
+                    "area": {
+                        "id": "748d88c0-90c0-40d8-94b3-70af8cc56eac",
+                    }
+                }
+            )
+        for phone_number in customer.phone_numbers:
+            data['phone_numbers'].append(
+                {
+                    "number": phone_number.number,
+                    "is_primary": phone_number.is_primary,
+                    "is_verified": phone_number.is_verified,
+                }
+            )
+        print(data)
+        response = self.post(self.get_service_url(), data)
+        print(response)
+        result = self.model_cls(**response['data'])
+        return result

@@ -7,7 +7,7 @@ from posrocket.utils.requests import LocationRequiredMixin, Requests
 logger = logging.getLogger("django")
 
 
-class LocationDiscountService(Requests, LocationRequiredMixin):
+class LocationDiscountService(LocationRequiredMixin, Requests):
     service_url = "/locations/%s/discounts"
     model_cls = LocationDiscountModel
     get_customers = BaseServiceFactory.make_list_items_response()
