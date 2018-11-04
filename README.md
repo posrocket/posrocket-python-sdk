@@ -8,10 +8,10 @@ quick start:
     `pip install pos-python-sdk`
     
 2. import pos module in your python script:
-    `from posrocket import LunchPadClient`
+    `from posrocket import LaunchPadClient`
     
 3. create client object:
-    `pos_client = LunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)`
+    `pos_client = LaunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)`
     
 4. generate authorization url:
     `auth_url = pos_client.get_authorization_url(<your_redirect_url>)`

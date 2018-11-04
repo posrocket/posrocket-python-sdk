@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
-"""LunchPad Python SDK.
-This is the Official python SDK for POSRocket Developer portal API aka "LunchPad"
+"""LaunchPad Python SDK.
+This is the Official python SDK for POSRocket Developer portal API aka "LaunchPad"
 which allow developer to access the resource server with ease.
 
 quick start:
     - install pos python sdk using:
         `pip install pos-python-sdk`
     - import pos module in your python script:
-        `from posrocket import LunchPadClient`
+        `from posrocket import LaunchPadClient`
     - create client object:
-        `pos_client = LunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)`
+        `pos_client = LaunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)`
     - generate authorization url:
         `auth_url = pos_client.get_authorization_url(<your_redirect_url>)`
-    - After the user authorize the app on Lunchpad we will redirect him back to the return url.
+    - After the user authorize the app on LaunchPad we will redirect him back to the return url.
     - retrieve the access_token from the return url by using the following function:
         `token = pos_client.get_token(<full_return_url_with_queryparams>,<your_redirect_url>)`
     - now you can call any API endpoint by calling the corresponding service
@@ -38,8 +38,8 @@ __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
 
-class LunchPadClient(object):
-    """Lunchpad main client class which is the starting point for integrating with POSRocket
+class LaunchPadClient(object):
+    """LaunchPad main client class which is the starting point for integrating with POSRocket
     """
     _location_service = None
     _catalog_item_service = None
@@ -48,10 +48,10 @@ class LunchPadClient(object):
 
     def __init__(self, client_id: str, client_secret: str, token: str = None):
         """
-        define client object for communicating with LunchPad API
-        :param client_id: LunchPad Oauth Client id
-        :param client_secret: LunchPad OAuth Client Secret
-        :param token: optional LunchPad OAuth Access Token if you already have it stored
+        define client object for communicating with LaunchPad API
+        :param client_id: LaunchPad Oauth Client id
+        :param client_secret: LaunchPad OAuth Client Secret
+        :param token: optional LaunchPad OAuth Access Token if you already have it stored
         and don't wanna go through the OAuth flow again
         """
         self.client_id = client_id
@@ -129,7 +129,7 @@ class LunchPadClient(object):
     def location_service(self) -> LocationService:
         """ build location service object to inquire about locations
 
-        :return: locatio service object
+        :return: location service object
         """
         assert self.token, "User Token Not Set"
         if not self._location_service:

@@ -26,14 +26,14 @@ class LocationClient(object):
     _extra_charge_service: LocationExtraChargeService = None
     _order_option_service: LocationOrderOptionService = None
 
-    def __init__(self, location_id: str, lunch_pad_client: 'posrocket.LunchPadClient'):
+    def __init__(self, location_id: str, launch_pad_client: 'posrocket.LaunchPadClient'):
         """create a location client to allow access to location related services
 
         :param location_id: POSRocket location id to get services for
-        :param lunch_pad_client: LunchPadClient object to access tokens and auth related info
+        :param launch_pad_client: LaunchPadClient object to access tokens and auth related info
         """
         self.location_id = location_id
-        self.lunch_pad_client = lunch_pad_client
+        self.launch_pad_client = launch_pad_client
 
     @property
     def tab_service(self) -> TabService:
@@ -41,9 +41,9 @@ class LocationClient(object):
 
         :return: tab service object
         """
-        assert self.lunch_pad_client.token, "User Token Not Set"
+        assert self.launch_pad_client.token, "User Token Not Set"
         if not self._tab_service:
-            self._tab_service = TabService(self.lunch_pad_client.token, self.location_id)
+            self._tab_service = TabService(self.launch_pad_client.token, self.location_id)
         return self._tab_service
 
     @property
@@ -52,9 +52,9 @@ class LocationClient(object):
 
         :return: discount service object
         """
-        assert self.lunch_pad_client.token, "User Token Not Set"
+        assert self.launch_pad_client.token, "User Token Not Set"
         if not self._discount_service:
-            self._discount_service = LocationDiscountService(self.lunch_pad_client.token, self.location_id)
+            self._discount_service = LocationDiscountService(self.launch_pad_client.token, self.location_id)
         return self._discount_service
 
     @property
@@ -63,9 +63,9 @@ class LocationClient(object):
 
         :return: drawer service object
         """
-        assert self.lunch_pad_client.token, "User Token Not Set"
+        assert self.launch_pad_client.token, "User Token Not Set"
         if not self._drawer_service:
-            self._drawer_service = LocationDrawerService(self.lunch_pad_client.token, self.location_id)
+            self._drawer_service = LocationDrawerService(self.launch_pad_client.token, self.location_id)
         return self._drawer_service
 
     @property
@@ -74,9 +74,9 @@ class LocationClient(object):
 
         :return: extra charge service object
         """
-        assert self.lunch_pad_client.token, "User Token Not Set"
+        assert self.launch_pad_client.token, "User Token Not Set"
         if not self._extra_charge_service:
-            self._extra_charge_service = LocationExtraChargeService(self.lunch_pad_client.token, self.location_id)
+            self._extra_charge_service = LocationExtraChargeService(self.launch_pad_client.token, self.location_id)
         return self._extra_charge_service
 
     @property
@@ -85,7 +85,7 @@ class LocationClient(object):
 
         :return:order option service object
         """
-        assert self.lunch_pad_client.token, "User Token Not Set"
+        assert self.launch_pad_client.token, "User Token Not Set"
         if not self._order_option_service:
-            self._order_option_service = LocationOrderOptionService(self.lunch_pad_client.token, self.location_id)
+            self._order_option_service = LocationOrderOptionService(self.launch_pad_client.token, self.location_id)
         return self._order_option_service
