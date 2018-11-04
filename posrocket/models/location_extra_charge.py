@@ -53,4 +53,5 @@ class LocationExtraChargeModel:
         :param json_tax: json dict for Tax
         :return: None
         """
-        self._tax = LocationExtraChargeTaxModel(**json_tax)
+        if json_tax:
+            self._tax = LocationExtraChargeTaxModel(**json_tax)

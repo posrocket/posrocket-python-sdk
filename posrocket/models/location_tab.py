@@ -2,9 +2,11 @@
 
 """
 import datetime
-from typing import List
+from typing import Dict, List
 
 from posrocket.models.catalog_item import CatalogItemModel
+from posrocket.models.catalog_modifier import CatalogModifierModel
+from posrocket.models.catalog_variation import CatalogVariationModel
 from posrocket.models.directory_customer import DirectoryCustomerModel
 from posrocket.models.location_order_options import LocationOrderOptionModel
 from posrocket.models.location_tab_creator import LocationTabCreatorModel
@@ -25,27 +27,28 @@ class LocationTabModel:
     """ mapper class for Location Tab object from Json Dict
 
     """
-    id: str = None
-    location_id: str = None
-    issuer_id: str = None
-    sequence_number: str = None
-    name: str = None
-    ticket_number: str = None
-    creation_time: datetime = None
-    status: str = None
-    acknowledged: bool = None
-    total_amount: float = None
-    _order_option: LocationOrderOptionModel = None
-    _items: List[LocationTabItemModel] = []
-    _customer: DirectoryCustomerModel = None
-    _pickup: LocationTabPickupModel = None
-    _creator: LocationTabCreatorModel = None
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Tab object
 
         :param kwargs: Location Tab json dict
         """
+
+        self.id: str = None
+        self.location_id: str = None
+        self.issuer_id: str = None
+        self.sequence_number: str = None
+        self.name: str = None
+        self.ticket_number: str = None
+        self.creation_time: datetime = None
+        self.status: str = None
+        self.acknowledged: bool = None
+        self.total_amount: float = None
+        self._order_option: LocationOrderOptionModel = None
+        self._items: List[LocationTabItemModel] = []
+        self._customer: DirectoryCustomerModel = None
+        self._pickup: LocationTabPickupModel = None
+        self._creator: LocationTabCreatorModel = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -71,7 +74,10 @@ class LocationTabModel:
         :param order_option_dict: json dict for order option
         :return: None
         """
-        self._order_option = LocationOrderOptionModel(**order_option_dict)
+        if isinstance(order_option_dict, LocationOrderOptionModel):
+            self._order_option = order_option_dict
+        else:
+            self._order_option = LocationOrderOptionModel(**order_option_dict)
 
     @property
     def items(self) -> List[LocationTabItemModel]:
@@ -90,7 +96,10 @@ class LocationTabModel:
         """
         self._items = []
         for item in items_list:
-            self._items.append(CatalogItemModel(**item))
+            if type(item) is LocationTabItemModel:
+                self._items.append(item)
+            else:
+                self._items.append(LocationTabItemModel(**item))
 
     @property
     def customer(self) -> DirectoryCustomerModel:
@@ -107,7 +116,10 @@ class LocationTabModel:
         :param customer_dict: json dict for Customer
         :return: None
         """
-        self._customer = DirectoryCustomerModel(**customer_dict)
+        if type(customer_dict) is DirectoryCustomerModel:
+            self._customer = customer_dict
+        else:
+            self._customer = DirectoryCustomerModel(**customer_dict)
 
     @property
     def pickup(self) -> LocationTabPickupModel:
@@ -124,7 +136,8 @@ class LocationTabModel:
         :param customer_dict: json dict for Pickup
         :return: None
         """
-        self._pickup = LocationTabPickupModel(**pickup_dict)
+        if pickup_dict:
+            self._pickup = LocationTabPickupModel(**pickup_dict)
 
     @property
     def creator(self) -> LocationTabCreatorModel:
@@ -142,3 +155,12 @@ class LocationTabModel:
         :return: None
         """
         self._creator = LocationTabCreatorModel(**creator_dict)
+
+    def add_item(self, item: CatalogItemModel, item_quantity: int, notes: str, variation: CatalogVariationModel,
+                 modifiers: List[Dict[CatalogModifierModel, int]] = []) -> LocationTabItemModel:
+        tab_item = LocationTabItemModel(id=item.id, name=item.name, quantity=item_quantity, notes=notes)
+        tab_item.add_variation(variation, self.location_id)
+        for modifier in modifiers:
+            tab_item.add_modifier(modifier['modifier'], modifier['quantity'], self.location_id)
+        self.items.append(tab_item)
+        return tab_item

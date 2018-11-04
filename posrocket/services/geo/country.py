@@ -25,4 +25,4 @@ class CountryService(Requests):
     service_url = "/countries"
     model_cls = CountryModel
     get_countries = BaseServiceFactory.make_list_items_response()
-    get_tag_by_id = BaseServiceFactory.make_detail_item_response()
+    get_country_by_name = BaseServiceFactory.make_detail_item_response()

@@ -10,10 +10,3 @@ class LocationService(Requests):
     model_cls = LocationModel
     get_locations = BaseServiceFactory.make_list_items_response()
     get_location_by_id = BaseServiceFactory.make_detail_item_response()
-
-
-__all__ = [
-    "BusinessService",
-    "LocationService",
-    "TabService",
-]

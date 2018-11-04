@@ -19,7 +19,7 @@ __status__ = "Beta"
 logger = logging.getLogger("django")
 
 
-class LocationExtraChargeService(Requests, LocationRequiredMixin):
+class LocationExtraChargeService(LocationRequiredMixin, Requests):
     """Extra Charge service class to allow retrieving location extra charge related data
     """
     service_url = "/locations/%s/extra-charges"

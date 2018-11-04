@@ -60,7 +60,10 @@ class DirectoryAddressModel:
         :param json_city: json dict for City
         :return: None
         """
-        self._city = CityModel(**json_city)
+        if isinstance(json_city, CityModel):
+            self._city = json_city
+        else:
+            self._city = CityModel(**json_city)
 
     @property
     def area(self) -> AreaModel:
@@ -77,4 +80,7 @@ class DirectoryAddressModel:
         :param json_city: json dict for Area
         :return: None
         """
-        self._area = AreaModel(**json_area)
+        if isinstance(json_area, AreaModel):
+            self._area = json_area
+        else:
+            self._area = AreaModel(**json_area)

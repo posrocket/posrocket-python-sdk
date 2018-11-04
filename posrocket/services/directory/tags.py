@@ -3,7 +3,7 @@ Directory Tags Service
 """
 import logging
 
-from posrocket.models import DirectoryTagModel
+from posrocket.models.directory_tag import DirectoryTagModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 
@@ -19,7 +19,7 @@ __status__ = "Beta"
 logger = logging.getLogger("django")
 
 
-class DirectoryTagsService(Requests):
+class DirectoryTagService(Requests):
     """Tags service class to allow retrieving customer related data
     """
     service_url = "/directory/tags"

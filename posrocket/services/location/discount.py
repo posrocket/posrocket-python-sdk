@@ -19,7 +19,7 @@ __status__ = "Beta"
 logger = logging.getLogger("django")
 
 
-class LocationDiscountService(Requests, LocationRequiredMixin):
+class LocationDiscountService(LocationRequiredMixin, Requests):
     """Discount service class to allow retrieving location discount related data
     """
     service_url = "/locations/%s/discounts"
