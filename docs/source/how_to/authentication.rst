@@ -31,13 +31,13 @@ Please check the following example on how to use the SDKs LaunchPad client class
 
     .. sourcecode:: python
 
-        pos_client = LaunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)
+        launch_pad = LaunchPadClient(<your_oauth_client_id>,<your_oauth_client_secret>)
 
     - Generate authorization url:
 
     .. sourcecode:: python
 
-        auth_url = pos_client.get_authorization_url(<your_redirect_url>)
+        auth_url = launch_pad.get_authorization_url(<your_redirect_url>)
 
     - After the user authorizes the app on LaunchPad we will redirect him back to the return url (Redirect URL) to catch the code from your side.
 
@@ -46,7 +46,7 @@ Please check the following example on how to use the SDKs LaunchPad client class
 
     .. sourcecode:: python
 
-        token = pos_client.get_token(<full_return_url_with_query_params>,<your_redirect_url>)
+        token = launch_pad.get_token(<full_return_url_with_query_params>,<your_redirect_url>)
 
     .. important::
         The function also saves the token as an attribute in the object instance (LaunchPad Client) to be used,
@@ -59,10 +59,10 @@ In the case of token expiration:
 
     .. sourcecode:: python
 
-        new_token = pos_client.refresh_token(<your_expired_token>)
+        new_token = launch_pad.refresh_token(<your_expired_token>)
 
     .. warning::
-        The token expires after 8 hours of being generated
+        The token expires after 10 hours of being generated
 
 
 This covers the authentication process, you will be using the LaunchPadClient to access the APIs in the SDK.

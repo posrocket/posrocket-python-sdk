@@ -14,18 +14,12 @@ The following function allows to GET Business data:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.
 
-    - Initialize your Business Service by calling it through your LaunchPad object instance.
-
-    .. sourcecode:: python
-
-        pos_client.business_service()
-
-    - After it has been initialized you can access the services functions, which returns the
+    - After the LaunchPad object has been setup you can access the service and functions, which returns the
       business json data as a Python object of type `Business`_.
 
     .. sourcecode:: python
 
-        business = pos_client.business_service.get_business_info()
+        business = launch_pad.business_service.get_business_info()
 
     - For reference: Business Service `Source Code`_
 

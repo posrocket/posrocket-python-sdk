@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to POSRocket Python SDK's documentation!
+Welcome to POSRocket Python SDKs documentation!
 ================================================
 
 .. toctree::
@@ -17,8 +17,7 @@ Welcome to POSRocket Python SDK's documentation!
 
    how_to/authentication.rst
    how_to/business.rst
-   how_to/location.rst
-   how_to/tab.rst
+   how_to/location_service.rst
 
 
 .. toctree::
