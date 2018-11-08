@@ -15,10 +15,6 @@
 import os
 import sys
 
-
-MOCK_MODULES = ['numpy', 'scipy', 'sklearn', 'matplotlib', 'matplotlib.pyplot', 'scipy.interpolate', 'scipy.special', 'math', '__future__', 'toolboxutilities']
-for mod_name in MOCK_MODULES:
-    sys.modules[mod_name] = mock.Mock()
 sys.path.insert(0, os.path.abspath('../..'))
 
 
