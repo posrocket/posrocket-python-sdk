@@ -6,7 +6,7 @@ The Catalog service allows access to the POSRocket catalog directory.
 In order to access the Catalog service, a LaunchPad client must be created and to have a valid token.
 
 Item Service
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
 The following function allows to GET Item data:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.
@@ -31,7 +31,7 @@ The following function allows to GET Item data:
     - For More information about `CatalogItemModel`_ specific functions, please check the models source code.
 
 Category Service
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 The following function allows to GET Category data:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.
@@ -54,7 +54,7 @@ The following function allows to GET Category data:
 
 
 Tag Service
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^
 The following function allows to GET Tag data:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.
@@ -77,7 +77,7 @@ The following function allows to GET Tag data:
 
 
 Tax Service
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^
 The following function allows to GET Tax data:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.

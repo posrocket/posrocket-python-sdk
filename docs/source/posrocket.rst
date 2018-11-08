@@ -1,5 +1,5 @@
 POSRocket Python SDK
-=================
+====================
 
 .. toctree::
 

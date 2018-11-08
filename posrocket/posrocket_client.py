@@ -82,7 +82,7 @@ class LaunchPadClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         authorization_url, state = self.oauth_client.authorization_url(
-            'http://52.208.64.108/oauth/authorize/',
+            'http://launchpad.rocketinfra.com/oauth/authorize/',
             access_type="offline"
         )
         self._state = state
@@ -98,7 +98,7 @@ class LaunchPadClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         token = self.oauth_client.fetch_token(
-            'http://52.208.64.108/oauth/token/',
+            'http://launchpad.rocketinfra.com/oauth/token/',
             authorization_response=authorization_response_url,
             client_secret=self.client_secret
         )
@@ -114,7 +114,7 @@ class LaunchPadClient(object):
 
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         token = self.oauth_client.refresh_token(
-            token_url='http://52.208.64.108/oauth/token/',
+            token_url='http://launchpad.rocketinfra.com/oauth/token/',
             refresh_token=token['refresh_token'],
             auth=auth
         )

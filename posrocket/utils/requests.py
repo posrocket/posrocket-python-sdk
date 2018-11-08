@@ -36,7 +36,7 @@ class LocationRequiredMixin:
 
 
 class Requests:
-    base_url = 'http://52.208.64.108/api'
+    base_url = 'http://launchpad.rocketinfra.com/api'
 
     def __init__(self, access_token):
         self.access_token = access_token
