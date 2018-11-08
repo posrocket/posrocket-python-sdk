@@ -28,6 +28,10 @@ class DirectoryCustomerService(Requests):
     get_customer_by_id = BaseServiceFactory.make_detail_item_response()
 
     def create(self, customer: DirectoryCustomerModel):
+        """Create new customer in POSRocket Customer Directory
+
+        :param customer: DirectoryCustomerModel type object
+        """
         data = {
             "first_name": customer.first_name,
             "last_name": customer.last_name,

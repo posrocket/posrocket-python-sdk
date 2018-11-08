@@ -60,13 +60,13 @@ Location Client
 
         .. sourcecode:: python
 
-            launch_pad.location(<your_location_id>).tab_service.get_tab_by_id(<tab_id>)
+            result = launch_pad.location(<your_location_id>).tab_service.get_tab_by_id(<tab_id>)
 
         * Get all objects:
 
         .. sourcecode:: python
 
-            launch_pad.location(<your_location_id>).tab_service.get_tabs()
+            results = launch_pad.location(<your_location_id>).tab_service.get_tabs()
 
 Tab Service
 --------------------

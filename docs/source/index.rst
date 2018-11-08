@@ -18,6 +18,7 @@ Welcome to POSRocket Python SDKs documentation!
    how_to/authentication.rst
    how_to/business.rst
    how_to/location_service.rst
+   how_to/customer_service.rst
 
 
 .. toctree::

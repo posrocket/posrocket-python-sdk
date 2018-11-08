@@ -163,9 +163,9 @@ class LaunchPadClient(object):
 
     @property
     def directory_customers_service(self) -> DirectoryCustomerService:
-        """build business service object to inquire about current business
+        """build directory customers service object to inquire about customers
 
-        :return: business service object
+        :return: directory customers service object
         """
         assert self.token, "User Token Not Set"
         if not self._directory_customers_service:
@@ -174,9 +174,9 @@ class LaunchPadClient(object):
 
     @property
     def country_service(self) -> CountryService:
-        """build business service object to inquire about current business
+        """build country service object to inquire about countries
 
-        :return: business service object
+        :return: country service object
         """
         assert self.token, "User Token Not Set"
         if not self._country_service:
