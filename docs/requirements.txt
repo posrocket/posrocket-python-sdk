@@ -9,7 +9,6 @@ Jinja2==2.10
 MarkupSafe==1.0
 oauthlib==2.1.0
 packaging==18.0
--e git+https://github.com/posrocket/posrocket-python-sdk.git@176723eee4637b61f86c24a25fcac017da7daf7a#egg=posrocket
 Pygments==2.2.0
 pyparsing==2.3.0
 pytz==2018.7
