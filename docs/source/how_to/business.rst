@@ -7,7 +7,7 @@ type / current status in the POSRocket System.
 
 
 Business Information
---------------------
+^^^^^^^^^^^^^^^^^^^^
 In order to access the Business service, a LaunchPad client must be created and to have a valid token.
 
 The following function allows to GET Business data:

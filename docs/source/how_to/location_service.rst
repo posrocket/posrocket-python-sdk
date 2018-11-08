@@ -6,7 +6,7 @@ A Location in POSRocket is one of the children of a `Business`_, in other words 
 The Location Service is a service created to access Location specific functions, which are listed below.
 
 Service Functions
---------------------
+^^^^^^^^^^^^^^^^^
 In order to access the Location Service, a LaunchPad client must be created and to have a valid token.
 
 The following functions allow to GET location data:
@@ -39,7 +39,7 @@ The following functions allow to GET location data:
     - For reference: `Location Service`_ source code
 
 Location Client
----------------
+^^^^^^^^^^^^^^^
     - There are 5 services that are accessed through LocationService:
         - `Tab Service`_
         - Discount Service
@@ -69,7 +69,7 @@ Location Client
             results = launch_pad.location(<your_location_id>).tab_service.get_tabs()
 
 Tab Service
---------------------
+^^^^^^^^^^^
 
 A Tab in POSRocket is Location specific and is used as an order representation in the system.
 
