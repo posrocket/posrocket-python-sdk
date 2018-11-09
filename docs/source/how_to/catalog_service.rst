@@ -1,9 +1,15 @@
 Catalog Service
 ================
 
-The Catalog service allows access to the POSRocket catalog directory.
+The Catalog service allows access to the POSRocket merchant catalog.
 
 In order to access the Catalog service, a LaunchPad client must be created and to have a valid token.
+
+.. note:: if you already have a valid token you can directly initiate a client like below:
+
+    .. sourcecode:: python
+
+        token = launch_pad.get_token(<full_return_url_with_query_params>,<your_redirect_url>,<token_dict>)
 
 Item Service
 ^^^^^^^^^^^^
@@ -16,12 +22,15 @@ The following function allows to GET Item data:
 
     - Each Service has 2 Getter functions which are:
         * Get item by ID:
-
+            get a specific `CatalogItemModel`_. by id
         .. sourcecode:: python
 
             item = launch_pad.catalog_item_service.get_item_by_id(<item_id>)
 
         * Get all items:
+            get all current business `CatalogItemModel`_. you can filter by category_id, tag_id,
+            tax_id, name and you can also select the page by passing any of those variables to
+            the get_items function.
 
         .. sourcecode:: python
 
@@ -41,12 +50,15 @@ The following function allows to GET Category data:
 
     - Each Service has 2 Getter functions which are:
         * Get category by ID:
+            get a specific `CatalogCategoryModel`_. by id
 
         .. sourcecode:: python
 
             category = launch_pad.catalog_category_service.get_category_by_id(<category_id>)
 
         * Get all categories:
+            get all current business `CatalogCategoryModel`_. you can select the page by passing the page variables to
+            the get_categories function.
 
         .. sourcecode:: python
 
@@ -64,12 +76,15 @@ The following function allows to GET Tag data:
 
     - Each Service has 2 Getter functions which are:
         * Get tag by ID:
+            get a specific `CatalogTagModel`_. by id
 
         .. sourcecode:: python
 
             tag = launch_pad.catalog_tag_service.get_tag_by_id(<tag_id>)
 
         * Get all tags:
+            get all current business `CatalogTagModel`_. you can filter by name and you can also select the page by
+            passing any of those variables to the get_tags function.
 
         .. sourcecode:: python
 
@@ -87,12 +102,15 @@ The following function allows to GET Tax data:
 
     - Each Service has 2 Getter functions which are:
         * Get tax by ID:
+            get a specific `CatalogTaxModel`_. by id
 
         .. sourcecode:: python
 
             tax = launch_pad.catalog_tax_service.get_tax_by_id(<tax_id>)
 
         * Get all taxes:
+            get all current business `CatalogTaxModel`_. you can filter by name and you can also select the page by
+            passing any of those variables to the get_taxes function.
 
         .. sourcecode:: python
 
@@ -110,12 +128,15 @@ The following function allows to GET Tax data:
 
     - Each Service has 2 Getter functions which are:
         * Get tax by ID:
+            get a specific `CatalogModifierListModel`_. by id
 
         .. sourcecode:: python
 
             modifier_list = launch_pad.catalog_modifier_list_service.get_modifiers_list_by_id(<modifier_list_id>)
 
         * Get all taxes:
+            get all current business `CatalogModifierListModel`_. you can filter by name and you can also select the page by
+            passing any of those variables to the get_modifiers_lists function.
 
         .. sourcecode:: python
 

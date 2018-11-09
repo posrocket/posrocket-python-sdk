@@ -23,12 +23,17 @@ class TabService(LocationRequiredMixin, Requests):
     get_tabs = BaseServiceFactory.make_list_items_response()
     get_tab_by_id = BaseServiceFactory.make_detail_item_response()
 
-    def assign_pickup(self, tab_id, data):
+    def assign_pickup(self, tab_id, pickup_object):
         """Assign pickup for a Tab
 
         :param tab_id: POSRocket Tab uuid
         :param data: POSRocket Tab Pickup json dict
         """
+        data = {
+            "eta": pickup_object.eta,
+            "driver_name": pickup_object.driver_name,
+            "driver_phone": pickup_object.driver_phone
+        }
         assign_pickup_url = self.get_service_url() + '/' + str(tab_id) + '/assign_pickup/'
         response = self.post(assign_pickup_url, data)
         result = self.model_cls(**response)

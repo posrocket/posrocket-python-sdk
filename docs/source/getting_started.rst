@@ -8,7 +8,7 @@ Quick Start:
 
     .. sourcecode:: bash
 
-        $ pip install pos-python-sdk
+        $ pip install git+git://github.com/posrocket/posrocket-python-sdk.git
 
     - Import posrocket LaunchPad client in your python script:
 
@@ -16,5 +16,6 @@ Quick Start:
 
         from posrocket import LaunchPadClient
 
-
+.. warning::
+    For now we only support python 3.6
 .. _Python documentation: https://docs.python.org/3/using/index.html

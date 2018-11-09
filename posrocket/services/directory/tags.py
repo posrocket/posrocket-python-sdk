@@ -24,5 +24,5 @@ class DirectoryTagService(Requests):
     """
     service_url = "/directory/tags"
     model_cls = DirectoryTagModel
-    get_customers = BaseServiceFactory.make_list_items_response()
-    get_customer_by_id = BaseServiceFactory.make_detail_item_response()
+    get_tags = BaseServiceFactory.make_list_items_response()
+    get_tag_by_id = BaseServiceFactory.make_detail_item_response()

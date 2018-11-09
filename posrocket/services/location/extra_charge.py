@@ -24,5 +24,5 @@ class LocationExtraChargeService(LocationRequiredMixin, Requests):
     """
     service_url = "/locations/%s/extra-charges"
     model_cls = LocationExtraChargeModel
-    get_customers = BaseServiceFactory.make_list_items_response()
-    get_customer_by_id = BaseServiceFactory.make_detail_item_response()
+    get_extra_charges = BaseServiceFactory.make_list_items_response()
+    get_extra_charge_by_id = BaseServiceFactory.make_detail_item_response()

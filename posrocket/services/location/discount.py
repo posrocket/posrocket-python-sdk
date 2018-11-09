@@ -24,5 +24,5 @@ class LocationDiscountService(LocationRequiredMixin, Requests):
     """
     service_url = "/locations/%s/discounts"
     model_cls = LocationDiscountModel
-    get_customers = BaseServiceFactory.make_list_items_response()
-    get_customer_by_id = BaseServiceFactory.make_detail_item_response()
+    get_discounts = BaseServiceFactory.make_list_items_response()
+    get_discount_by_id = BaseServiceFactory.make_detail_item_response()

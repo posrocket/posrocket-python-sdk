@@ -13,34 +13,30 @@ The following functions allow to GET location data:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.
 
-    -  After the LaunchPad object has been setup you can access the service and functions, you can save
-       your Location Service it in a variable by calling it through your LaunchPad object instance or keep calling it
-       through your LaunchPad object.
+    -  After the LaunchPad object has been setup you can access the service and functions.
 
-    .. sourcecode:: python
-
-        location_client = launch_pad.location
 
     - There are 2 functions:
         * Get Locations (get_locations)
+            get all current business `LocationModel`_. you can filter by name and you can also select the page by
+            passing any of those variables to the get_locations function.
 
             .. sourcecode:: python
 
-                result = location_client.get_locations()
+                result = launch_pad.location_service.get_locations()
 
         * Get Location by ID (get_location_by_id)
+            get a specific `LocationModel`_. by id
 
             .. sourcecode:: python
 
-                result = location_client.get_location_by_id(<your_location_id>)
-                    OR
-                result = location_client(<your_location_id>)
+                result = launch_pad.location_service.get_location_by_id(<your_location_id>)
 
     - For reference: `Location Service`_ source code
 
 Location Client
 ^^^^^^^^^^^^^^^
-    - There are 5 services that are accessed through LocationService:
+    - There are 5 services that are accessed through LocationClient:
         - `Tab Service`_
         - Discount Service
         - Drawer Service
@@ -77,7 +73,7 @@ Create Tab
 ^^^^^^^^^^^^^
 To create a `Tab`_ on the POSRocket system, a LaunchPad client must be created and to have a valid token.
 
-The following function allows to Assign a pickup object to a Tab:
+The following function allows to create object to a Tab:
 
     - Check the `Authentication`_ section for information regarding how to setup your LaunchPad object.
 
@@ -88,7 +84,7 @@ The following function allows to Assign a pickup object to a Tab:
 
         launch_pad.location(<your_location_id>).tab_service
 
-    - For assigning a pickup for a Tab Order, use the 'create' function which
+    - For creating Tab Order, use the 'create' function which
       returns the created Tab json data as a Python object of type `Tab`_.
 
     .. sourcecode:: python
@@ -119,7 +115,7 @@ The following function allows to Assign a pickup object to a Tab:
         result = launch_pad.location(<your_location_id>).tab_service.assign_pickup(<tab_id>, <your_pickup_object_here>)
 
 
-    - The pickup object JSON example:
+    - The pickup object example:
         * ETA:
             Estimated Time of Arrival to the Location for the pickup
         * Driver Name:
@@ -129,10 +125,10 @@ The following function allows to Assign a pickup object to a Tab:
 
     .. sourcecode:: python
 
-        pickup_object = {
-            "eta": "DateTimeString",
-            "driver_name": "Full Name",
-            "driver_phone": "000000000"
+        pickup_object = LocationTabPickupModel(
+            eta= "DateTimeString",
+            driver_name= "Full Name",
+            driver_phone= "000000000"
         }
 
     - For reference: `Tab`_ Service source code
@@ -142,3 +138,4 @@ The following function allows to Assign a pickup object to a Tab:
 .. _Location Service: ../posrocket.models.html#posrocket.posrocket_client.LaunchPadClient.location_service
 .. _Business: ../posrocket.models.html#module-posrocket.models.business
 .. _Tab Service: #tab-service
+.. _LocationModel: ../posrocket.models.html#module-posrocket.models.location

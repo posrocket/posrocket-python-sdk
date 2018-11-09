@@ -17,12 +17,15 @@ The following function allows to GET Business data:
 
     - Each Service has 2 Getter functions which are:
         * Get customer by ID:
+            get a specific `DirectoryCustomerModel`_. by id
 
         .. sourcecode:: python
 
             user = launch_pad.directory_customers_service.get_customer_by_id(<customer_id>)
 
         * Get all customers:
+            get all current business `CatalogItemModel`_. you can filter by name and you can also select the page by
+            passing any of those variables to the get_customers function.
 
         .. sourcecode:: python
 
