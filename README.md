@@ -5,7 +5,7 @@
 quick start:
 
 1. install pos python sdk using:
-    `pip install pos-python-sdk`
+    `pip install git+git://github.com/posrocket/posrocket-python-sdk.git`
     
 2. import pos module in your python script:
     `from posrocket import LaunchPadClient`
