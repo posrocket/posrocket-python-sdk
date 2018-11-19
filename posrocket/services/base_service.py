@@ -3,13 +3,13 @@ class BaseServiceFactory:
         raise NotImplemented()
 
     @staticmethod
-    def make_list_items_response(page=1, **kwargs):
-        def list_items_response(self):
+    def make_list_items_response():
+        def list_items_response(self, **kwargs):
             params = kwargs
-            params['page'] = page
             url = self.get_service_url()
             response = self.get(url, params=params)
             result = []
+            print(response)
             for json_location in response['data']:
                 result.append(self.model_cls(**json_location))
             return result

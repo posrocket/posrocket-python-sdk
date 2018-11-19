@@ -6,6 +6,7 @@ from posrocket.services.location.discount import LocationDiscountService
 from posrocket.services.location.drawer import LocationDrawerService
 from posrocket.services.location.extra_charge import LocationExtraChargeService
 from posrocket.services.location.order_option import LocationOrderOptionService
+from posrocket.services.location.sales import LocationSaleService
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -25,6 +26,7 @@ class LocationClient(object):
     _drawer_service: LocationDrawerService = None
     _extra_charge_service: LocationExtraChargeService = None
     _order_option_service: LocationOrderOptionService = None
+    _sale_service: LocationSaleService = None
 
     def __init__(self, location_id: str, launch_pad_client: 'posrocket.LaunchPadClient'):
         """create a location client to allow access to location related services
@@ -89,3 +91,14 @@ class LocationClient(object):
         if not self._order_option_service:
             self._order_option_service = LocationOrderOptionService(self.launch_pad_client.token, self.location_id)
         return self._order_option_service
+
+    @property
+    def sale_service(self) -> LocationSaleService:
+        """build country service object to inquire about countries
+
+        :return: country service object
+        """
+        assert self.token, "User Token Not Set"
+        if not self._sale_service:
+            self._sale_service = LocationSaleService(self.token)
+        return self._sale_service

@@ -35,4 +35,4 @@ class CatalogPricingModel:
 
         :return: Catalog Pricing name
         """
-        return f'{self.name}'
+        return f'{self.location_id}-{self.price}'
