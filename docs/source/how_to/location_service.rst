@@ -42,6 +42,7 @@ Location Client
         - Drawer Service
         - Extra Charge Service
         - Order option Service
+        - Sale Service (Transactions)
 
     .. sourcecode:: python
 
@@ -50,6 +51,7 @@ Location Client
         launch_pad.location(<your_location_id>).drawer_service
         launch_pad.location(<your_location_id>).extra_charge_service
         launch_pad.location(<your_location_id>).order_option_service
+        launch_pad.location(<your_location_id>).sale_service
 
     - Each Service has 2 Getter functions which are:
         * Get by ID:
