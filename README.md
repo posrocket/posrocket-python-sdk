@@ -1,6 +1,7 @@
 # POSRocket Python SDK
 
 
+Docs: https://posrocket-python-sdk.readthedocs.io/
 
 quick start:
 
