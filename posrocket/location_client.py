@@ -1,12 +1,13 @@
 """
 Launchpad Location Client
 """
-from posrocket.services import TabService
 from posrocket.services.location.discount import LocationDiscountService
 from posrocket.services.location.drawer import LocationDrawerService
 from posrocket.services.location.extra_charge import LocationExtraChargeService
 from posrocket.services.location.order_option import LocationOrderOptionService
 from posrocket.services.location.sales import LocationSaleService
+from posrocket.services.location.tabs import TabService
+from posrocket.utils.assert_value import assert_value
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -21,12 +22,6 @@ __status__ = "Beta"
 class LocationClient(object):
     """Location Client class to allow retrieving data for a specific location
     """
-    _tab_service: TabService = None
-    _discount_service: LocationDiscountService = None
-    _drawer_service: LocationDrawerService = None
-    _extra_charge_service: LocationExtraChargeService = None
-    _order_option_service: LocationOrderOptionService = None
-    _sale_service: LocationSaleService = None
 
     def __init__(self, location_id: str, launch_pad_client: 'posrocket.LaunchPadClient'):
         """create a location client to allow access to location related services
@@ -43,10 +38,8 @@ class LocationClient(object):
 
         :return: tab service object
         """
-        assert self.launch_pad_client.token, "User Token Not Set"
-        if not self._tab_service:
-            self._tab_service = TabService(self.launch_pad_client.token, self.location_id)
-        return self._tab_service
+        assert_value(self.launch_pad_client.token)
+        return TabService(self.launch_pad_client.token, self.location_id)
 
     @property
     def discount_service(self) -> LocationDiscountService:
@@ -54,10 +47,8 @@ class LocationClient(object):
 
         :return: discount service object
         """
-        assert self.launch_pad_client.token, "User Token Not Set"
-        if not self._discount_service:
-            self._discount_service = LocationDiscountService(self.launch_pad_client.token, self.location_id)
-        return self._discount_service
+        assert_value(self.launch_pad_client.token)
+        return LocationDiscountService(self.launch_pad_client.token, self.location_id)
 
     @property
     def drawer_service(self) -> LocationDrawerService:
@@ -65,10 +56,8 @@ class LocationClient(object):
 
         :return: drawer service object
         """
-        assert self.launch_pad_client.token, "User Token Not Set"
-        if not self._drawer_service:
-            self._drawer_service = LocationDrawerService(self.launch_pad_client.token, self.location_id)
-        return self._drawer_service
+        assert_value(self.launch_pad_client.token)
+        return LocationDrawerService(self.launch_pad_client.token, self.location_id)
 
     @property
     def extra_charge_service(self) -> LocationExtraChargeService:
@@ -76,10 +65,8 @@ class LocationClient(object):
 
         :return: extra charge service object
         """
-        assert self.launch_pad_client.token, "User Token Not Set"
-        if not self._extra_charge_service:
-            self._extra_charge_service = LocationExtraChargeService(self.launch_pad_client.token, self.location_id)
-        return self._extra_charge_service
+        assert_value(self.launch_pad_client.token)
+        return LocationExtraChargeService(self.launch_pad_client.token, self.location_id)
 
     @property
     def order_option_service(self) -> LocationOrderOptionService:
@@ -87,10 +74,8 @@ class LocationClient(object):
 
         :return:order option service object
         """
-        assert self.launch_pad_client.token, "User Token Not Set"
-        if not self._order_option_service:
-            self._order_option_service = LocationOrderOptionService(self.launch_pad_client.token, self.location_id)
-        return self._order_option_service
+        assert_value(self.launch_pad_client.token)
+        return LocationOrderOptionService(self.launch_pad_client.token, self.location_id)
 
     @property
     def sale_service(self) -> LocationSaleService:
@@ -98,7 +83,5 @@ class LocationClient(object):
 
         :return: country service object
         """
-        assert self.token, "User Token Not Set"
-        if not self._sale_service:
-            self._sale_service = LocationSaleService(self.token)
-        return self._sale_service
+        assert_value(self.launch_pad_client.token)
+        return LocationSaleService(self.token)

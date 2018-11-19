@@ -16,17 +16,22 @@ class LocationTabItemModifierModel:
     """ mapper class for Location Tab Item Modifier object from Json Dict
 
     """
-    id: int = None
-    name: str = None
-    quantity: int = None
-    price: float = None
-    order: int = None
+    id: str
+    name: str
+    quantity: int
+    price: float
+    order: int
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Tab Item Modifier object
 
         :param kwargs: Location Tab Item Modifier json dict
         """
+        self.id = None
+        self.name = None
+        self.quantity = None
+        self.price = None
+        self.order = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

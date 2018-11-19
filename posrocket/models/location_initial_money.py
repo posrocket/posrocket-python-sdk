@@ -16,14 +16,16 @@ class LocationInitialMoneyModel:
     """ mapper class for Location Initial Money object from Json Dict
 
     """
-    amount: float = None
-    currency: str = None
+    amount: float
+    currency: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Initial Money object
 
         :param kwargs: Location Initial Money json dict
         """
+        self.amount = None
+        self.currency = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

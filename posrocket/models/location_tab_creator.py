@@ -16,15 +16,19 @@ class LocationTabCreatorModel:
     """ mapper class for Location Tab Creator object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    email: str = None
+    id: str
+    name: str
+    email: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Tab creator object
 
         :param kwargs: Location Tab json creator dict
         """
+        self.id = None
+        self.name = None
+        self.email = None
+
         for key, value in kwargs.items():
             setattr(self, key, value)
 

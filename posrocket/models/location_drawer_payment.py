@@ -15,17 +15,22 @@ class LocationDrawerPaymentModel:
     """ mapper class for Location Drawer Payment object from Json Dict
 
     """
-    id: str = None
-    type: str = None
-    amount: float = None
-    description: str = None
-    time: str = None
+    id: str
+    type: str
+    amount: float
+    description: str
+    time: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Drawer Payment object
 
         :param kwargs: Location Drawer Payment json dict
         """
+        self.id = None
+        self.type = None
+        self.amount = None
+        self.description = None
+        self.time = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

@@ -3,9 +3,10 @@
 """
 from datetime import date
 from typing import List
-from posrocket.models import LocationInitialMoneyModel, LocationTabCreatorModel, DirectoryCustomerModel, \
-    LocationTabModel, SalesTransactionTenderModel, SalesTransactionTaxModel, SalesTransactionItemizationModel, \
-    SalesTransactionExtraChargeModel, SalesTransactionRefundModel
+
+from posrocket.models import DirectoryCustomerModel, LocationInitialMoneyModel, LocationTabCreatorModel, \
+    LocationTabModel, SalesTransactionExtraChargeModel, SalesTransactionItemizationModel, SalesTransactionRefundModel, \
+    SalesTransactionTaxModel, SalesTransactionTenderModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -21,34 +22,56 @@ class SalesTransactionModel:
     """ mapper class for Sales Transaction object from Json Dict
 
     """
-    id: int = None
-    receipt_id: int = None
-    serial_number: int = None
-    dining_option: str = None
-    creation_time: date = None
-    _discount_money: LocationInitialMoneyModel = None
-    _refunded_money: LocationInitialMoneyModel = None
-    _additive_tax_money: LocationInitialMoneyModel = None
-    _inclusive_tax_money: LocationInitialMoneyModel = None
-    _tax_money: LocationInitialMoneyModel = None
-    _tip_money: LocationInitialMoneyModel = None
-    _received_money: LocationInitialMoneyModel = None
-    _total_collected_money: LocationInitialMoneyModel = None
-    _extra_charges_money: LocationInitialMoneyModel = None
-    _creator: LocationTabCreatorModel = None
-    _customer: DirectoryCustomerModel = None
-    _tab: LocationTabModel = None
-    _tenders: SalesTransactionTenderModel = None
-    _taxes: List[SalesTransactionTaxModel] = []
-    _extra_charges: List[SalesTransactionExtraChargeModel] = []
-    _itemization: List[SalesTransactionItemizationModel] = []
-    _refunds: List[SalesTransactionRefundModel] = []
+    id: str
+    receipt_id: str
+    serial_number: int
+    dining_option: str
+    creation_time: date
+    _discount_money: LocationInitialMoneyModel
+    _refunded_money: LocationInitialMoneyModel
+    _additive_tax_money: LocationInitialMoneyModel
+    _inclusive_tax_money: LocationInitialMoneyModel
+    _tax_money: LocationInitialMoneyModel
+    _tip_money: LocationInitialMoneyModel
+    _received_money: LocationInitialMoneyModel
+    _total_collected_money: LocationInitialMoneyModel
+    _extra_charges_money: LocationInitialMoneyModel
+    _creator: LocationTabCreatorModel
+    _customer: DirectoryCustomerModel
+    _tab: LocationTabModel
+    _tenders: SalesTransactionTenderModel
+    _taxes: List[SalesTransactionTaxModel]
+    _extra_charges: List[SalesTransactionExtraChargeModel]
+    _itemization: List[SalesTransactionItemizationModel]
+    _refunds: List[SalesTransactionRefundModel]
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction object
 
         :param kwargs: Sales Transaction json dict
         """
+        self.id = None
+        self.receipt_id = None
+        self.serial_number = None
+        self.dining_option = None
+        self.creation_time = None
+        self._discount_money = None
+        self._refunded_money = None
+        self._additive_tax_money = None
+        self._inclusive_tax_money = None
+        self._tax_money = None
+        self._tip_money = None
+        self._received_money = None
+        self._total_collected_money = None
+        self._extra_charges_money = None
+        self._creator = None
+        self._customer = None
+        self._tab = None
+        self._tenders = None
+        self._taxes = []
+        self._extra_charges = []
+        self._itemization = []
+        self._refunds = []
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -355,4 +378,3 @@ class SalesTransactionModel:
         self._refunds = []
         for refund in refunds_list:
             self._refunds.append(SalesTransactionRefundModel(**refund))
-

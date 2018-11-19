@@ -16,15 +16,18 @@ class SalesTransactionRefundCreatorModel:
     """ mapper class for Sales Transaction Refund Creator object from Json Dict
 
     """
-    id: int = None
-    name: str = None
-    email: str = None
+    id: str
+    name: str
+    email: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Refund Creator object
 
         :param kwargs: Sales Transaction Refund Creator json dict
         """
+        self.id = None
+        self.name = None
+        self.email = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

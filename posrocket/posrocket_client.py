@@ -23,10 +23,12 @@ quick start:
 """
 import requests
 from posrocket.location_client import LocationClient
-from posrocket.services import BusinessService, LocationService
+from posrocket.services.business import BusinessService
 from posrocket.services.catalog import CatalogItemService
 from posrocket.services.directory import DirectoryCustomerService
 from posrocket.services.geo import CountryService
+from posrocket.services.location import LocationService
+from posrocket.utils.assert_value import assert_value
 from requests_oauthlib import OAuth2Session
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -42,12 +44,6 @@ __status__ = "Beta"
 class LaunchPadClient(object):
     """LaunchPad main client class which is the starting point for integrating with POSRocket
     """
-    _location_service = None
-    _catalog_item_service = None
-    _business_service = None
-    _tab_service = None
-    _directory_customers_service = None
-    _country_service = None
 
     def __init__(self, client_id: str, client_secret: str, token: str = None):
         """
@@ -105,20 +101,20 @@ class LaunchPadClient(object):
         self.token = token
         return token
 
-    def refresh_token(self, token: dict) -> dict:
+    def refresh_token(self, token: dict = None) -> dict:
         """Fetch a new access token using a refresh token.
 
         :param token:The token to use.
         :return: A token dict
         """
-
+        token = token or self.token
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
-        token = self.oauth_client.refresh_token(
+        self.token = self.oauth_client.refresh_token(
             token_url='http://launchpad.rocketinfra.com/oauth/token/',
             refresh_token=token['refresh_token'],
             auth=auth
         )
-        return token
+        return self.token
 
     def location(self, location_id: str) -> LocationClient:
         """ build location client to allow access to that location data
@@ -134,10 +130,8 @@ class LaunchPadClient(object):
 
         :return: location service object
         """
-        assert self.token, "User Token Not Set"
-        if not self._location_service:
-            self._location_service = LocationService(self.token)
-        return self._location_service
+        assert_value(self.token)
+        return LocationService(self.token)
 
     @property
     def catalog_item_service(self) -> CatalogItemService:
@@ -145,10 +139,8 @@ class LaunchPadClient(object):
 
         :return: catalog item service
         """
-        assert self.token, "User Token Not Set"
-        if not self._catalog_item_service:
-            self._catalog_item_service = CatalogItemService(self.token)
-        return self._catalog_item_service
+        assert_value(self.token)
+        return CatalogItemService(self.token)
 
     @property
     def business_service(self) -> BusinessService:
@@ -156,10 +148,8 @@ class LaunchPadClient(object):
 
         :return: business service object
         """
-        assert self.token, "User Token Not Set"
-        if not self._business_service:
-            self._business_service = BusinessService(self.token)
-        return self._business_service
+        assert_value(self.token)
+        return BusinessService(self.token)
 
     @property
     def directory_customers_service(self) -> DirectoryCustomerService:
@@ -167,10 +157,8 @@ class LaunchPadClient(object):
 
         :return: directory customers service object
         """
-        assert self.token, "User Token Not Set"
-        if not self._directory_customers_service:
-            self._directory_customers_service = DirectoryCustomerService(self.token)
-        return self._directory_customers_service
+        assert_value(self.token)
+        return DirectoryCustomerService(self.token)
 
     @property
     def country_service(self) -> CountryService:
@@ -178,7 +166,5 @@ class LaunchPadClient(object):
 
         :return: country service object
         """
-        assert self.token, "User Token Not Set"
-        if not self._country_service:
-            self._country_service = CountryService(self.token)
-        return self._country_service
+        assert_value(self.token)
+        return CountryService(self.token)

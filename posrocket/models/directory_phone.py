@@ -15,16 +15,20 @@ class DirectoryPhoneModel:
     """ mapper class for Directory Phone object from Json Dict
 
     """
-    id: str = None
-    number: str = None
-    is_primary: bool = None
-    is_verified: bool = None
+    id: str
+    number: str
+    is_primary: bool
+    is_verified: bool
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Directory Phone object
 
         :param kwargs: Directory Phone json dict
         """
+        self.id = None
+        self.number = None
+        self.is_primary = None
+        self.is_verified = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

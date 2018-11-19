@@ -23,32 +23,52 @@ class LocationDrawerModel:
     """ mapper class for Location Drawer object from Json Dict
 
     """
-    id: str = None
-    reference: str = None
-    serial: str = None
-    description: str = None
-    start_time: datetime = None
-    end_time: datetime = None
-    _initial_money: LocationInitialMoneyModel = None
-    _card_sales_money: LocationInitialMoneyModel = None
-    _card_refunds_money: LocationInitialMoneyModel = None
-    _other_sales_money: LocationInitialMoneyModel = None
-    _other_refunds_money: LocationInitialMoneyModel = None
-    _sales_money: LocationInitialMoneyModel = None
-    _refunds_money: LocationInitialMoneyModel = None
-    _paid_in_out_money: LocationInitialMoneyModel = None
-    _expected_money: LocationInitialMoneyModel = None
-    _actual_money: LocationInitialMoneyModel = None
-    _difference_money: LocationInitialMoneyModel = None
-    _creator: LocationDrawerCreatorModel = None
-    _payments: List[LocationDrawerPaymentModel] = None
-    _payment_methods: List[LocationDrawerPaymentMethodModel] = None
+    id: str
+    reference: str
+    serial: str
+    description: str
+    start_time: datetime
+    end_time: datetime
+    _initial_money: LocationInitialMoneyModel
+    _card_sales_money: LocationInitialMoneyModel
+    _card_refunds_money: LocationInitialMoneyModel
+    _other_sales_money: LocationInitialMoneyModel
+    _other_refunds_money: LocationInitialMoneyModel
+    _sales_money: LocationInitialMoneyModel
+    _refunds_money: LocationInitialMoneyModel
+    _paid_in_out_money: LocationInitialMoneyModel
+    _expected_money: LocationInitialMoneyModel
+    _actual_money: LocationInitialMoneyModel
+    _difference_money: LocationInitialMoneyModel
+    _creator: LocationDrawerCreatorModel
+    _payments: List[LocationDrawerPaymentModel]
+    _payment_methods: List[LocationDrawerPaymentMethodModel]
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Drawer object
 
         :param kwargs: Location Drawer json dict
         """
+        self.id = None
+        self.reference = None
+        self.serial = None
+        self.description = None
+        self.start_time = None
+        self.end_time = None
+        self._initial_money = None
+        self._card_sales_money = None
+        self._card_refunds_money = None
+        self._other_sales_money = None
+        self._other_refunds_money = None
+        self._sales_money = None
+        self._refunds_money = None
+        self._paid_in_out_money = None
+        self._expected_money = None
+        self._actual_money = None
+        self._difference_money = None
+        self._creator = None
+        self._payments = None
+        self._payment_methods = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

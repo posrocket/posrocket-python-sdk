@@ -16,20 +16,24 @@ class LocationTabItemVariationModel:
     """ mapper class for Location Tab Item Variation object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    type: str = None
-    price: float = None
+    id: str
+    name: str
+    type: str
+    price: float
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Tab Item Variation object
 
         :param kwargs: Location Tab Item Variation json dict
         """
+        self.id = None
+        self.name = None
+        self.type = None
+        self.price = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-    def __str__(self)-> str:
+    def __str__(self) -> str:
         """ String representation for the Location Tab Item Variation model
 
         :return: Directory Location Tab Item Variation name

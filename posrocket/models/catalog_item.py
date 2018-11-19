@@ -27,22 +27,33 @@ class CatalogItemModel:
     """mapper class for Catalog Item object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    color: str = None
-    description: str = None
-    image: str = None
-    _category: CatalogCategoryModel = None
-    _variations: List[CatalogVariationModel] = []
-    _modifier_lists: List[CatalogModifierListModel] = []
-    _taxes: List[CatalogTaxModel] = None
-    _tags: List[CatalogTagModel] = None
+    id: str
+    name: str
+    color: str
+    description: str
+    image: str
+    _category: CatalogCategoryModel
+    _variations: List[CatalogVariationModel]
+    _modifier_lists: List[CatalogModifierListModel]
+    _taxes: List[CatalogTaxModel]
+    _tags: List[CatalogTagModel]
 
     def __init__(self, **kwargs):
         """map a dict to Catalog Item object
 
         :param kwargs: Catalog Item json dict
         """
+
+        self.id = None
+        self.name = None
+        self.color = None
+        self.description = None
+        self.image = None
+        self._category = None
+        self._variations = []
+        self._modifier_lists = []
+        self._taxes = None
+        self._tags = None
 
         for key, value in kwargs.items():
             setattr(self, key, value)

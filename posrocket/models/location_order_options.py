@@ -19,15 +19,18 @@ class LocationOrderOptionModel:
     """ mapper class for Location Order Option object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    _charges: List[LocationExtraChargeModel] = None
+    id: str
+    name: str
+    _charges: List[LocationExtraChargeModel]
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Order Option object
 
         :param kwargs: Location Order Option json dict
         """
+        self.id = None
+        self.name = None
+        self._charges = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

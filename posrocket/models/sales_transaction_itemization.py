@@ -2,6 +2,7 @@
 
 """
 from typing import List
+
 from posrocket.models.catalog_category import CatalogCategoryModel
 from posrocket.models.catalog_variation import CatalogVariationModel
 from posrocket.models.location_initial_money import LocationInitialMoneyModel
@@ -22,25 +23,39 @@ class SalesTransactionItemizationModel:
     """ mapper class for Sales Transaction Itemization object from Json Dict
 
     """
-    id: int = None
-    name: str = None
-    quantity: int = None
-    notes: str = None
-    _total_money: LocationInitialMoneyModel = None
-    _single_quantity_money: LocationInitialMoneyModel = None
-    _gross_sales_money: LocationInitialMoneyModel = None
-    _discount_money: LocationInitialMoneyModel = None
-    _net_sales_money: LocationInitialMoneyModel = None
-    _category: CatalogCategoryModel = None
-    _variation: CatalogVariationModel = None
-    _taxes: SalesTransactionTaxModel = None
-    _modifiers: List[SalesTransactionItemizationModifierModel] = []
+    id: str
+    name: str
+    quantity: int
+    notes: str
+    _total_money: LocationInitialMoneyModel
+    _single_quantity_money: LocationInitialMoneyModel
+    _gross_sales_money: LocationInitialMoneyModel
+    _discount_money: LocationInitialMoneyModel
+    _net_sales_money: LocationInitialMoneyModel
+    _category: CatalogCategoryModel
+    _variation: CatalogVariationModel
+    _taxes: SalesTransactionTaxModel
+    _modifiers: List[SalesTransactionItemizationModifierModel]
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Itemization object
 
         :param kwargs: Sales Transaction Itemization json dict
         """
+        self.id = None
+        self.name = None
+        self.quantity = None
+        self.notes = None
+        self._total_money = None
+        self._single_quantity_money = None
+        self._gross_sales_money = None
+        self._discount_money = None
+        self._net_sales_money = None
+        self._category = None
+        self._variation = None
+        self._taxes = None
+        self._modifiers = []
+
         for key, value in kwargs.items():
             setattr(self, key, value)
 

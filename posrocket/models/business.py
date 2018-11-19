@@ -16,23 +16,34 @@ class BusinessModel:
     """mapper class for Business object from Json Dict
 
     """
-    id: str = None
-    sub_domain: str = None
-    name: str = None
-    type: str = None
-    country: str = None
-    currency: str = None
-    end_of_fiscal_day: str = None
-    time_offset: str = None
-    phone: str = None
-    address: str = None
-    image: str = None
+    id: str
+    sub_domain: str
+    name: str
+    type: str
+    country: str
+    currency: str
+    end_of_fiscal_day: str
+    time_offset: str
+    phone: str
+    address: str
+    image: str
 
     def __init__(self, **kwargs):
         """map a dict to Business object
 
         :param kwargs: Business json dict
         """
+        self.id = None
+        self.sub_domain = None
+        self.name = None
+        self.type = None
+        self.country = None
+        self.currency = None
+        self.end_of_fiscal_day = None
+        self.time_offset = None
+        self.phone = None
+        self.address = None
+        self.image = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

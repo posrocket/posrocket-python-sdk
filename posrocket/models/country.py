@@ -15,13 +15,15 @@ class CountryModel:
     """ mapper class for City object from Json Dict
 
     """
-    country: str = None
+    country: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Country object
 
         :param kwargs: Country json dict
         """
+
+        self.country = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

@@ -2,6 +2,7 @@
 
 """
 from typing import List
+
 from posrocket.models.directory_customer import DirectoryCustomerModel
 from posrocket.models.sales_transaction_extra_charges import SalesTransactionExtraChargeModel
 from posrocket.models.sales_transaction_itemization import SalesTransactionItemizationModel
@@ -22,24 +23,37 @@ class SalesTransactionRefundModel:
     """ mapper class for Sales Transaction Refund object from Json Dict
 
     """
-    id = None
-    transaction_id = None
-    type = None
-    reason = None
-    notes = None
-    serial_number = None
-    creation_time = None
-    _customer: DirectoryCustomerModel = None
-    _tender: SalesTransactionTenderModel = None
-    _creator: SalesTransactionRefundCreatorModel = None
-    _extra_charges: List[SalesTransactionExtraChargeModel] = None
-    _itemization: List[SalesTransactionItemizationModel] = None
+    id: str
+    transaction_id: str
+    type: str
+    reason: str
+    notes: str
+    serial_number: str
+    creation_time: str
+    _customer: DirectoryCustomerModel
+    _tender: SalesTransactionTenderModel
+    _creator: SalesTransactionRefundCreatorModel
+    _extra_charges: List[SalesTransactionExtraChargeModel]
+    _itemization: List[SalesTransactionItemizationModel]
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Refund object
 
         :param kwargs: Sales Transaction Refund json dict
         """
+        self.id = None
+        self.transaction_id = None
+        self.type = None
+        self.reason = None
+        self.notes = None
+        self.serial_number = None
+        self.creation_time = None
+        self._customer = None
+        self._tender = None
+        self._creator = None
+        self._extra_charges = None
+        self._itemization = None
+
         for key, value in kwargs.items():
             setattr(self, key, value)
 

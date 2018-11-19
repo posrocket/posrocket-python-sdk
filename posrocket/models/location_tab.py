@@ -27,28 +27,43 @@ class LocationTabModel:
     """ mapper class for Location Tab object from Json Dict
 
     """
+    id: str
+    location_id: str
+    issuer_id: str
+    sequence_number: str
+    name: str
+    ticket_number: str
+    creation_time: datetime
+    status: str
+    acknowledged: bool
+    total_amount: float
+    _order_option: LocationOrderOptionModel
+    _items: List[LocationTabItemModel]
+    _customer: DirectoryCustomerModel
+    _pickup: LocationTabPickupModel
+    _creator: LocationTabCreatorModel
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Tab object
 
         :param kwargs: Location Tab json dict
         """
+        self.id = None
+        self.location_id = None
+        self.issuer_id = None
+        self.sequence_number = None
+        self.name = None
+        self.ticket_number = None
+        self.creation_time = None
+        self.status = None
+        self.acknowledged = None
+        self.total_amount = None
+        self._order_option = None
+        self._items = []
+        self._customer = None
+        self._pickup = None
+        self._creator = None
 
-        self.id: str = None
-        self.location_id: str = None
-        self.issuer_id: str = None
-        self.sequence_number: str = None
-        self.name: str = None
-        self.ticket_number: str = None
-        self.creation_time: datetime = None
-        self.status: str = None
-        self.acknowledged: bool = None
-        self.total_amount: float = None
-        self._order_option: LocationOrderOptionModel = None
-        self._items: List[LocationTabItemModel] = []
-        self._customer: DirectoryCustomerModel = None
-        self._pickup: LocationTabPickupModel = None
-        self._creator: LocationTabCreatorModel = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

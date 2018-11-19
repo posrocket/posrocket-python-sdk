@@ -23,19 +23,26 @@ class LocationTabItemModel:
     """ mapper class for Location Tab Item object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    quantity: int = None
-    notes: str = None
-    _variation: LocationTabItemVariationModel = None
-    _discounts: List[LocationTabItemDiscountModel] = []
-    _modifiers: List[LocationTabItemModifierModel] = []
+    id: str
+    name: str
+    quantity: int
+    notes: str
+    _variation: LocationTabItemVariationModel
+    _discounts: List[LocationTabItemDiscountModel]
+    _modifiers: List[LocationTabItemModifierModel]
 
     def __init__(self, **kwargs):
         """ map a dict to Location Tab Item object
 
         :param kwargs: Location Tab json Item dict
         """
+        self.id = None
+        self.name = None
+        self.quantity = None
+        self.notes = None
+        self._variation = None
+        self._discounts = []
+        self._modifiers = []
         for key, value in kwargs.items():
             setattr(self, key, value)
 

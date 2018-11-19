@@ -15,15 +15,18 @@ class LocationDrawerCreatorModel:
     """ mapper class for Location Drawer Creator object from Json Dict
 
     """
-    id: str = None
-    first_name: str = None
-    last_name: str = None
+    id: str
+    first_name: str
+    last_name: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Drawer Creator object
 
         :param kwargs: Location Drawer Creator json dict
         """
+        self.id = None
+        self.first_name = None
+        self.last_name = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

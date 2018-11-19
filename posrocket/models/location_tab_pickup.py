@@ -17,17 +17,22 @@ class LocationTabPickupModel:
     """ mapper class for Location Tab Pickup object from Json Dict
 
     """
-    id: str = None
-    eta: date = None
-    company: str = None
-    driver_name: str = None
-    driver_phone: int = None
+    id: str
+    eta: date
+    company: str
+    driver_name: str
+    driver_phone: int
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Tab Pickup object
 
         :param kwargs: Location Tab Pickup json dict
         """
+        self.id = None
+        self.eta = None
+        self.company = None
+        self.driver_name = None
+        self.driver_phone = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

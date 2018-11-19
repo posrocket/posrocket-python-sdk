@@ -15,14 +15,17 @@ class CityModel:
     """ mapper class for City object from Json Dict
 
     """
-    id: str = None
-    name: str = None
+    id: str
+    name: str
 
     def __init__(self, **kwargs):
         """ map a dict to City object
 
         :param kwargs: City json dict
         """
+        self.id = None
+        self.name = None
+
         for key, value in kwargs.items():
             setattr(self, key, value)
 

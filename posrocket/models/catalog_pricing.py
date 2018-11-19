@@ -16,17 +16,22 @@ class CatalogPricingModel:
     """mapper class for Catalog Pricing object from Json Dict
 
     """
-    id: str = None
-    location_id: str = None
-    price: float = None
-    has_inventory_cost: bool = None
-    available: bool = None
+    id: str
+    location_id: str
+    price: float
+    has_inventory_cost: bool
+    available: bool
 
     def __init__(self, **kwargs):
         """map a dict to Catalog Pricing object
 
         :param kwargs: Catalog Pricing json dict
         """
+        self.id = None
+        self.location_id = None
+        self.price = None
+        self.has_inventory_cost = None
+        self.available = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

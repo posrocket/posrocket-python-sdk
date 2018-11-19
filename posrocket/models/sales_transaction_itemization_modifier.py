@@ -17,16 +17,21 @@ class SalesTransactionItemizationModifierModel:
     """ mapper class for Sales Transaction Itemization Modifier object from Json Dict
 
     """
-    id: int = None
-    name: str = None
-    quantity: int = None
-    _applied_money: LocationInitialMoneyModel = None
+    id: str
+    name: str
+    quantity: int
+    _applied_money: LocationInitialMoneyModel
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Itemization Modifier object
 
         :param kwargs: Sales Transaction Itemization Modifier json dict
         """
+        self.id = None
+        self.name = None
+        self.quantity = None
+        self._applied_money = None
+
         for key, value in kwargs.items():
             setattr(self, key, value)
 

@@ -17,18 +17,24 @@ class SalesTransactionTaxModel:
     """ mapper class for Sales Transaction Tax object from Json Dict
 
     """
-    id: int = None
-    name: str = None
-    rate: float = None
-    inclusion_type: str = None
-    is_custom_amount: bool = None
-    _applied_money: LocationInitialMoneyModel = None
+    id: str
+    name: str
+    rate: float
+    inclusion_type: str
+    is_custom_amount: bool
+    _applied_money: LocationInitialMoneyModel
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Tax object
 
         :param kwargs: Sales Transaction Tax json dict
         """
+        self.id = None
+        self.name = None
+        self.rate = None
+        self.inclusion_type = None
+        self.is_custom_amount = None
+        self._applied_money = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

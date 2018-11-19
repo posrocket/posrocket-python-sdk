@@ -15,17 +15,22 @@ class LocationModel:
     """ mapper class for Location object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    tax_number: str = None
-    phone: str = None
-    address: str = None
+    id: str
+    name: str
+    tax_number: str
+    phone: str
+    address: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location object
 
         :param kwargs: Location json dict
         """
+        self.id = None
+        self.name = None
+        self.tax_number = None
+        self.phone = None
+        self.address = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

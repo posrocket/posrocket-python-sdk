@@ -16,14 +16,16 @@ class CatalogCategoryModel:
     """mapper class for Catalog Category object from Json Dict
 
     """
-    id: str = None
-    name: str = None
+    id: str
+    name: str
 
     def __init__(self, **kwargs):
         """map a dict to Catalog Category object
 
         :param kwargs: Catalog Category json dict
         """
+        self.id = None
+        self.name = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

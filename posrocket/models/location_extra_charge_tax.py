@@ -16,16 +16,20 @@ class LocationExtraChargeTaxModel:
     """ mapper class for Location Extra Charge Tax object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    inclusion_type: str = None
-    rate: float = None
+    id: str
+    name: str
+    inclusion_type: str
+    rate: float
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Extra Charge Tax object
 
         :param kwargs: Location Extra Charge Tax json dict
         """
+        self.id = None
+        self.name = None
+        self.inclusion_type = None
+        self.rate = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

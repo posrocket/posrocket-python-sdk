@@ -19,19 +19,27 @@ class CatalogModifierListModel:
     """mapper class for Catalog Modifier list object from Json Dict
 
     """
-    id: str = None
-    name: str = None
-    type: str = None
-    quantifiable: bool = None
-    order: int = None
-    price: float = None
-    _modifiers: List[CatalogModifierModel] = []
+    id: str
+    name: str
+    type: str
+    quantifiable: bool
+    order: int
+    price: float
+    _modifiers: List[CatalogModifierModel]
 
     def __init__(self, **kwargs):
         """map a dict to Catalog Modifier list object
 
         :param kwargs: Catalog Modifier list json dict
         """
+        self.id = None
+        self.name = None
+        self.type = None
+        self.quantifiable = None
+        self.order = None
+        self.price = None
+        self._modifiers = []
+
         for key, value in kwargs.items():
             setattr(self, key, value)
 

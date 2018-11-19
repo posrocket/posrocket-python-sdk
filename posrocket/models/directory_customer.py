@@ -22,22 +22,32 @@ class DirectoryCustomerModel:
     """ mapper class for Directory Customer object from Json Dict
 
     """
-    id: str = None
-    first_name: str = None
-    last_name: str = None
-    email: str = None
-    gender: str = None
-    dob: date = None
-    country: str = None
-    _addresses: List[DirectoryAddressModel] = None
-    _phone_numbers: List[DirectoryPhoneModel] = None
-    _tags: List[DirectoryTagModel] = None
+    id: str
+    first_name: str
+    last_name: str
+    email: str
+    gender: str
+    dob: date
+    country: str
+    _addresses: List[DirectoryAddressModel]
+    _phone_numbers: List[DirectoryPhoneModel]
+    _tags: List[DirectoryTagModel]
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Directory Customer object
 
         :param kwargs: Directory Customer json dict
         """
+        self.id = None
+        self.first_name = None
+        self.last_name = None
+        self.email = None
+        self.gender = None
+        self.dob = None
+        self.country = None
+        self._addresses = None
+        self._phone_numbers = None
+        self._tags = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

@@ -17,16 +17,20 @@ class SalesTransactionTenderModel:
     """ mapper class for Sales Transaction Tender object from Json Dict
 
     """
-    type: str = None
-    name: str = None
-    card_brand: str = None
-    _total_money: LocationInitialMoneyModel = None
+    type: str
+    name: str
+    card_brand: str
+    _total_money: LocationInitialMoneyModel
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Tender object
 
         :param kwargs: Sales Transaction Tender json dict
         """
+        self.type = None
+        self.name = None
+        self.card_brand = None
+        self._total_money = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

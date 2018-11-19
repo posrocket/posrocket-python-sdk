@@ -15,20 +15,28 @@ class LocationDiscountModel:
     """ mapper class for Location Discount object from Json Dict
 
     """
-    id = None
-    name = None
-    type = None
-    amount = None
-    rate = None
-    color = None
-    pin_required = None
-    after_tax = None
+    id: str
+    name: str
+    type: str
+    amount: float
+    rate: float
+    color: str
+    pin_required: bool
+    after_tax: bool
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Location Discount object
 
         :param kwargs: Location Discount json dict
         """
+        self.id = None
+        self.name = None
+        self.type = None
+        self.amount = None
+        self.rate = None
+        self.color = None
+        self.pin_required = None
+        self.after_tax = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

@@ -18,23 +18,34 @@ class DirectoryAddressModel:
     """ mapper class for Directory Address object from Json Dict
 
     """
-    id: str = None
-    label: str = None
-    residence: str = None
-    street: str = None
-    building: str = None
-    floor: str = None
-    apartment: str = None
-    extras: str = None
-    is_primary: bool = None
-    _city: CityModel = None
-    _area: AreaModel = None
+    id: str
+    label: str
+    residence: str
+    street: str
+    building: str
+    floor: str
+    apartment: str
+    extras: str
+    is_primary: bool
+    _city: CityModel
+    _area: AreaModel
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Directory Address object
 
         :param kwargs: Directory Address json dict
         """
+        self.id = None
+        self.label = None
+        self.residence = None
+        self.street = None
+        self.building = None
+        self.floor = None
+        self.apartment = None
+        self.extras = None
+        self.is_primary = None
+        self._city = None
+        self._area = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

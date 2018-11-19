@@ -17,18 +17,24 @@ class SalesTransactionExtraChargeModel:
     """ mapper class for Sales Transaction Extra Charge object from Json Dict
 
     """
-    id: int = None
-    name: str = None
-    type: str = None
-    rate: float = None
-    amount: float = None
-    _tax: SalesTransactionTaxModel = None
+    id: str
+    name: str
+    type: str
+    rate: float
+    amount: float
+    _tax: SalesTransactionTaxModel
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Sales Transaction Extra Charge object
 
         :param kwargs: Sales Transaction Extra Charge json dict
         """
+        self.id = None
+        self.name = None
+        self.type = None
+        self.rate = None
+        self.amount = None
+        self._tax = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 

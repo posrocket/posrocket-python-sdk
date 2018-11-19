@@ -15,14 +15,16 @@ class AreaModel:
     """ mapper class for Area object from Json Dict
 
     """
-    id: str = None
-    name: str = None
+    id: str
+    name: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Area object
 
         :param kwargs: Area json dict
         """
+        self.id = None
+        self.name = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 
