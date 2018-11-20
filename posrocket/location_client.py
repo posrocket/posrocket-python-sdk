@@ -84,4 +84,4 @@ class LocationClient(object):
         :return: country service object
         """
         assert_value(self.launch_pad_client.token)
-        return LocationSaleService(self.token)
+        return LocationSaleService(self.launch_pad_client.token)
