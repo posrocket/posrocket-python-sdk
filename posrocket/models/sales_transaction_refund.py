@@ -79,7 +79,10 @@ class SalesTransactionRefundModel:
         :param customer_dict: json dict for customer
         :return: None
         """
-        self._customer = DirectoryCustomerModel(**customer_dict)
+        if customer_dict:
+            self._customer = DirectoryCustomerModel(**customer_dict)
+        else:
+            self._customer = None
 
     @property
     def tender(self) -> SalesTransactionTenderModel:
@@ -96,7 +99,10 @@ class SalesTransactionRefundModel:
         :param tender_dict: json dict for tender
         :return: None
         """
-        self._tender = SalesTransactionTenderModel(**tender_dict)
+        if tender_dict:
+            self._tender = SalesTransactionTenderModel(**tender_dict)
+        else:
+            self._tender = None
 
     @property
     def creator(self) -> SalesTransactionRefundCreatorModel:
@@ -113,7 +119,10 @@ class SalesTransactionRefundModel:
         :param creator_dict: json dict for creator
         :return: None
         """
-        self._creator = SalesTransactionRefundCreatorModel(**creator_dict)
+        if creator_dict:
+            self._creator = SalesTransactionRefundCreatorModel(**creator_dict)
+        else:
+            self._creator = None
 
     @property
     def extra_charges(self) -> List[SalesTransactionExtraChargeModel]:

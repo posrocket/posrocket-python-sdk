@@ -81,7 +81,10 @@ class SalesTransactionItemizationModel:
         :param tax_dict: json dict for discount money
         :return: None
         """
-        self._taxes = SalesTransactionTaxModel(**tax_dict)
+        if tax_dict:
+            self._taxes = SalesTransactionTaxModel(**tax_dict)
+        else:
+            self._taxes = None
 
     @property
     def total_money(self) -> LocationInitialMoneyModel:
@@ -98,7 +101,10 @@ class SalesTransactionItemizationModel:
         :param total_money_dict: json dict for total money
         :return: None
         """
-        self._total_money = LocationInitialMoneyModel(**total_money_dict)
+        if total_money_dict:
+            self._total_money = LocationInitialMoneyModel(**total_money_dict)
+        else:
+            self._total_money = None
 
     @property
     def single_quantity_money(self) -> LocationInitialMoneyModel:
@@ -115,7 +121,10 @@ class SalesTransactionItemizationModel:
         :param single_quantity_money_dict: json dict for discount money
         :return: None
         """
-        self._single_quantity_money = LocationInitialMoneyModel(**single_quantity_money_dict)
+        if single_quantity_money_dict:
+            self._single_quantity_money = LocationInitialMoneyModel(**single_quantity_money_dict)
+        else:
+            self._single_quantity_money = None
 
     @property
     def gross_sales_money(self) -> LocationInitialMoneyModel:
@@ -132,7 +141,10 @@ class SalesTransactionItemizationModel:
         :param gross_sales_money_dict: json dict for gross sales money
         :return: None
         """
-        self._gross_sales_money = LocationInitialMoneyModel(**gross_sales_money_dict)
+        if gross_sales_money_dict:
+            self._gross_sales_money = LocationInitialMoneyModel(**gross_sales_money_dict)
+        else:
+            self._gross_sales_money = None
 
     @property
     def discount_money(self) -> LocationInitialMoneyModel:
@@ -149,7 +161,10 @@ class SalesTransactionItemizationModel:
         :param discount_money_dict: json dict for discount money
         :return: None
         """
-        self._discount_money = LocationInitialMoneyModel(**discount_money_dict)
+        if discount_money_dict:
+            self._discount_money = LocationInitialMoneyModel(**discount_money_dict)
+        else:
+            self._discount_money = None
 
     @property
     def net_sales_money(self) -> LocationInitialMoneyModel:
@@ -166,7 +181,10 @@ class SalesTransactionItemizationModel:
         :param net_sales_money_dict: json dict for net sales money
         :return: None
         """
-        self._net_sales_money = LocationInitialMoneyModel(**net_sales_money_dict)
+        if net_sales_money_dict:
+            self._net_sales_money = LocationInitialMoneyModel(**net_sales_money_dict)
+        else:
+            self._net_sales_money = None
 
     @property
     def category(self) -> CatalogCategoryModel:
@@ -183,7 +201,10 @@ class SalesTransactionItemizationModel:
         :param category_dict: json dict for category
         :return: None
         """
-        self._category = CatalogCategoryModel(**category_dict)
+        if category_dict:
+            self._category = CatalogCategoryModel(**category_dict)
+        else:
+            self._category = None
 
     @property
     def variation(self) -> CatalogVariationModel:
@@ -200,7 +221,10 @@ class SalesTransactionItemizationModel:
         :param variation_dict: json dict for variation
         :return: None
         """
-        self._variation = CatalogVariationModel(**variation_dict)
+        if variation_dict:
+            self._variation = CatalogVariationModel(**variation_dict)
+        else:
+            self._variation = None
 
     @property
     def modifiers(self) -> List[SalesTransactionItemizationModifierModel]:

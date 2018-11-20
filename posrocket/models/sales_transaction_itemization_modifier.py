@@ -57,4 +57,7 @@ class SalesTransactionItemizationModifierModel:
         :param applied_money_dict: json dict for applied money
         :return: None
         """
-        self._applied_money = LocationInitialMoneyModel(**applied_money_dict)
+        if applied_money_dict:
+            self._applied_money = LocationInitialMoneyModel(**applied_money_dict)
+        else:
+            self._applied_money = None

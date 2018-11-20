@@ -52,4 +52,7 @@ class SalesTransactionTenderModel:
         :param total_money_dict: json dict for tender total money
         :return: None
         """
-        self._total_money = LocationInitialMoneyModel(**total_money_dict)
+        if total_money_dict:
+            self._total_money = LocationInitialMoneyModel(**total_money_dict)
+        else:
+            self._total_money = None

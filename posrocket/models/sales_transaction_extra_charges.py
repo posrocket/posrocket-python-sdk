@@ -55,9 +55,11 @@ class SalesTransactionExtraChargeModel:
 
     @tax.setter
     def tax(self, tax_dict: dict):
-        """setter for Sales Transaction Extra Charge
-Discount
+        """setter for Sales Transaction Extra Charge Discount
         :param tax_dict: json dict for extra charge
         :return: None
         """
-        self._tax = SalesTransactionTaxModel(**tax_dict)
+        if tax_dict:
+            self._tax = SalesTransactionTaxModel(**tax_dict)
+        else:
+            self._tax = None
