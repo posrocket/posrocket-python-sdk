@@ -39,7 +39,7 @@ class SalesTransactionModel:
     _creator: LocationTabCreatorModel
     _customer: DirectoryCustomerModel
     _tab: LocationTabModel
-    _tenders: SalesTransactionTenderModel
+    _tenders: List[SalesTransactionTenderModel]
     _taxes: List[SalesTransactionTaxModel]
     _extra_charges: List[SalesTransactionExtraChargeModel]
     _itemization: List[SalesTransactionItemizationModel]
@@ -331,16 +331,15 @@ class SalesTransactionModel:
         return self._tenders
 
     @tenders.setter
-    def tenders(self, tenders_dict: dict):
+    def tenders(self, tenders_list: dict):
         """setter for Sales Transaction Tenders
 
-        :param tenders_dict: json dict for tenders
+        :param tenders_list: json list for tenders
         :return: None
         """
-        if tenders_dict:
-            self._tenders = SalesTransactionTenderModel(**tenders_dict)
-        else:
-            self._tenders = None
+        self._tenders = []
+        for tenders in tenders_list:
+            self._tenders.append(SalesTransactionTenderModel(**tenders))
 
     @property
     def extra_charges(self) -> List[SalesTransactionExtraChargeModel]:
