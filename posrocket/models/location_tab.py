@@ -113,7 +113,7 @@ class LocationTabModel:
         :return: None
         """
         self._items = []
-        for item in items_list:
+        for item in items_list or []:
             if type(item) is LocationTabItemModel:
                 self._items.append(item)
             else:
