@@ -34,7 +34,7 @@ class SalesTransactionItemizationModel:
     _net_sales_money: LocationInitialMoneyModel
     _category: CatalogCategoryModel
     _variation: CatalogVariationModel
-    _taxes: SalesTransactionTaxModel
+    _taxes: List[SalesTransactionTaxModel]
     _modifiers: List[SalesTransactionItemizationModifierModel]
 
     def __init__(self, **kwargs: dict):
@@ -53,7 +53,7 @@ class SalesTransactionItemizationModel:
         self._net_sales_money = None
         self._category = None
         self._variation = None
-        self._taxes = None
+        self._taxes = []
         self._modifiers = []
 
         for key, value in kwargs.items():
@@ -67,7 +67,7 @@ class SalesTransactionItemizationModel:
         return f'{self.name}'
 
     @property
-    def taxes(self) -> SalesTransactionTaxModel:
+    def taxes(self) -> List[SalesTransactionTaxModel]:
         """
         getter for Sales Transaction Itemization Taxes
         :return: Sales Transaction Itemization Taxes object
@@ -75,16 +75,15 @@ class SalesTransactionItemizationModel:
         return self._taxes
 
     @taxes.setter
-    def taxes(self, tax_dict):
+    def taxes(self, tax_list):
         """setter for Sales Transaction Itemization Discount Money
 
-        :param tax_dict: json dict for discount money
+        :param tax_list: json dict for discount money
         :return: None
         """
-        if tax_dict:
-            self._taxes = SalesTransactionTaxModel(**tax_dict)
-        else:
-            self._taxes = None
+        self._taxes = []
+        for tax in tax_list:
+            self._taxes.append(SalesTransactionTaxModel(**tax))
 
     @property
     def total_money(self) -> LocationInitialMoneyModel:
