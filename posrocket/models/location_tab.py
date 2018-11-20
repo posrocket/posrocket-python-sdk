@@ -89,10 +89,13 @@ class LocationTabModel:
         :param order_option_dict: json dict for order option
         :return: None
         """
-        if isinstance(order_option_dict, LocationOrderOptionModel):
-            self._order_option = order_option_dict
+        if order_option_dict:
+            if isinstance(order_option_dict, LocationOrderOptionModel):
+                self._order_option = order_option_dict
+            else:
+                self._order_option = LocationOrderOptionModel(**order_option_dict)
         else:
-            self._order_option = LocationOrderOptionModel(**order_option_dict)
+            self._order_option = None
 
     @property
     def items(self) -> List[LocationTabItemModel]:
@@ -131,10 +134,13 @@ class LocationTabModel:
         :param customer_dict: json dict for Customer
         :return: None
         """
-        if type(customer_dict) is DirectoryCustomerModel:
-            self._customer = customer_dict
+        if customer_dict:
+            if type(customer_dict) is DirectoryCustomerModel:
+                self._customer = customer_dict
+            else:
+                self._customer = DirectoryCustomerModel(**customer_dict)
         else:
-            self._customer = DirectoryCustomerModel(**customer_dict)
+            self._customer = None
 
     @property
     def pickup(self) -> LocationTabPickupModel:
@@ -169,7 +175,8 @@ class LocationTabModel:
         :param customer_dict: json dict for creator
         :return: None
         """
-        self._creator = LocationTabCreatorModel(**creator_dict)
+        if creator_dict:
+            self._creator = LocationTabCreatorModel(**creator_dict)
 
     def add_item(self, item: CatalogItemModel, item_quantity: int, notes: str, variation: CatalogVariationModel,
                  modifiers: List[Dict[CatalogModifierModel, int]] = []) -> LocationTabItemModel:
