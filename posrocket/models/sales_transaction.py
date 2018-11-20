@@ -97,7 +97,10 @@ class SalesTransactionModel:
         :param discount_money_dict: json dict for discount money
         :return: None
         """
-        self._discount_money = LocationInitialMoneyModel(**discount_money_dict)
+        if discount_money_dict:
+            self._discount_money = LocationInitialMoneyModel(**discount_money_dict)
+        else:
+            self._discount_money = None
 
     @property
     def refunded_money(self) -> LocationInitialMoneyModel:
@@ -114,7 +117,10 @@ class SalesTransactionModel:
         :param refunded_money_dict: json dict for refunded money
         :return: None
         """
-        self._refunded_money = LocationInitialMoneyModel(**refunded_money_dict)
+        if refunded_money_dict:
+            self._refunded_money = LocationInitialMoneyModel(**refunded_money_dict)
+        else:
+            self._refunded_money = None
 
     @property
     def additive_tax_money(self) -> LocationInitialMoneyModel:
@@ -131,7 +137,10 @@ class SalesTransactionModel:
         :param additive_tax_money_dict: json dict for additive tax money
         :return: None
         """
-        self._additive_tax_money = LocationInitialMoneyModel(**additive_tax_money_dict)
+        if additive_tax_money_dict:
+            self._additive_tax_money = LocationInitialMoneyModel(**additive_tax_money_dict)
+        else:
+            self._additive_tax_money = None
 
     @property
     def inclusive_tax_money(self) -> LocationInitialMoneyModel:
@@ -148,7 +157,10 @@ class SalesTransactionModel:
         :param inclusive_tax_money_dict: json dict for discount money
         :return: None
         """
-        self._inclusive_tax_money = LocationInitialMoneyModel(**inclusive_tax_money_dict)
+        if inclusive_tax_money_dict:
+            self._inclusive_tax_money = LocationInitialMoneyModel(**inclusive_tax_money_dict)
+        else:
+            self._inclusive_tax_money = None
 
     @property
     def tax_money(self) -> LocationInitialMoneyModel:
@@ -165,7 +177,10 @@ class SalesTransactionModel:
         :param tax_money_dict: json dict for tax money
         :return: None
         """
-        self._tax_money = LocationInitialMoneyModel(**tax_money_dict)
+        if tax_money_dict:
+            self._tax_money = LocationInitialMoneyModel(**tax_money_dict)
+        else:
+            self._tax_money = None
 
     @property
     def tip_money(self) -> LocationInitialMoneyModel:
@@ -182,7 +197,10 @@ class SalesTransactionModel:
         :param tip_money_dict: json dict for tip money
         :return: None
         """
-        self._tip_money = LocationInitialMoneyModel(**tip_money_dict)
+        if tip_money_dict:
+            self._tip_money = LocationInitialMoneyModel(**tip_money_dict)
+        else:
+            self._tip_money = None
 
     @property
     def received_money(self) -> LocationInitialMoneyModel:
@@ -199,7 +217,10 @@ class SalesTransactionModel:
         :param received_money_dict: json dict for received money
         :return: None
         """
-        self._received_money = LocationInitialMoneyModel(**received_money_dict)
+        if received_money_dict:
+            self._received_money = LocationInitialMoneyModel(**received_money_dict)
+        else:
+            self._received_money = None
 
     @property
     def total_collected_money(self) -> LocationInitialMoneyModel:
@@ -216,7 +237,10 @@ class SalesTransactionModel:
         :param total_collected_money_dict: json dict for total collected money
         :return: None
         """
-        self._total_collected_money = LocationInitialMoneyModel(**total_collected_money_dict)
+        if total_collected_money_dict:
+            self._total_collected_money = LocationInitialMoneyModel(**total_collected_money_dict)
+        else:
+            self._total_collected_money = None
 
     @property
     def extra_charges_money(self) -> LocationInitialMoneyModel:
@@ -233,7 +257,10 @@ class SalesTransactionModel:
         :param extra_charges_money_dict: json dict for extra charges money
         :return: None
         """
-        self._extra_charges_money = LocationInitialMoneyModel(**extra_charges_money_dict)
+        if extra_charges_money_dict:
+            self._extra_charges_money = LocationInitialMoneyModel(**extra_charges_money_dict)
+        else:
+            self._extra_charges_money = None
 
     @property
     def creator(self) -> LocationTabCreatorModel:
@@ -250,7 +277,10 @@ class SalesTransactionModel:
         :param creator_dict: json dict for creator
         :return: None
         """
-        self._creator = LocationTabCreatorModel(**creator_dict)
+        if creator_dict:
+            self._creator = LocationTabCreatorModel(**creator_dict)
+        else:
+            self._creator = None
 
     @property
     def customer(self) -> DirectoryCustomerModel:
@@ -281,13 +311,16 @@ class SalesTransactionModel:
         return self._tab
 
     @tab.setter
-    def tab(self, customer_dict: dict):
+    def tab(self, tab_dict: dict):
         """setter for Sales Transaction Tab
 
         :param customer_dict: json dict for tab
         :return: None
         """
-        self._tab = LocationTabModel(**customer_dict)
+        if tab_dict:
+            self._tab = LocationTabModel(**tab_dict)
+        else:
+            self._tab = None
 
     @property
     def tenders(self) -> SalesTransactionTenderModel:
@@ -304,7 +337,10 @@ class SalesTransactionModel:
         :param tenders_dict: json dict for tenders
         :return: None
         """
-        self._tenders = SalesTransactionTenderModel(**tenders_dict)
+        if tenders_dict:
+            self._tenders = SalesTransactionTenderModel(**tenders_dict)
+        else:
+            self._tenders = None
 
     @property
     def extra_charges(self) -> List[SalesTransactionExtraChargeModel]:
