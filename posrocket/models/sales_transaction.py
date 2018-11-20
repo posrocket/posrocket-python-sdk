@@ -267,7 +267,10 @@ class SalesTransactionModel:
         :param customer_dict: json dict for customer
         :return: None
         """
-        self._customer = DirectoryCustomerModel(**customer_dict)
+        if customer_dict:
+            self._customer = DirectoryCustomerModel(**customer_dict)
+        else:
+            self._customer = None
 
     @property
     def tab(self) -> LocationTabModel:
