@@ -51,13 +51,14 @@ class TabService(LocationRequiredMixin, Requests):
             dict_item = {
                 "id": item.id,
                 "quantity": item.quantity,
-                "notes": item.notes,
                 "variation": {"id": item.variation.id},
                 "discounts": [
                     # {"id": "{{discount_id}}"}
                 ],
                 "modifiers": []
             }
+            if item.notes:
+                dict_item["notes"] = item.notes
             for modifier in item.modifiers:
                 dict_item['modifiers'].append({
                     "id": modifier.id,
