@@ -3,6 +3,7 @@ Geo Customer Service
 """
 import logging
 
+from posrocket.models import CityModel
 from posrocket.models.country import CountryModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
@@ -25,4 +26,19 @@ class CountryService(Requests):
     service_url = "/countries"
     model_cls = CountryModel
     get_countries = BaseServiceFactory.make_list_items_response()
-    get_country_by_name = BaseServiceFactory.make_detail_item_response()
+
+    def get_country_by_name(self, pk):
+        result = []
+        url = self.get_service_url()
+        response = self.get(f"{url}/{pk}")
+        for json_location in response['data']:
+            result.append(CityModel(**json_location))
+        return result
+
+    def get_country_city_areas(self, country_code, city_id):
+        result = []
+        url = self.get_service_url()
+        response = self.get(f"{url}/{country_code}/cities/{city_id}")
+        for json_location in response['data']:
+            result.append(CityModel(**json_location))
+        return result
