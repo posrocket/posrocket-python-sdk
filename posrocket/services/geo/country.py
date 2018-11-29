@@ -37,9 +37,6 @@ class CountryService(Requests):
         return result
 
     def get_country_city_areas(self, country_code, city_id):
-        result = []
         url = self.get_service_url()
         response = self.get(f"{url}/{country_code}/city/{city_id}")
-        for json_location in response['data']:
-            result.append(CityModel(**json_location))
-        return result
+        return CityModel(**response)
