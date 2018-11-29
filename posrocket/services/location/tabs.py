@@ -1,6 +1,8 @@
 """
 Location Tab Service
 """
+import logging
+
 from posrocket.models import LocationTabModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import LocationRequiredMixin, Requests
@@ -13,6 +15,8 @@ __version__ = "1.0.1"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
+
+logger = logging.getLogger("django")
 
 
 class TabService(LocationRequiredMixin, Requests):
@@ -66,7 +70,7 @@ class TabService(LocationRequiredMixin, Requests):
                     "order": modifier.order
                 })
             data['items'].append(dict_item)
-        print(data)
+        logger.info(data)
         response = self.post(self.get_service_url(), data)
         print(response)
         result = self.model_cls(**response)
