@@ -27,10 +27,11 @@ class CountryService(Requests):
     model_cls = CountryModel
     get_countries = BaseServiceFactory.make_list_items_response()
 
-    def get_country_by_name(self, pk):
+    def get_country_by_name(self, country_code):
         result = []
         url = self.get_service_url()
-        response = self.get(f"{url}/{pk}")
+        response = self.get(f"{url}/{country_code}")
+        logger.info(response)
         for json_location in response['data']:
             result.append(CityModel(**json_location))
         return result
@@ -38,7 +39,7 @@ class CountryService(Requests):
     def get_country_city_areas(self, country_code, city_id):
         result = []
         url = self.get_service_url()
-        response = self.get(f"{url}/{country_code}/cities/{city_id}")
+        response = self.get(f"{url}/{country_code}/city/{city_id}")
         for json_location in response['data']:
             result.append(CityModel(**json_location))
         return result
