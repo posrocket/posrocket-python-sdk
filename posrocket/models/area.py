@@ -16,7 +16,8 @@ class AreaModel:
 
     """
     id: str
-    name: str
+    ar: str
+    en: str
 
     def __init__(self, **kwargs: dict):
         """ map a dict to Area object
@@ -24,7 +25,8 @@ class AreaModel:
         :param kwargs: Area json dict
         """
         self.id = None
-        self.name = None
+        self.ar = None
+        self.en = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -33,4 +35,4 @@ class AreaModel:
 
         :return: Area name
         """
-        return f'{self.name}'
+        return f'{self.en}'
