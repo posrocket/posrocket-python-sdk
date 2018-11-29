@@ -55,10 +55,10 @@ class DirectoryCustomerService(Requests):
                     "is_primary": address.is_primary,
                     "is_verified": address.is_verified,
                     "city": {
-                        "id": "7c9a833f-9fca-4831-81b3-fe9084dd7437",
+                        "id": address.city.id,
                     },
                     "area": {
-                        "id": "748d88c0-90c0-40d8-94b3-70af8cc56eac",
+                        "id": address.area.id,
                     }
                 }
             )
