@@ -57,7 +57,7 @@ class TabService(LocationRequiredMixin, Requests):
                 ],
                 "modifiers": []
             }
-            if item.notes:
+            if item.notes and item.notes != "":
                 dict_item["notes"] = item.notes
             for modifier in item.modifiers:
                 dict_item['modifiers'].append({
