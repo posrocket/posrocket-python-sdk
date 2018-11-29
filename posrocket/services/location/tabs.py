@@ -68,5 +68,5 @@ class TabService(LocationRequiredMixin, Requests):
         print(data)
         response = self.post(self.get_service_url(), data)
         print(response)
-        result = self.model_cls(**response['data'])
+        result = self.model_cls(**response)
         return result
