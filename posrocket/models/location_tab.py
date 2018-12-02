@@ -182,7 +182,9 @@ class LocationTabModel:
                  modifiers: List[Dict[CatalogModifierModel, int]] = []) -> LocationTabItemModel:
         tab_item = LocationTabItemModel(id=item.id, name=item.name, quantity=item_quantity, notes=notes)
         tab_item.add_variation(variation, self.location_id)
+        order = 1
         for modifier in modifiers:
-            tab_item.add_modifier(modifier['modifier'], modifier['quantity'], self.location_id)
+            tab_item.add_modifier(modifier['modifier'], modifier['quantity'], self.location_id, order)
+            order += 1
         self.items.append(tab_item)
         return tab_item
