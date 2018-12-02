@@ -115,4 +115,5 @@ class LocationTabItemModel:
 
     def add_modifier(self, modifier: CatalogModifierModel, quantity: int, location_id: str, order: int):
         self._modifiers.append(LocationTabItemModifierModel(id=modifier.id, name=modifier.name, quantity=quantity,
-                                                            price=modifier.get_price_for_location(location_id)))
+                                                            price=modifier.get_price_for_location(location_id),
+                                                            order=order))
