@@ -60,3 +60,13 @@ class CatalogModifierModel(PricingMixin):
         self._pricing = []
         for json_price in json_pricing:
             self._pricing.append(CatalogPricingModel(**json_price))
+
+    def is_available_in_location(self, location_id: str) -> float:
+        """return the price for the variation on a specific location
+
+        :param location_id: location id to get the price for
+        :return: the price in that location
+        """
+        for pricing in self._pricing:
+            if pricing.location_id == location_id:
+                return pricing.available
