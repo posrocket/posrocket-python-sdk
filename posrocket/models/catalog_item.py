@@ -158,7 +158,7 @@ class CatalogItemModel:
         for json_tag in json_tags:
             self._tags.append(CatalogTagModel(**json_tag))
 
-    def get_item_variation_id(self, variation_id):
+    def get_variation_by_id(self, variation_id):
         """return the variation by a specific ID
 
         :param variation_id: variation id to get the variation if its in the variation list of the item
