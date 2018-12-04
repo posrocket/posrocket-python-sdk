@@ -159,12 +159,22 @@ class CatalogItemModel:
             self._tags.append(CatalogTagModel(**json_tag))
 
     def get_item_variation_id(self, variation_id):
+        """return the variation by a specific ID
+
+        :param variation_id: variation id to get the variation if its in the variation list of the item
+        :return: the variation if it exists
+        """
         for variation in self.variations:
             if variation.id == variation_id:
                 return variation
         return None
 
     def get_modifier_by_id(self, modifier_id):
+        """return the modifier by a specific ID
+
+        :param modifier_id: modifier id to get the modifier if its in the modifier list of the item
+        :return: the modifier if it exists
+        """
         for modifier_list in self.modifier_lists:
             for modifier in modifier_list.modifiers:
                 if modifier.id == modifier_id:
