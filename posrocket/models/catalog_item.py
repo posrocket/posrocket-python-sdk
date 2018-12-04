@@ -157,3 +157,16 @@ class CatalogItemModel:
         self._tags = []
         for json_tag in json_tags:
             self._tags.append(CatalogTagModel(**json_tag))
+
+    def get_item_variation_id(self, variation_id):
+        for variation in self.variations:
+            if variation.id == variation_id:
+                return variation
+        return None
+
+    def get_modifier_by_id(self, modifier_id):
+        for modifier_list in self.modifier_lists:
+            for modifier in modifier_list.modifiers:
+                if modifier.id == modifier_id:
+                    return modifier
+        return None
