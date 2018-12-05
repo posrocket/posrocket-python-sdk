@@ -46,7 +46,8 @@ class TabService(LocationRequiredMixin, Requests):
     def create(self, tab: LocationTabModel):
         data = {
             "name": tab.name,
-            "customer": {"id": tab.customer.id},
+            "customer": {"id": tab.customer.id, "address": {"id": tab.customer.address.id},
+                         "phone": {"id": tab.customer.phone.id}},
             "items": []
         }
         if tab.order_option:
