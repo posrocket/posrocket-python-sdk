@@ -37,6 +37,21 @@ The following function allows to GET Item data:
             items = launch_pad.catalog_item_service.get_items()
 
 
+    - Once you have the item object, you can use the built-in functions:
+        * Get item variation by ID:
+            If the variation is included in the items variations:
+        .. sourcecode:: python
+
+            variation = item.get_variation_by_id(<variation_id>)
+
+
+        * Get item modifier by ID:
+            If the modifier is included in the items list of modifiers:
+        .. sourcecode:: python
+
+            modifier = item.get_modifier_by_id(<modifier_id>)
+
+
     - For More information about `CatalogItemModel`_ specific functions, please check the models source code.
 
 Category Service
