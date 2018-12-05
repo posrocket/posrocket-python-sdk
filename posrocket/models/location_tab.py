@@ -4,10 +4,11 @@
 import datetime
 from typing import Dict, List
 
+from posrocket.models import DirectoryAddressModel, DirectoryPhoneModel
 from posrocket.models.catalog_item import CatalogItemModel
 from posrocket.models.catalog_modifier import CatalogModifierModel
 from posrocket.models.catalog_variation import CatalogVariationModel
-from posrocket.models.directory_customer import DirectoryCustomerModel
+from posrocket.models.directory_customer import DirectoryCustomerModel, SaleCustomerModel
 from posrocket.models.location_order_options import LocationOrderOptionModel
 from posrocket.models.location_tab_creator import LocationTabCreatorModel
 from posrocket.models.location_tab_item import LocationTabItemModel
@@ -39,7 +40,7 @@ class LocationTabModel:
     total_amount: float
     _order_option: LocationOrderOptionModel
     _items: List[LocationTabItemModel]
-    _customer: DirectoryCustomerModel
+    _customer: SaleCustomerModel
     _pickup: LocationTabPickupModel
     _creator: LocationTabCreatorModel
 
@@ -120,7 +121,7 @@ class LocationTabModel:
                 self._items.append(LocationTabItemModel(**item))
 
     @property
-    def customer(self) -> DirectoryCustomerModel:
+    def customer(self) -> SaleCustomerModel:
         """
         getter for Tab Customer
         :return: Tab Customer object
@@ -136,9 +137,9 @@ class LocationTabModel:
         """
         if customer_dict:
             if type(customer_dict) is DirectoryCustomerModel:
-                self._customer = customer_dict
+                raise ValueError("Please use set_customer")
             else:
-                self._customer = DirectoryCustomerModel(**customer_dict)
+                self._customer = SaleCustomerModel(**customer_dict)
         else:
             self._customer = None
 
@@ -188,3 +189,19 @@ class LocationTabModel:
             order += 1
         self.items.append(tab_item)
         return tab_item
+
+    def set_customer(self, customer: DirectoryCustomerModel, address: DirectoryAddressModel,
+                     phone: DirectoryPhoneModel) -> SaleCustomerModel:
+        tab_customer = SaleCustomerModel()
+
+        tab_customer.id = customer.id
+        tab_customer.first_name = customer.first_name
+        tab_customer.last_name = customer.last_name
+        tab_customer.email = customer.email
+        tab_customer.gender = customer.gender
+        tab_customer.dob = customer.dob
+        tab_customer.country = customer.country
+        tab_customer.address = address
+        tab_customer.phone_number = phone
+        tab_customer.tags = customer.tags
+        self._customer = tab_customer
