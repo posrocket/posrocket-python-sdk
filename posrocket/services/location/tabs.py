@@ -47,7 +47,7 @@ class TabService(LocationRequiredMixin, Requests):
         data = {
             "name": tab.name,
             "customer": {"id": tab.customer.id, "address": {"id": tab.customer.address.id},
-                         "phone": {"id": tab.customer.phone.id}},
+                         "phone": {"id": tab.customer.phone_number.id}},
             "items": []
         }
         if tab.order_option:

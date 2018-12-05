@@ -191,9 +191,8 @@ class LocationTabModel:
         return tab_item
 
     def set_customer(self, customer: DirectoryCustomerModel, address: DirectoryAddressModel,
-                     phone: DirectoryPhoneModel) -> SaleCustomerModel:
+                     phone: DirectoryPhoneModel):
         tab_customer = SaleCustomerModel()
-
         tab_customer.id = customer.id
         tab_customer.first_name = customer.first_name
         tab_customer.last_name = customer.last_name
