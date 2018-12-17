@@ -42,7 +42,7 @@ class Requests:
         self.access_token = access_token
         self.client = OAuth2Session(token=access_token)
         if prod:
-            self.base_url = 'http://launchpad.rocketinfra.com/api/v1'
+            self.base_url = 'http://launchpad-prod.rocketinfra.com/api/v1'
         else:
             self.base_url = 'http://launchpad.rocketinfra.com/api/v1'
 
