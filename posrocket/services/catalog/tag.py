@@ -3,7 +3,7 @@ Catalog Tag Service
 """
 import logging
 
-from posrocket.models.catalog_tag import CatalogTagModel
+from posrocket.models.catalog.tag import CatalogTagModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 

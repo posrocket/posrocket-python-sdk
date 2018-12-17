@@ -3,7 +3,7 @@ Catalog Category Service
 """
 import logging
 
-from posrocket.models.catalog_category import CatalogCategoryModel
+from posrocket.models.catalog.category import CatalogCategoryModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 

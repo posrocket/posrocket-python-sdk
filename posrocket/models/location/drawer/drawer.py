@@ -4,10 +4,10 @@
 import datetime
 from typing import List
 
-from posrocket.models.location_drawer_creator import LocationDrawerCreatorModel
-from posrocket.models.location_drawer_payment import LocationDrawerPaymentModel
-from posrocket.models.location_drawer_payment_method import LocationDrawerPaymentMethodModel
-from posrocket.models.location_initial_money import LocationInitialMoneyModel
+from posrocket.models.location.drawer.creator import LocationDrawerCreatorModel
+from posrocket.models.location.drawer.payment.payment import LocationDrawerPaymentModel
+from posrocket.models.location.drawer.payment.payment_method import LocationDrawerPaymentMethodModel
+from posrocket.models.location.initial_money import LocationInitialMoneyModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"

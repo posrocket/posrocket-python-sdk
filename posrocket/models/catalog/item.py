@@ -5,11 +5,11 @@
 import logging
 from typing import List
 
-from posrocket.models.catalog_category import CatalogCategoryModel
-from posrocket.models.catalog_modifier_list import CatalogModifierListModel
-from posrocket.models.catalog_tag import CatalogTagModel
-from posrocket.models.catalog_tax import CatalogTaxModel
-from posrocket.models.catalog_variation import CatalogVariationModel
+from posrocket.models.catalog.category import CatalogCategoryModel
+from posrocket.models.catalog.modifier_list import CatalogModifierListModel
+from posrocket.models.catalog.tag import CatalogTagModel
+from posrocket.models.catalog.tax import CatalogTaxModel
+from posrocket.models.catalog.variation import CatalogVariationModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"

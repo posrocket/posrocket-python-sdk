@@ -5,14 +5,14 @@ import datetime
 from typing import Dict, List
 
 from posrocket.models import DirectoryAddressModel, DirectoryPhoneModel
-from posrocket.models.catalog_item import CatalogItemModel
-from posrocket.models.catalog_modifier import CatalogModifierModel
-from posrocket.models.catalog_variation import CatalogVariationModel
-from posrocket.models.directory_customer import DirectoryCustomerModel, SaleCustomerModel
-from posrocket.models.location_order_options import LocationOrderOptionModel
-from posrocket.models.location_tab_creator import LocationTabCreatorModel
-from posrocket.models.location_tab_item import LocationTabItemModel
-from posrocket.models.location_tab_pickup import LocationTabPickupModel
+from posrocket.models.catalog.item import CatalogItemModel
+from posrocket.models.catalog.modifier import CatalogModifierModel
+from posrocket.models.catalog.variation import CatalogVariationModel
+from posrocket.models.directory.customer import DirectoryCustomerModel, SaleCustomerModel
+from posrocket.models.location.order_options import LocationOrderOptionModel
+from posrocket.models.location.tab.creator import LocationTabCreatorModel
+from posrocket.models.location.tab.item.item import LocationTabItemModel
+from posrocket.models.location.tab.pickup import LocationTabPickupModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"

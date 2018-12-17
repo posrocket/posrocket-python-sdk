@@ -3,7 +3,7 @@ Catalog Item Service
 """
 import logging
 
-from posrocket.models.catalog_item import CatalogItemModel
+from posrocket.models.catalog.item import CatalogItemModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 

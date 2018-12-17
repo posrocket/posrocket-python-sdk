@@ -3,9 +3,9 @@
 """
 from typing import List
 
-from posrocket.models.catalog_category import CatalogCategoryModel
-from posrocket.models.catalog_variation import CatalogVariationModel
-from posrocket.models.location_initial_money import LocationInitialMoneyModel
+from posrocket.models.catalog.category import CatalogCategoryModel
+from posrocket.models.catalog.variation import CatalogVariationModel
+from posrocket.models.location.initial_money import LocationInitialMoneyModel
 from posrocket.models.sales_transaction_itemization_modifier import SalesTransactionItemizationModifierModel
 from posrocket.models.sales_transaction_tax import SalesTransactionTaxModel
 
