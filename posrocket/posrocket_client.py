@@ -61,9 +61,9 @@ class LaunchPadClient(object):
         self.oauth_client = OAuth2Session(client_id=self.client_id)
         self.prod = prod
         if prod:
-            self.base_url = "http://launchpad-prod.rocketinfra.com/"
+            self.base_url = "http://launchpad-prod.rocketinfra.com"
         else:
-            self.base_url = "http://launchpad.rocketinfra.com/"
+            self.base_url = "http://launchpad.rocketinfra.com"
 
     @property
     def state(self) -> str:
