@@ -68,4 +68,4 @@ In the case of token expiration:
 This covers the authentication process, you will be using the LaunchPadClient to access the APIs in the SDK.
 
 
-.. _LaunchPad: http://launchpad.rocketinfra.com
+.. _LaunchPad: https://developer.posrocket.com
