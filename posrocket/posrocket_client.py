@@ -22,6 +22,8 @@ quick start:
 
 """
 import requests
+from requests_oauthlib import OAuth2Session
+
 from posrocket.location_client import LocationClient
 from posrocket.services.business import BusinessService
 from posrocket.services.catalog import CatalogItemService
@@ -29,7 +31,6 @@ from posrocket.services.directory import DirectoryCustomerService
 from posrocket.services.geo import CountryService
 from posrocket.services.location import LocationService
 from posrocket.utils.assert_value import assert_value
-from requests_oauthlib import OAuth2Session
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -45,7 +46,7 @@ class LaunchPadClient(object):
     """LaunchPad main client class which is the starting point for integrating with POSRocket
     """
 
-    def __init__(self, client_id: str, client_secret: str, token: str = None):
+    def __init__(self, client_id: str, client_secret: str, token: str = None, prod=False):
         """
         define client object for communicating with LaunchPad API
         :param client_id: LaunchPad Oauth Client id
@@ -58,6 +59,11 @@ class LaunchPadClient(object):
         self._state = None
         self.token = token
         self.oauth_client = OAuth2Session(client_id=self.client_id)
+        self.prod = prod
+        if prod:
+            self.base_url = "http://launchpad.rocketinfra.com/"
+        else:
+            self.base_url = "http://launchpad.rocketinfra.com/"
 
     @property
     def state(self) -> str:
@@ -78,7 +84,7 @@ class LaunchPadClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         authorization_url, state = self.oauth_client.authorization_url(
-            'http://launchpad.rocketinfra.com/oauth/authorize/',
+            f'{self.base_url}/oauth/authorize/',
             access_type="offline"
         )
         self._state = state
@@ -94,7 +100,7 @@ class LaunchPadClient(object):
         """
         self.oauth_client.redirect_uri = redirect_uri
         token = self.oauth_client.fetch_token(
-            'http://launchpad.rocketinfra.com/oauth/token/',
+            f'{self.base_url}/oauth/token/',
             authorization_response=authorization_response_url,
             client_secret=self.client_secret
         )
@@ -110,7 +116,7 @@ class LaunchPadClient(object):
         token = token or self.token
         auth = requests.auth.HTTPBasicAuth(self.client_id, self.client_secret)
         self.token = self.oauth_client.refresh_token(
-            token_url='http://launchpad.rocketinfra.com/oauth/token/',
+            token_url=f'{self.base_url}/oauth/token/',
             refresh_token=token['refresh_token'],
             auth=auth
         )
@@ -131,7 +137,7 @@ class LaunchPadClient(object):
         :return: location service object
         """
         assert_value(self.token)
-        return LocationService(self.token)
+        return LocationService(self.token, prod=self.prod)
 
     @property
     def catalog_item_service(self) -> CatalogItemService:
@@ -140,7 +146,7 @@ class LaunchPadClient(object):
         :return: catalog item service
         """
         assert_value(self.token)
-        return CatalogItemService(self.token)
+        return CatalogItemService(self.token, prod=self.prod)
 
     @property
     def business_service(self) -> BusinessService:
@@ -149,7 +155,7 @@ class LaunchPadClient(object):
         :return: business service object
         """
         assert_value(self.token)
-        return BusinessService(self.token)
+        return BusinessService(self.token, prod=self.prod)
 
     @property
     def directory_customers_service(self) -> DirectoryCustomerService:
@@ -158,7 +164,7 @@ class LaunchPadClient(object):
         :return: directory customers service object
         """
         assert_value(self.token)
-        return DirectoryCustomerService(self.token)
+        return DirectoryCustomerService(self.token, prod=self.prod)
 
     @property
     def country_service(self) -> CountryService:
@@ -167,4 +173,4 @@ class LaunchPadClient(object):
         :return: country service object
         """
         assert_value(self.token)
-        return CountryService(self.token)
+        return CountryService(self.token, prod=self.prod)

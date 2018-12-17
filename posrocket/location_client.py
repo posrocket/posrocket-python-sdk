@@ -39,7 +39,7 @@ class LocationClient(object):
         :return: tab service object
         """
         assert_value(self.launch_pad_client.token)
-        return TabService(self.launch_pad_client.token, self.location_id)
+        return TabService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
 
     @property
     def discount_service(self) -> LocationDiscountService:
@@ -48,7 +48,7 @@ class LocationClient(object):
         :return: discount service object
         """
         assert_value(self.launch_pad_client.token)
-        return LocationDiscountService(self.launch_pad_client.token, self.location_id)
+        return LocationDiscountService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
 
     @property
     def drawer_service(self) -> LocationDrawerService:
@@ -57,7 +57,7 @@ class LocationClient(object):
         :return: drawer service object
         """
         assert_value(self.launch_pad_client.token)
-        return LocationDrawerService(self.launch_pad_client.token, self.location_id)
+        return LocationDrawerService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
 
     @property
     def extra_charge_service(self) -> LocationExtraChargeService:
@@ -66,7 +66,8 @@ class LocationClient(object):
         :return: extra charge service object
         """
         assert_value(self.launch_pad_client.token)
-        return LocationExtraChargeService(self.launch_pad_client.token, self.location_id)
+        return LocationExtraChargeService(self.launch_pad_client.token, self.location_id,
+                                          prod=self.launch_pad_client.prod)
 
     @property
     def order_option_service(self) -> LocationOrderOptionService:
@@ -75,7 +76,8 @@ class LocationClient(object):
         :return:order option service object
         """
         assert_value(self.launch_pad_client.token)
-        return LocationOrderOptionService(self.launch_pad_client.token, self.location_id)
+        return LocationOrderOptionService(self.launch_pad_client.token, self.location_id,
+                                          prod=self.launch_pad_client.prod)
 
     @property
     def sale_service(self) -> LocationSaleService:
@@ -84,4 +86,4 @@ class LocationClient(object):
         :return: country service object
         """
         assert_value(self.launch_pad_client.token)
-        return LocationSaleService(self.launch_pad_client.token, self.location_id)
+        return LocationSaleService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)

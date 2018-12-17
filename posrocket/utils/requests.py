@@ -1,9 +1,10 @@
 import logging
 
+from requests_oauthlib import OAuth2Session
+
 from posrocket.excaptions import NotFoundException
 from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedException
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
-from requests_oauthlib import OAuth2Session
 
 logger = logging.getLogger("django")
 
@@ -27,20 +28,23 @@ def _handle_response(result):
 
 class LocationRequiredMixin:
 
-    def __init__(self, access_token, location_id):
+    def __init__(self, access_token, location_id, prod=False):
         self.location_id = location_id
-        super(LocationRequiredMixin, self).__init__(access_token)
+        super(LocationRequiredMixin, self).__init__(access_token, prod=prod)
 
     def get_service_url(self):
         return self.service_url % self.location_id
 
 
 class Requests:
-    base_url = 'http://launchpad.rocketinfra.com/api/v1'
 
-    def __init__(self, access_token):
+    def __init__(self, access_token, prod=False):
         self.access_token = access_token
         self.client = OAuth2Session(token=access_token)
+        if prod:
+            self.base_url = 'http://launchpad.rocketinfra.com/api/v1'
+        else:
+            self.base_url = 'http://launchpad.rocketinfra.com/api/v1'
 
     def get_service_url(self):
         return self.service_url
