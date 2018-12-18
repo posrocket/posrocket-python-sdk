@@ -32,6 +32,26 @@ class DirectoryCustomerService(Requests):
 
         :param customer: DirectoryCustomerModel type object
         """
+        data = self.prepare_payload(customer)
+        print(data)
+        response = self.post(self.get_service_url(), data)
+        print(response)
+        result = self.model_cls(**response['data'])
+        return result
+
+    def update(self, customer: DirectoryCustomerModel):
+        """Create new customer in POSRocket Customer Directory
+
+        :param customer: DirectoryCustomerModel type object
+        """
+        data = self.prepare_payload(customer)
+        print(data)
+        response = self.patch(f"{self.get_service_url()}{pk}/", data)
+        print(response)
+        result = self.model_cls(**response['data'])
+        return result
+
+    def prepare_payload(self, customer):
         data = {
             "first_name": customer.first_name,
             "last_name": customer.last_name,
@@ -70,8 +90,4 @@ class DirectoryCustomerService(Requests):
                     "is_verified": phone_number.is_verified,
                 }
             )
-        print(data)
-        response = self.post(self.get_service_url(), data)
-        print(response)
-        result = self.model_cls(**response['data'])
-        return result
+        return data
