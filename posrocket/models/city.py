@@ -1,9 +1,6 @@
 """City Python model
 
 """
-from typing import List
-
-from posrocket.models import AreaModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -21,7 +18,6 @@ class CityModel:
     """
     id: str
     name: str
-    _areas: List[AreaModel]
 
     def __init__(self, **kwargs):
         """ map a dict to City object
@@ -40,22 +36,3 @@ class CityModel:
         :return: City name
         """
         return f'{self.name}'
-
-    @property
-    def areas(self) -> List[AreaModel]:
-        """
-        getter for Item variations
-        :return: list of variations for the item
-        """
-        return self._areas
-
-    @areas.setter
-    def areas(self, json_areas: List[dict]):
-        """setter for item variations
-
-        :param json_variations: json list of variation dicts
-        :return: None
-        """
-        self._areas = []
-        for json_area in json_areas:
-            self._areas.append(AreaModel(**json_area))
