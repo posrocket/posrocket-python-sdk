@@ -45,9 +45,9 @@ class DirectoryCustomerService(Requests):
         :param customer: DirectoryCustomerModel type object
         """
         data = self.prepare_payload(customer)
-        print(data)
+        logger.info(data)
         response = self.patch(f"{self.get_service_url()}{customer.id}/", data)
-        print(response)
+        logger.info(response)
         result = self.model_cls(**response['data'])
         return result
 
