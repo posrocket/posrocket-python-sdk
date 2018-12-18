@@ -46,7 +46,7 @@ class DirectoryCustomerService(Requests):
         """
         data = self.prepare_payload(customer)
         logger.info(data)
-        response = self.patch(f"{self.get_service_url()}{customer.id}/", data)
+        response = self.put(f"{self.get_service_url()}{customer.id}/", data)
         logger.info(response)
         result = self.model_cls(**response['data'])
         return result
@@ -63,32 +63,36 @@ class DirectoryCustomerService(Requests):
             "phone_numbers": []
         }
         for address in customer.addresses:
-            data['addresses'].append(
-                {
-                    "label": address.label,
-                    "residence": address.residence,
-                    "street": address.street,
-                    "building": address.building,
-                    "floor": address.floor,
-                    "apartment": address.apartment,
-                    "extras": address.extras,
-                    "is_primary": address.is_primary,
-                    "is_verified": address.is_verified,
-                    "city": {
-                        "id": address.city.id,
-                    },
-                    "area": {
-                        "id": address.area.id,
-                    }
+            tmp_address = {
+                "label": address.label,
+                "residence": address.residence,
+                "street": address.street,
+                "building": address.building,
+                "floor": address.floor,
+                "apartment": address.apartment,
+                "extras": address.extras,
+                "is_primary": address.is_primary,
+                "is_verified": address.is_verified,
+                "city": {
+                    "id": address.city.id,
+                },
+                "area": {
+                    "id": address.area.id,
                 }
+            }
+            if address.id:
+                tmp_address["id"] = address.id
+            data['addresses'].append(
+                tmp_address
             )
         for phone_number in customer.phone_numbers:
-            data['phone_numbers'].append(
-                {
-                    "number": phone_number.number,
-                    "is_primary": phone_number.is_primary,
-                    "is_verified": phone_number.is_verified,
-                }
-            )
+            tmp_phone = {
+                "number": phone_number.number,
+                "is_primary": phone_number.is_primary,
+                "is_verified": phone_number.is_verified,
+            }
+            if phone_number.id:
+                tmp_phone['id'] = phone_number.id
+            data['phone_numbers'].append(tmp_phone)
         logger.info(data)
         return data
