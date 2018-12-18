@@ -90,4 +90,5 @@ class DirectoryCustomerService(Requests):
                     "is_verified": phone_number.is_verified,
                 }
             )
+        logger.info(data)
         return data
