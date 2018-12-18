@@ -46,7 +46,7 @@ class DirectoryCustomerService(Requests):
         """
         data = self.prepare_payload(customer)
         logger.info(data)
-        response = self.put(f"{self.get_service_url()}{customer.id}/", data)
+        response = self.post(f"{self.get_service_url()}{customer.id}/", data)
         logger.info(response)
         result = self.model_cls(**response['data'])
         return result
