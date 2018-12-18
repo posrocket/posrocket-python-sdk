@@ -22,7 +22,7 @@ logger = logging.getLogger("django")
 class CatalogTaxService(Requests):
     """Tax service class to allow retrieving catalog tax related data
     """
-    service_url = "/catalog/taxes"
+    service_url = "/catalog/taxes/"
     model_cls = CatalogTaxModel
     get_taxes = BaseServiceFactory.make_list_items_response()
     get_tax_by_id = BaseServiceFactory.make_detail_item_response()

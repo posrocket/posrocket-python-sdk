@@ -22,7 +22,7 @@ logger = logging.getLogger("django")
 class DirectoryTagService(Requests):
     """Tags service class to allow retrieving customer related data
     """
-    service_url = "/directory/tags"
+    service_url = "/directory/tags/"
     model_cls = DirectoryTagModel
     get_tags = BaseServiceFactory.make_list_items_response()
     get_tag_by_id = BaseServiceFactory.make_detail_item_response()

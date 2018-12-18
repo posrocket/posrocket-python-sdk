@@ -23,7 +23,7 @@ logger = logging.getLogger("django")
 class CountryService(Requests):
     """Country service class to allow retrieving country related data
     """
-    service_url = "/countries"
+    service_url = "/countries/"
     model_cls = CountryModel
     get_countries = BaseServiceFactory.make_list_items_response()
 

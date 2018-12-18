@@ -22,7 +22,7 @@ logger = logging.getLogger("django")
 class LocationSaleService(LocationRequiredMixin, Requests):
     """Sales service class to allow retrieving location drawer related data
     """
-    service_url = "/locations/%s/sales"
+    service_url = "/locations/%s/sales/"
     model_cls = SalesTransactionModel
     get_sales = BaseServiceFactory.make_list_items_response()
     get_sale_by_id = BaseServiceFactory.make_detail_item_response()

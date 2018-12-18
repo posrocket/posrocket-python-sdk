@@ -22,7 +22,7 @@ logger = logging.getLogger("django")
 class CatalogItemService(Requests):
     """Item service class to allow retrieving catalog item related data
     """
-    service_url = "/catalog/items"
+    service_url = "/catalog/items/"
     model_cls = CatalogItemModel
     get_items = BaseServiceFactory.make_list_items_response()
     get_item_by_id = BaseServiceFactory.make_detail_item_response()

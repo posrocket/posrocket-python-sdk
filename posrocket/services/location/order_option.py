@@ -22,7 +22,7 @@ logger = logging.getLogger("django")
 class LocationOrderOptionService(LocationRequiredMixin, Requests):
     """Order Option service class to allow retrieving location order option related data
     """
-    service_url = "/locations/%s/order-options"
+    service_url = "/locations/%s/order-options/"
     model_cls = LocationOrderOptionModel
     get_order_options = BaseServiceFactory.make_list_items_response()
     get_order_option_by_id = BaseServiceFactory.make_detail_item_response()

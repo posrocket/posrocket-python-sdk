@@ -22,7 +22,7 @@ logger = logging.getLogger("django")
 class CatalogModifierListService(Requests):
     """Modifier List service class to allow retrieving catalog Modifier List related data
     """
-    service_url = "/catalog/modifier-lists"
+    service_url = "/catalog/modifier-lists/"
     model_cls = CatalogModifierListModel
     get_modifiers_lists = BaseServiceFactory.make_list_items_response()
     get_modifiers_list_by_id = BaseServiceFactory.make_detail_item_response()
