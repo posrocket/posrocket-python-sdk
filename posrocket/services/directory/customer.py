@@ -46,7 +46,7 @@ class DirectoryCustomerService(Requests):
         """
         data = self.prepare_payload(customer)
         print(data)
-        response = self.patch(f"{self.get_service_url()}{pk}/", data)
+        response = self.patch(f"{self.get_service_url()}{customer.id}/", data)
         print(response)
         result = self.model_cls(**response['data'])
         return result
