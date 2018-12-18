@@ -20,7 +20,7 @@ class BaseServiceFactory:
     def make_detail_item_response():
         def detail_item_response(self, pk):
             url = self.get_service_url()
-            response = self.get(f"{url}/{pk}")
+            response = self.get(f"{url}/{pk}/")
             return self.model_cls(**response)
 
         return detail_item_response

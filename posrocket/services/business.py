@@ -17,7 +17,7 @@ __status__ = "Beta"
 class BusinessService(Requests):
     """Business service class to allow retrieving data for connected Business
     """
-    business_url = "/business"
+    business_url = "/business/"
 
     def get_business_info(self):
         """Get Business info for connected Business
