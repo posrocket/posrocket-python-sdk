@@ -30,7 +30,7 @@ class CountryService(Requests):
     def get_country_by_name(self, country_code):
         result = []
         url = self.get_service_url()
-        response = self.get(f"{url}/{country_code}/")
+        response = self.get(f"{url}{country_code}/")
         logger.info(response)
         for json_location in response['data']:
             result.append(CityModel(**json_location))
