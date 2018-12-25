@@ -33,23 +33,32 @@ class DirectoryCustomerModel:
     _phone_numbers: List[DirectoryPhoneModel]
     _tags: List[DirectoryTagModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 first_name=None,
+                 last_name=None,
+                 email=None,
+                 gender=None,
+                 dob=None,
+                 country=None,
+                 addresses=None,
+                 phone_numbers=None,
+                 tags=None
+                 ):
         """ map a dict to Directory Customer object
 
         :param kwargs: Directory Customer json dict
         """
-        self.id = None
-        self.first_name = None
-        self.last_name = None
-        self.email = None
-        self.gender = None
-        self.dob = None
-        self.country = None
-        self._addresses = None
-        self._phone_numbers = None
-        self._tags = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.gender = gender
+        self.dob = dob
+        self.country = country
+        self.addresses = addresses
+        self.phone_numbers = phone_numbers
+        self.tags = tags
 
     def __str__(self) -> str:
         """ String representation for the Directory Customer model
@@ -81,7 +90,7 @@ class DirectoryCustomerModel:
         :return: None
         """
         self._addresses = []
-        for json_address in json_addresses:
+        for json_address in json_addresses or []:
             if isinstance(json_address, DirectoryAddressModel):
                 self._addresses.append(json_address)
             else:
@@ -103,7 +112,7 @@ class DirectoryCustomerModel:
         :return: None
         """
         self._phone_numbers = []
-        for json_phone_number in json_phone_numbers:
+        for json_phone_number in json_phone_numbers or []:
             if isinstance(json_phone_number, DirectoryPhoneModel):
                 self._phone_numbers.append(json_phone_number)
             else:
@@ -125,7 +134,7 @@ class DirectoryCustomerModel:
         :return: None
         """
         self._tags = []
-        for json_tag in json_tags:
+        for json_tag in json_tags or []:
             self._tags.append(DirectoryTagModel(**json_tag))
 
 
@@ -144,23 +153,32 @@ class SaleCustomerModel:
     _phone_number: DirectoryPhoneModel
     _tags: List[DirectoryTagModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 first_name=None,
+                 last_name=None,
+                 email=None,
+                 gender=None,
+                 dob=None,
+                 country=None,
+                 address=None,
+                 phone_number=None,
+                 tags=None
+                 ):
         """ map a dict to Directory Customer object
 
         :param kwargs: Directory Customer json dict
         """
-        self.id = None
-        self.first_name = None
-        self.last_name = None
-        self.email = None
-        self.gender = None
-        self.dob = None
-        self.country = None
-        self._address = None
-        self._phone_number = None
-        self._tags = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.gender = gender
+        self.dob = dob
+        self.country = country
+        self.address = address
+        self.phone_number = phone_number
+        self.tags = tags
 
     def __str__(self) -> str:
         """ String representation for the Directory Customer model
@@ -191,7 +209,9 @@ class SaleCustomerModel:
         :param json_address:json address dicts
         :return: None
         """
-        if isinstance(json_address, DirectoryAddressModel):
+        if not json_address:
+            self._address = None
+        elif isinstance(json_address, DirectoryAddressModel):
             self._address = json_address
         else:
             self._address = DirectoryAddressModel(**json_address)
@@ -211,7 +231,9 @@ class SaleCustomerModel:
         :param json_phone_number:json list of phone dicts
         :return: None
         """
-        if isinstance(json_phone_number, DirectoryPhoneModel):
+        if not json_phone_number:
+            self._phone_number = None
+        elif isinstance(json_phone_number, DirectoryPhoneModel):
             self._phone_number = json_phone_number
         else:
             self._phone_number = DirectoryPhoneModel(**json_phone_number)
@@ -232,5 +254,5 @@ class SaleCustomerModel:
         :return: None
         """
         self._tags = []
-        for json_tag in json_tags:
+        for json_tag in json_tags or []:
             self._tags.append(DirectoryTagModel(**json_tag))

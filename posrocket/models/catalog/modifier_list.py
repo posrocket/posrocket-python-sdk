@@ -27,21 +27,18 @@ class CatalogModifierListModel:
     price: float
     _modifiers: List[CatalogModifierModel]
 
-    def __init__(self, **kwargs):
+    def __init__(self, id=None, name=None, type=None, quantifiable=None, order=None, price=None, modifiers=[]):
         """map a dict to Catalog Modifier list object
 
         :param kwargs: Catalog Modifier list json dict
         """
-        self.id = None
-        self.name = None
-        self.type = None
-        self.quantifiable = None
-        self.order = None
-        self.price = None
-        self._modifiers = []
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.type = type
+        self.quantifiable = quantifiable
+        self.order = order
+        self.price = price
+        self.modifiers = modifiers
 
     def __str__(self) -> str:
         """ String representation for the Catalog Modifier list model

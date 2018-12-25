@@ -45,35 +45,56 @@ class SalesTransactionModel:
     _itemization: List[SalesTransactionItemizationModel]
     _refunds: List[SalesTransactionRefundModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 receipt_id=None,
+                 serial_number=None,
+                 dining_option=None,
+                 creation_time=None,
+                 discount_money=None,
+                 refunded_money=None,
+                 additive_tax_money=None,
+                 inclusive_tax_money=None,
+                 tax_money=None,
+                 tip_money=None,
+                 received_money=None,
+                 total_collected_money=None,
+                 extra_charges_money=None,
+                 creator=None,
+                 customer=None,
+                 tab=None,
+                 tenders=None,
+                 taxes=None,
+                 extra_charges=None,
+                 itemization=None,
+                 refunds=None
+                 ):
         """ map a dict to Sales Transaction object
 
         :param kwargs: Sales Transaction json dict
         """
-        self.id = None
-        self.receipt_id = None
-        self.serial_number = None
-        self.dining_option = None
-        self.creation_time = None
-        self._discount_money = None
-        self._refunded_money = None
-        self._additive_tax_money = None
-        self._inclusive_tax_money = None
-        self._tax_money = None
-        self._tip_money = None
-        self._received_money = None
-        self._total_collected_money = None
-        self._extra_charges_money = None
-        self._creator = None
-        self._customer = None
-        self._tab = None
-        self._tenders = None
-        self._taxes = []
-        self._extra_charges = []
-        self._itemization = []
-        self._refunds = []
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.receipt_id = receipt_id
+        self.serial_number = serial_number
+        self.dining_option = dining_option
+        self.creation_time = creation_time
+        self.discount_money = discount_money
+        self.refunded_money = refunded_money
+        self.additive_tax_money = additive_tax_money
+        self.inclusive_tax_money = inclusive_tax_money
+        self.tax_money = tax_money
+        self.tip_money = tip_money
+        self.received_money = received_money
+        self.total_collected_money = total_collected_money
+        self.extra_charges_money = extra_charges_money
+        self.creator = creator
+        self.customer = customer
+        self.tab = tab
+        self.tenders = tenders
+        self.taxes = taxes
+        self.extra_charges = extra_charges
+        self.itemization = itemization
+        self.refunds = refunds
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction model
@@ -323,7 +344,7 @@ class SalesTransactionModel:
             self._tab = None
 
     @property
-    def tenders(self) -> SalesTransactionTenderModel:
+    def tenders(self) -> List[SalesTransactionTenderModel]:
         """
         getter for Sales Transaction Tenders Object
         :return: Sales Transaction Tenders object
@@ -338,7 +359,7 @@ class SalesTransactionModel:
         :return: None
         """
         self._tenders = []
-        for tenders in tenders_list:
+        for tenders in tenders_list or []:
             self._tenders.append(SalesTransactionTenderModel(**tenders))
 
     @property
@@ -357,7 +378,7 @@ class SalesTransactionModel:
         :return: None
         """
         self._extra_charges = []
-        for extra_charge in extra_charges_list:
+        for extra_charge in extra_charges_list or []:
             self._extra_charges.append(SalesTransactionExtraChargeModel(**extra_charge))
 
     @property
@@ -376,7 +397,7 @@ class SalesTransactionModel:
         :return: None
         """
         self._itemization = []
-        for itemization in itemization_list:
+        for itemization in itemization_list or []:
             self._itemization.append(SalesTransactionItemizationModel(**itemization))
 
     @property
@@ -395,7 +416,7 @@ class SalesTransactionModel:
         :return: None
         """
         self._taxes = []
-        for tax in taxes_list:
+        for tax in taxes_list or []:
             self._taxes.append(SalesTransactionTaxModel(**tax))
 
     @property
@@ -414,5 +435,5 @@ class SalesTransactionModel:
         :return: None
         """
         self._refunds = []
-        for refund in refunds_list:
+        for refund in refunds_list or []:
             self._refunds.append(SalesTransactionRefundModel(**refund))

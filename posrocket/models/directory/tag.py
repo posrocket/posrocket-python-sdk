@@ -18,15 +18,13 @@ class DirectoryTagModel:
     id: str
     name: str
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self, id=None, name=None):
         """ map a dict to Directory Tags object
 
         :param kwargs: Directory Tags json dict
         """
-        self.id = None
-        self.name = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
 
     def __str__(self) -> str:
         """ String representation for the Directory Tag model

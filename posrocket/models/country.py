@@ -17,15 +17,13 @@ class CountryModel:
     """
     country: str
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self, country=None):
         """ map a dict to Country object
 
         :param kwargs: Country json dict
         """
 
-        self.country = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.country = country
 
     def __str__(self) -> str:
         """ String representation for the Country model

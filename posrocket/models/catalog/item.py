@@ -38,25 +38,32 @@ class CatalogItemModel:
     _taxes: List[CatalogTaxModel]
     _tags: List[CatalogTagModel]
 
-    def __init__(self, **kwargs):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 color=None,
+                 description=None,
+                 image=None,
+                 category=None,
+                 variations=[],
+                 modifier_lists=[],
+                 taxes=None,
+                 tags=None):
         """map a dict to Catalog Item object
 
         :param kwargs: Catalog Item json dict
         """
 
-        self.id = None
-        self.name = None
-        self.color = None
-        self.description = None
-        self.image = None
-        self._category = None
-        self._variations = []
-        self._modifier_lists = []
-        self._taxes = None
-        self._tags = None
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.color = color
+        self.description = description
+        self.image = image
+        self.category = category
+        self.variations = variations
+        self.modifier_lists = modifier_lists
+        self.taxes = taxes
+        self.tags = tags
 
     def __str__(self) -> str:
         """ String representation for the Catalog Item model
@@ -80,7 +87,10 @@ class CatalogItemModel:
         :param json_category: json dict for category
         :return: None
         """
-        self._category = CatalogCategoryModel(**json_category)
+        if self._category:
+            self._category = CatalogCategoryModel(**self._category)
+        else:
+            self._category = None
 
     @property
     def variations(self) -> List[CatalogVariationModel]:

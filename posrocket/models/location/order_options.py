@@ -23,16 +23,18 @@ class LocationOrderOptionModel:
     name: str
     _charges: List[LocationExtraChargeModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 charges=None
+                 ):
         """ map a dict to Location Order Option object
 
         :param kwargs: Location Order Option json dict
         """
-        self.id = None
-        self.name = None
-        self._charges = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.charges = charges
 
     def __str__(self) -> str:
         """ String representation for the Location Order Option model
@@ -57,5 +59,5 @@ class LocationOrderOptionModel:
         :return: None
         """
         self._charges = []
-        for json_charge in json_charges:
+        for json_charge in json_charges or []:
             self._charges.append(LocationExtraChargeModel(**json_charge))

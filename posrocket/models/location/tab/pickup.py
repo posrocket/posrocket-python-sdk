@@ -23,18 +23,22 @@ class LocationTabPickupModel:
     driver_name: str
     driver_phone: int
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 eta=None,
+                 company=None,
+                 driver_name=None,
+                 driver_phone=None
+                 ):
         """ map a dict to Location Tab Pickup object
 
         :param kwargs: Location Tab Pickup json dict
         """
-        self.id = None
-        self.eta = None
-        self.company = None
-        self.driver_name = None
-        self.driver_phone = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.eta = eta
+        self.company = company
+        self.driver_name = driver_name
+        self.driver_phone = driver_phone
 
     def __str__(self) -> str:
         """ String representation for the Location Pickup model

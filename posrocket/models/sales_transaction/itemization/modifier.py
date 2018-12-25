@@ -22,18 +22,20 @@ class SalesTransactionItemizationModifierModel:
     quantity: int
     _applied_money: LocationInitialMoneyModel
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 quantity=None,
+                 applied_money=None
+                 ):
         """ map a dict to Sales Transaction Itemization Modifier object
 
         :param kwargs: Sales Transaction Itemization Modifier json dict
         """
-        self.id = None
-        self.name = None
-        self.quantity = None
-        self._applied_money = None
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.quantity = quantity
+        self.applied_money = applied_money
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction Itemization Modifier model

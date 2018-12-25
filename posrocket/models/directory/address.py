@@ -30,24 +30,34 @@ class DirectoryAddressModel:
     _city: CityModel
     _area: AreaModel
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 label=None,
+                 residence=None,
+                 street=None,
+                 building=None,
+                 floor=None,
+                 apartment=None,
+                 extras=None,
+                 is_primary=None,
+                 city=None,
+                 area=None
+                 ):
         """ map a dict to Directory Address object
 
         :param kwargs: Directory Address json dict
         """
-        self.id = None
-        self.label = None
-        self.residence = None
-        self.street = None
-        self.building = None
-        self.floor = None
-        self.apartment = None
-        self.extras = None
-        self.is_primary = None
-        self._city = None
-        self._area = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.label = label
+        self.residence = residence
+        self.street = street
+        self.building = building
+        self.floor = floor
+        self.apartment = apartment
+        self.extras = extras
+        self.is_primary = is_primary
+        self.city = city
+        self.area = area
 
     def __str__(self) -> str:
         """ String representation for the Directory Address model
@@ -71,7 +81,9 @@ class DirectoryAddressModel:
         :param json_city: json dict for City
         :return: None
         """
-        if isinstance(json_city, CityModel):
+        if not json_city:
+            self._city = None
+        elif isinstance(json_city, CityModel):
             self._city = json_city
         else:
             self._city = CityModel(**json_city)
@@ -91,7 +103,9 @@ class DirectoryAddressModel:
         :param json_city: json dict for Area
         :return: None
         """
-        if isinstance(json_area, AreaModel):
+        if not json_area:
+            self._area = None
+        elif isinstance(json_area, AreaModel):
             self._area = json_area
         else:
             self._area = AreaModel(**json_area)

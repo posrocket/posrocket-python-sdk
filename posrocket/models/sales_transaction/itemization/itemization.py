@@ -3,11 +3,12 @@
 """
 from typing import List
 
+from posrocket.models.sales_transaction_itemization_modifier import SalesTransactionItemizationModifierModel
+from posrocket.models.sales_transaction_tax import SalesTransactionTaxModel
+
 from posrocket.models.catalog.category import CatalogCategoryModel
 from posrocket.models.catalog.variation import CatalogVariationModel
 from posrocket.models.location.initial_money import LocationInitialMoneyModel
-from posrocket.models.sales_transaction_itemization_modifier import SalesTransactionItemizationModifierModel
-from posrocket.models.sales_transaction_tax import SalesTransactionTaxModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -37,27 +38,38 @@ class SalesTransactionItemizationModel:
     _taxes: List[SalesTransactionTaxModel]
     _modifiers: List[SalesTransactionItemizationModifierModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 quantity=None,
+                 notes=None,
+                 total_money=None,
+                 single_quantity_money=None,
+                 gross_sales_money=None,
+                 discount_money=None,
+                 net_sales_money=None,
+                 category=None,
+                 variation=None,
+                 taxes=None,
+                 modifiers=None
+                 ):
         """ map a dict to Sales Transaction Itemization object
 
         :param kwargs: Sales Transaction Itemization json dict
         """
-        self.id = None
-        self.name = None
-        self.quantity = None
-        self.notes = None
-        self._total_money = None
-        self._single_quantity_money = None
-        self._gross_sales_money = None
-        self._discount_money = None
-        self._net_sales_money = None
-        self._category = None
-        self._variation = None
-        self._taxes = []
-        self._modifiers = []
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.quantity = quantity
+        self.notes = notes
+        self.total_money = total_money
+        self.single_quantity_money = single_quantity_money
+        self.gross_sales_money = gross_sales_money
+        self.discount_money = discount_money
+        self.net_sales_money = net_sales_money
+        self.category = category
+        self.variation = variation
+        self.taxes = taxes
+        self.modifiers = modifiers
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction Itemization model
@@ -82,7 +94,7 @@ class SalesTransactionItemizationModel:
         :return: None
         """
         self._taxes = []
-        for tax in tax_list:
+        for tax in tax_list or []:
             self._taxes.append(SalesTransactionTaxModel(**tax))
 
     @property
@@ -240,5 +252,5 @@ class SalesTransactionItemizationModel:
         :param modifiers_list: json list for modifiers dicts
         :return: None
         """
-        for modifier in modifiers_list:
+        for modifier in modifiers_list or []:
             self._modifiers.append(SalesTransactionItemizationModifierModel(**modifier))

@@ -23,16 +23,18 @@ class CityModel:
     name: str
     _areas: List[AreaModel]
 
-    def __init__(self, **kwargs):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 areas=None
+                 ):
         """ map a dict to City object
 
         :param kwargs: City json dict
         """
-        self.id = None
-        self.name = None
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.areas = areas
 
     def __str__(self) -> str:
         """ String representation for the City model
@@ -57,7 +59,6 @@ class CityModel:
         :return: None
         """
         self._areas = []
-        if json_areas:
-            for json_area in json_areas:
-                if json_area:
-                    self._areas.append(AreaModel(**json_area))
+        for json_area in json_areas or []:
+            if json_area:
+                self._areas.append(AreaModel(**json_area))

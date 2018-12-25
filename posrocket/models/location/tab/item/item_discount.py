@@ -23,19 +23,24 @@ class LocationTabItemDiscountModel:
     amount: float
     value: float
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 rate=None,
+                 amount=None,
+                 value=None
+                 ):
         """ map a dict to Location Tab Item Discount object
 
         :param kwargs: Location Tab Item Discount json dict
         """
-        self.id = None
-        self.name = None
-        self.type = None
-        self.rate = None
-        self.amount = None
-        self.value = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.type = type
+        self.rate = rate
+        self.amount = amount
+        self.value = value
 
     def __str__(self) -> str:
         """ String representation for the Location Tab Item Discount model

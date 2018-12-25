@@ -21,17 +21,20 @@ class LocationExtraChargeTaxModel:
     inclusion_type: str
     rate: float
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 inclusion_type=None,
+                 rate=None
+                 ):
         """ map a dict to Location Extra Charge Tax object
 
         :param kwargs: Location Extra Charge Tax json dict
         """
-        self.id = None
-        self.name = None
-        self.inclusion_type = None
-        self.rate = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.inclusion_type = inclusion_type
+        self.rate = rate
 
     def __str__(self) -> str:
         """ String representation for the Location Extra Charge tax model

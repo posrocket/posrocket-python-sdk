@@ -3,11 +3,12 @@
 """
 from typing import List
 
-from posrocket.models.directory.customer import DirectoryCustomerModel
 from posrocket.models.sales_transaction_extra_charges import SalesTransactionExtraChargeModel
 from posrocket.models.sales_transaction_itemization import SalesTransactionItemizationModel
 from posrocket.models.sales_transaction_refund_creator import SalesTransactionRefundCreatorModel
 from posrocket.models.sales_transaction_tender import SalesTransactionTenderModel
+
+from posrocket.models.directory.customer import DirectoryCustomerModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -36,26 +37,37 @@ class SalesTransactionRefundModel:
     _extra_charges: List[SalesTransactionExtraChargeModel]
     _itemization: List[SalesTransactionItemizationModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 transaction_id=None,
+                 type=None,
+                 reason=None,
+                 notes=None,
+                 serial_number=None,
+                 creation_time=None,
+                 customer=None,
+                 tender=None,
+                 creator=None,
+                 extra_charges=None,
+                 itemization=None,
+
+                 ):
         """ map a dict to Sales Transaction Refund object
 
         :param kwargs: Sales Transaction Refund json dict
         """
-        self.id = None
-        self.transaction_id = None
-        self.type = None
-        self.reason = None
-        self.notes = None
-        self.serial_number = None
-        self.creation_time = None
-        self._customer = None
-        self._tender = None
-        self._creator = None
-        self._extra_charges = None
-        self._itemization = None
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.transaction_id = transaction_id
+        self.type = type
+        self.reason = reason
+        self.notes = notes
+        self.serial_number = serial_number
+        self.creation_time = creation_time
+        self.customer = customer
+        self.tender = tender
+        self.creator = creator
+        self.extra_charges = extra_charges
+        self.itemization = itemization
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction Refund model
@@ -140,7 +152,7 @@ class SalesTransactionRefundModel:
         :return: None
         """
         self._extra_charges = []
-        for extra_charge in extra_charges_list:
+        for extra_charge in extra_charges_list or []:
             self._extra_charges.append(SalesTransactionExtraChargeModel(**extra_charge))
 
     @property
@@ -159,5 +171,5 @@ class SalesTransactionRefundModel:
         :return: None
         """
         self._itemization = []
-        for itemization in itemization_list:
+        for itemization in itemization_list or []:
             self._itemization.append(SalesTransactionItemizationModel(**itemization))

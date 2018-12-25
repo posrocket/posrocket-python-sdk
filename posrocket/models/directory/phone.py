@@ -20,17 +20,20 @@ class DirectoryPhoneModel:
     is_primary: bool
     is_verified: bool
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 number=None,
+                 is_primary=None,
+                 is_verified=None
+                 ):
         """ map a dict to Directory Phone object
 
         :param kwargs: Directory Phone json dict
         """
-        self.id = None
-        self.number = None
-        self.is_primary = None
-        self.is_verified = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.number = number
+        self.is_primary = is_primary
+        self.is_verified = is_verified
 
     def __str__(self) -> str:
         """ String representation for the Directory Phone model

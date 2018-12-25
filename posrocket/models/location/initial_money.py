@@ -19,15 +19,17 @@ class LocationInitialMoneyModel:
     amount: float
     currency: str
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 amount=None,
+                 currency=None,
+
+                 ):
         """ map a dict to Location Initial Money object
 
         :param kwargs: Location Initial Money json dict
         """
-        self.amount = None
-        self.currency = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.amount = amount
+        self.currency = currency
 
     def __str__(self) -> str:
         """ String representation for the Location Initial Money model

@@ -24,19 +24,24 @@ class SalesTransactionTaxModel:
     is_custom_amount: bool
     _applied_money: LocationInitialMoneyModel
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 rate=None,
+                 inclusion_type=None,
+                 is_custom_amount=None,
+                 applied_money=None
+                 ):
         """ map a dict to Sales Transaction Tax object
 
         :param kwargs: Sales Transaction Tax json dict
         """
-        self.id = None
-        self.name = None
-        self.rate = None
-        self.inclusion_type = None
-        self.is_custom_amount = None
-        self._applied_money = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.rate = rate
+        self.inclusion_type = inclusion_type
+        self.is_custom_amount = is_custom_amount
+        self.applied_money = applied_money
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction Tax model

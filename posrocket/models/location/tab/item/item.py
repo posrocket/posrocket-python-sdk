@@ -31,20 +31,26 @@ class LocationTabItemModel:
     _discounts: List[LocationTabItemDiscountModel]
     _modifiers: List[LocationTabItemModifierModel]
 
-    def __init__(self, **kwargs):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 quantity=None,
+                 notes=None,
+                 variation=None,
+                 discounts=None,
+                 modifiers=None
+                 ):
         """ map a dict to Location Tab Item object
 
         :param kwargs: Location Tab json Item dict
         """
-        self.id = None
-        self.name = None
-        self.quantity = None
-        self.notes = None
-        self._variation = None
-        self._discounts = []
-        self._modifiers = []
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.quantity = quantity
+        self.notes = notes
+        self.variation = variation
+        self.discounts = discounts
+        self.modifiers = modifiers
 
     def __str__(self) -> str:
         """ String representation for the Location Tab Item model
@@ -68,7 +74,10 @@ class LocationTabItemModel:
         :param variation_dict: json dict for Customer
         :return: None
         """
-        self._variation = LocationTabItemVariationModel(**variation_dict)
+        if variation_dict:
+            self._variation = LocationTabItemVariationModel(**variation_dict)
+        else:
+            self._variation = None
 
     @property
     def discounts(self) -> List[LocationTabItemDiscountModel]:
@@ -86,7 +95,7 @@ class LocationTabItemModel:
         :return: None
         """
         self._discounts = []
-        for discount in discounts_list:
+        for discount in discounts_list or []:
             self._discounts.append(LocationTabItemDiscountModel(**discount))
 
     @property
@@ -105,7 +114,7 @@ class LocationTabItemModel:
         :return: None
         """
         self._modifiers = []
-        for modifier in modifiers_list:
+        for modifier in modifiers_list or []:
             self._modifiers.append(LocationTabItemModifierModel(**modifier))
 
     def add_variation(self, variation: CatalogVariationModel, location_id: str):

@@ -22,18 +22,22 @@ class LocationTabItemModifierModel:
     price: float
     order: int
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 quantity=None,
+                 price=None,
+                 order=None
+                 ):
         """ map a dict to Location Tab Item Modifier object
 
         :param kwargs: Location Tab Item Modifier json dict
         """
-        self.id = None
-        self.name = None
-        self.quantity = None
-        self.price = None
-        self.order = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+        self.order = order
 
     def __str__(self) -> str:
         """ String representation for the Location Tab Item Modifier model

@@ -21,18 +21,22 @@ class LocationModel:
     phone: str
     address: str
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 tax_number=None,
+                 phone=None,
+                 address=None
+                 ):
         """ map a dict to Location object
 
         :param kwargs: Location json dict
         """
-        self.id = None
-        self.name = None
-        self.tax_number = None
-        self.phone = None
-        self.address = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.tax_number = tax_number
+        self.phone = phone
+        self.address = address
 
     def __str__(self) -> str:
         """ String representation for the Location model

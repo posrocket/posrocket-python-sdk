@@ -19,16 +19,14 @@ class LocationDrawerCreatorModel:
     first_name: str
     last_name: str
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self, id=None, first_name=None, last_name=None):
         """ map a dict to Location Drawer Creator object
 
         :param kwargs: Location Drawer Creator json dict
         """
-        self.id = None
-        self.first_name = None
-        self.last_name = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.first_name = first_name
+        self.last_name = last_name
 
     def __str__(self) -> str:
         """ String representation for the Location Drawer Creator model

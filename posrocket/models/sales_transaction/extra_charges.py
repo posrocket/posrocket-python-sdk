@@ -24,19 +24,24 @@ class SalesTransactionExtraChargeModel:
     amount: float
     _tax: SalesTransactionTaxModel
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 rate=None,
+                 amount=None,
+                 tax=None
+                 ):
         """ map a dict to Sales Transaction Extra Charge object
 
         :param kwargs: Sales Transaction Extra Charge json dict
         """
-        self.id = None
-        self.name = None
-        self.type = None
-        self.rate = None
-        self.amount = None
-        self._tax = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.type = type
+        self.rate = rate
+        self.amount = amount
+        self.tax = tax
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction Extra Charge model

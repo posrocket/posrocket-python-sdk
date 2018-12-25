@@ -44,33 +44,52 @@ class LocationDrawerModel:
     _payments: List[LocationDrawerPaymentModel]
     _payment_methods: List[LocationDrawerPaymentMethodModel]
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 reference=None,
+                 serial=None,
+                 description=None,
+                 start_time=None,
+                 end_time=None,
+                 initial_money=None,
+                 card_sales_money=None,
+                 card_refunds_money=None,
+                 other_sales_money=None,
+                 other_refunds_money=None,
+                 sales_money=None,
+                 refunds_money=None,
+                 paid_in_out_money=None,
+                 expected_money=None,
+                 actual_money=None,
+                 difference_money=None,
+                 creator=None,
+                 payments=None,
+                 payment_methods=None
+                 ):
         """ map a dict to Location Drawer object
 
         :param kwargs: Location Drawer json dict
         """
-        self.id = None
-        self.reference = None
-        self.serial = None
-        self.description = None
-        self.start_time = None
-        self.end_time = None
-        self._initial_money = None
-        self._card_sales_money = None
-        self._card_refunds_money = None
-        self._other_sales_money = None
-        self._other_refunds_money = None
-        self._sales_money = None
-        self._refunds_money = None
-        self._paid_in_out_money = None
-        self._expected_money = None
-        self._actual_money = None
-        self._difference_money = None
-        self._creator = None
-        self._payments = None
-        self._payment_methods = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.reference = reference
+        self.serial = serial
+        self.description = description
+        self.start_time = start_time
+        self.end_time = end_time
+        self.initial_money = initial_money
+        self.card_sales_money = card_sales_money
+        self.card_refunds_money = card_refunds_money
+        self.other_sales_money = other_sales_money
+        self.other_refunds_money = other_refunds_money
+        self.sales_money = sales_money
+        self.refunds_money = refunds_money
+        self.paid_in_out_money = paid_in_out_money
+        self.expected_money = expected_money
+        self.actual_money = actual_money
+        self.difference_money = difference_money
+        self.creator = creator
+        self.payments = payments
+        self.payment_methods = payment_methods
 
     def __str__(self) -> str:
         """ String representation for the Location Drawer model
@@ -94,7 +113,10 @@ class LocationDrawerModel:
         :param json_initial_money: json dict for Initial Money
         :return: None
         """
-        self._initial_money = LocationInitialMoneyModel(**json_initial_money)
+        if json_initial_money:
+            self._initial_money = LocationInitialMoneyModel(**json_initial_money)
+        else:
+            self._initial_money = None
 
     @property
     def card_sales_money(self) -> LocationInitialMoneyModel:
@@ -111,7 +133,10 @@ class LocationDrawerModel:
         :param json_card_sales_money: json dict for  card sales Money
         :return: None
         """
-        self._card_sales_money = LocationInitialMoneyModel(**json_card_sales_money)
+        if json_card_sales_money:
+            self._card_sales_money = LocationInitialMoneyModel(**json_card_sales_money)
+        else:
+            self._card_sales_money = None
 
     @property
     def card_refunds_money(self) -> LocationInitialMoneyModel:
@@ -128,7 +153,10 @@ class LocationDrawerModel:
         :param json_card_refunds_money: json dict for  card refunds Money
         :return: None
         """
-        self._card_refunds_money = LocationInitialMoneyModel(**json_card_refunds_money)
+        if json_card_refunds_money:
+            self._card_refunds_money = LocationInitialMoneyModel(**json_card_refunds_money)
+        else:
+            self._card_refunds_money = None
 
     @property
     def other_sales_money(self) -> LocationInitialMoneyModel:
@@ -145,7 +173,10 @@ class LocationDrawerModel:
         :param json_card_refunds_money: json dict for other sales Money
         :return: None
         """
-        self._other_sales_money = LocationInitialMoneyModel(**json_other_sales_money)
+        if json_other_sales_money:
+            self._other_sales_money = LocationInitialMoneyModel(**json_other_sales_money)
+        else:
+            self._other_sales_money = None
 
     @property
     def other_refunds_money(self) -> LocationInitialMoneyModel:
@@ -162,7 +193,10 @@ class LocationDrawerModel:
         :param json_other_refunds_money: json dict for other refunds Money
         :return: None
         """
-        self._other_refunds_money = LocationInitialMoneyModel(**json_other_refunds_money)
+        if json_other_refunds_money:
+            self._other_refunds_money = LocationInitialMoneyModel(**json_other_refunds_money)
+        else:
+            self._other_refunds_money = None
 
     @property
     def sales_money(self) -> LocationInitialMoneyModel:
@@ -179,7 +213,10 @@ class LocationDrawerModel:
         :param json_sales_money: json dict for sales Money
         :return: None
         """
-        self._sales_money = LocationInitialMoneyModel(**json_sales_money)
+        if json_sales_money:
+            self._sales_money = LocationInitialMoneyModel(**json_sales_money)
+        else:
+            self._sales_money = None
 
     @property
     def refunds_money(self) -> LocationInitialMoneyModel:
@@ -196,7 +233,10 @@ class LocationDrawerModel:
         :param json_refunds_money: json dict for refunds Money
         :return: None
         """
-        self._refunds_money = LocationInitialMoneyModel(**json_refunds_money)
+        if json_refunds_money:
+            self._refunds_money = LocationInitialMoneyModel(**json_refunds_money)
+        else:
+            self._refunds_money = None
 
     @property
     def paid_in_out_money(self) -> LocationInitialMoneyModel:
@@ -213,7 +253,10 @@ class LocationDrawerModel:
         :param json_paid_in_out_money: json dict for paid in out Money
         :return: None
         """
-        self._paid_in_out_money = LocationInitialMoneyModel(**json_paid_in_out_money)
+        if json_paid_in_out_money:
+            self._paid_in_out_money = LocationInitialMoneyModel(**json_paid_in_out_money)
+        else:
+            self._paid_in_out_money = None
 
     @property
     def expected_money(self) -> LocationInitialMoneyModel:
@@ -230,7 +273,10 @@ class LocationDrawerModel:
         :param json_expected_money: json dict for expected Money
         :return: None
         """
-        self._expected_money = LocationInitialMoneyModel(**json_expected_money)
+        if json_expected_money:
+            self._expected_money = LocationInitialMoneyModel(**json_expected_money)
+        else:
+            self._expected_money = None
 
     @property
     def actual_money(self) -> LocationInitialMoneyModel:
@@ -247,7 +293,10 @@ class LocationDrawerModel:
         :param json_actual_money: json dict for actual Money
         :return: None
         """
-        self._actual_money = LocationInitialMoneyModel(**json_actual_money)
+        if json_actual_money:
+            self._actual_money = LocationInitialMoneyModel(**json_actual_money)
+        else:
+            self._actual_money = None
 
     @property
     def difference_money(self) -> LocationInitialMoneyModel:
@@ -264,7 +313,10 @@ class LocationDrawerModel:
         :param json_difference_money: json dict for difference Money
         :return: None
         """
-        self._difference_money = LocationInitialMoneyModel(**json_difference_money)
+        if json_difference_money:
+            self._difference_money = LocationInitialMoneyModel(**json_difference_money)
+        else:
+            self._difference_money = None
 
     @property
     def creator(self) -> LocationDrawerCreatorModel:
@@ -281,7 +333,10 @@ class LocationDrawerModel:
         :param json_creator: json dict for creator
         :return: None
         """
-        self._creator = LocationDrawerCreatorModel(**json_creator)
+        if json_creator:
+            self._creator = LocationDrawerCreatorModel(**json_creator)
+        else:
+            self._creator = None
 
     @property
     def payments(self) -> List[LocationDrawerPaymentModel]:
@@ -299,7 +354,7 @@ class LocationDrawerModel:
         :return: None
         """
         self._payments = []
-        for json_payment in json_payments:
+        for json_payment in json_payments or []:
             self._payments.append(LocationDrawerPaymentModel(**json_payment))
 
     @property
@@ -318,5 +373,5 @@ class LocationDrawerModel:
         :return: None
         """
         self._payment_methods = []
-        for json_payment_method in json_payment_methods:
+        for json_payment_method in json_payment_methods or []:
             self._payment_methods.append(LocationDrawerPaymentMethodModel(**json_payment_method))

@@ -24,16 +24,14 @@ class CatalogModifierModel(PricingMixin):
     name: str
     _pricing: List[CatalogPricingModel]
 
-    def __init__(self, **kwargs):
+    def __init__(self, id=None, name=None, pricing=[]):
         """map a dict to Catalog Modifier object
 
         :param kwargs: Catalog Modifier json dict
         """
-        self.id = None
-        self.name = None
-        self._pricing = []
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.pricing = pricing
 
     def __str__(self) -> str:
         """ String representation for the Catalog Modifier model

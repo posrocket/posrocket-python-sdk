@@ -44,29 +44,43 @@ class LocationTabModel:
     _pickup: LocationTabPickupModel
     _creator: LocationTabCreatorModel
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 location_id=None,
+                 issuer_id=None,
+                 sequence_number=None,
+                 name=None,
+                 ticket_number=None,
+                 creation_time=None,
+                 status=None,
+                 acknowledged=None,
+                 total_amount=None,
+                 order_option=None,
+                 items=None,
+                 customer=None,
+                 pickup=None,
+                 creator=None
+
+                 ):
         """ map a dict to Location Tab object
 
         :param kwargs: Location Tab json dict
         """
-        self.id = None
-        self.location_id = None
-        self.issuer_id = None
-        self.sequence_number = None
-        self.name = None
-        self.ticket_number = None
-        self.creation_time = None
-        self.status = None
-        self.acknowledged = None
-        self.total_amount = None
-        self._order_option = None
-        self._items = []
-        self._customer = None
-        self._pickup = None
-        self._creator = None
-
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.location_id = location_id
+        self.issuer_id = issuer_id
+        self.sequence_number = sequence_number
+        self.name = name
+        self.ticket_number = ticket_number
+        self.creation_time = creation_time
+        self.status = status
+        self.acknowledged = acknowledged
+        self.total_amount = total_amount
+        self.order_option = order_option
+        self.items = items
+        self.customer = customer
+        self.pickup = pickup
+        self.creator = creator
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model
@@ -90,13 +104,12 @@ class LocationTabModel:
         :param order_option_dict: json dict for order option
         :return: None
         """
-        if order_option_dict:
-            if isinstance(order_option_dict, LocationOrderOptionModel):
-                self._order_option = order_option_dict
-            else:
-                self._order_option = LocationOrderOptionModel(**order_option_dict)
-        else:
+        if not order_option_dict:
             self._order_option = None
+        elif isinstance(order_option_dict, LocationOrderOptionModel):
+            self._order_option = order_option_dict
+        else:
+            self._order_option = LocationOrderOptionModel(**order_option_dict)
 
     @property
     def items(self) -> List[LocationTabItemModel]:
@@ -135,13 +148,12 @@ class LocationTabModel:
         :param customer_dict: json dict for Customer
         :return: None
         """
-        if customer_dict:
-            if type(customer_dict) is DirectoryCustomerModel:
-                raise ValueError("Please use set_customer")
-            else:
-                self._customer = SaleCustomerModel(**customer_dict)
-        else:
+        if not customer_dict:
             self._customer = None
+        elif type(customer_dict) is DirectoryCustomerModel:
+            raise ValueError("Please use set_customer")
+        else:
+            self._customer = SaleCustomerModel(**customer_dict)
 
     @property
     def pickup(self) -> LocationTabPickupModel:

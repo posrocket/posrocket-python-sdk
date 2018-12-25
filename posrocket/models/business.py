@@ -28,24 +28,34 @@ class BusinessModel:
     address: str
     image: str
 
-    def __init__(self, **kwargs):
+    def __init__(self,
+                 id=None,
+                 sub_domain=None,
+                 name=None,
+                 type=None,
+                 country=None,
+                 currency=None,
+                 end_of_fiscal_day=None,
+                 time_offset=None,
+                 phone=None,
+                 address=None,
+                 image=None
+                 ):
         """map a dict to Business object
 
         :param kwargs: Business json dict
         """
-        self.id = None
-        self.sub_domain = None
-        self.name = None
-        self.type = None
-        self.country = None
-        self.currency = None
-        self.end_of_fiscal_day = None
-        self.time_offset = None
-        self.phone = None
-        self.address = None
-        self.image = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.sub_domain = sub_domain
+        self.name = name
+        self.type = type
+        self.country = country
+        self.currency = currency
+        self.end_of_fiscal_day = end_of_fiscal_day
+        self.time_offset = time_offset
+        self.phone = phone
+        self.address = address
+        self.image = image
 
     def __str__(self) -> str:
         """ String representation for the Business model

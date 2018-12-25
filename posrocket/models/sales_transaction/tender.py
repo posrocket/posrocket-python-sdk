@@ -22,17 +22,20 @@ class SalesTransactionTenderModel:
     card_brand: str
     _total_money: LocationInitialMoneyModel
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 type=None,
+                 name=None,
+                 card_brand=None,
+                 total_money=None
+                 ):
         """ map a dict to Sales Transaction Tender object
 
         :param kwargs: Sales Transaction Tender json dict
         """
-        self.type = None
-        self.name = None
-        self.card_brand = None
-        self._total_money = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.type = type
+        self.name = name
+        self.card_brand = card_brand
+        self.total_money = total_money
 
     def __str__(self):
         return f'{self.name}'

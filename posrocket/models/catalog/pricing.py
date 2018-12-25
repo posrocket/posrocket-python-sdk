@@ -22,18 +22,16 @@ class CatalogPricingModel:
     has_inventory_cost: bool
     available: bool
 
-    def __init__(self, **kwargs):
+    def __init__(self, id=None, location_id=None, price=None, has_inventory_cost=None, available=None):
         """map a dict to Catalog Pricing object
 
         :param kwargs: Catalog Pricing json dict
         """
-        self.id = None
-        self.location_id = None
-        self.price = None
-        self.has_inventory_cost = None
-        self.available = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.location_id = location_id
+        self.price = price
+        self.has_inventory_cost = has_inventory_cost
+        self.available = available
 
     def __str__(self) -> str:
         """ String representation for the Catalog Pricing model

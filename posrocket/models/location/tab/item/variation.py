@@ -21,17 +21,20 @@ class LocationTabItemVariationModel:
     type: str
     price: float
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 price=None
+                 ):
         """ map a dict to Location Tab Item Variation object
 
         :param kwargs: Location Tab Item Variation json dict
         """
-        self.id = None
-        self.name = None
-        self.type = None
-        self.price = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.type = type
+        self.price = price
 
     def __str__(self) -> str:
         """ String representation for the Location Tab Item Variation model

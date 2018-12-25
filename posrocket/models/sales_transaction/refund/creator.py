@@ -20,16 +20,18 @@ class SalesTransactionRefundCreatorModel:
     name: str
     email: str
 
-    def __init__(self, **kwargs: dict):
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 email=None
+                 ):
         """ map a dict to Sales Transaction Refund Creator object
 
         :param kwargs: Sales Transaction Refund Creator json dict
         """
-        self.id = None
-        self.name = None
-        self.email = None
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        self.id = id
+        self.name = name
+        self.email = email
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction Refund Creator model
