@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from posrocket.models import LocationExtraChargeModel
+from posrocket.models.location.extra_charge import LocationExtraChargeModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
