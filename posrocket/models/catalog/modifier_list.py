@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from posrocket.models.catalog_modifier import CatalogModifierModel
+from posrocket.models.catalog.modifier import CatalogModifierModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"

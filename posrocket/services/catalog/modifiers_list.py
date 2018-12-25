@@ -3,7 +3,7 @@ Catalog Modifier List Service
 """
 import logging
 
-from posrocket.models.catalog_modifier_list import CatalogModifierListModel
+from posrocket.models.catalog.modifier_list import CatalogModifierListModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 

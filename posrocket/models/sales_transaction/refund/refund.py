@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from posrocket.models.directory_customer import DirectoryCustomerModel
+from posrocket.models.directory.customer import DirectoryCustomerModel
 from posrocket.models.sales_transaction_extra_charges import SalesTransactionExtraChargeModel
 from posrocket.models.sales_transaction_itemization import SalesTransactionItemizationModel
 from posrocket.models.sales_transaction_refund_creator import SalesTransactionRefundCreatorModel

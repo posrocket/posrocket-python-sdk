@@ -3,7 +3,7 @@ Directory Tags Service
 """
 import logging
 
-from posrocket.models.directory_tag import DirectoryTagModel
+from posrocket.models.directory.tag import DirectoryTagModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 

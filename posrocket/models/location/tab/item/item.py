@@ -3,11 +3,11 @@
 """
 from typing import List
 
-from posrocket.models.catalog_modifier import CatalogModifierModel
-from posrocket.models.catalog_variation import CatalogVariationModel
-from posrocket.models.location_tab_item_discount import LocationTabItemDiscountModel
-from posrocket.models.location_tab_item_modifier import LocationTabItemModifierModel
-from posrocket.models.location_tab_item_variation import LocationTabItemVariationModel
+from posrocket.models.catalog.modifier import CatalogModifierModel
+from posrocket.models.catalog.variation import CatalogVariationModel
+from posrocket.models.location.tab.item.item_discount import LocationTabItemDiscountModel
+from posrocket.models.location.tab.item.modifier import LocationTabItemModifierModel
+from posrocket.models.location.tab.item.variation import LocationTabItemVariationModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"

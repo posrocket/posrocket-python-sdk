@@ -3,7 +3,7 @@ Catalog Tax Service
 """
 import logging
 
-from posrocket.models.catalog_tax import CatalogTaxModel
+from posrocket.models.catalog.tax import CatalogTaxModel
 from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 

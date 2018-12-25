@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from posrocket.models.catalog_pricing import CatalogPricingModel
+from posrocket.models.catalog.pricing import CatalogPricingModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"

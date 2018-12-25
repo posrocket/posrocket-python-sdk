@@ -4,9 +4,9 @@
 from datetime import date
 from typing import List
 
-from posrocket.models.directory_address import DirectoryAddressModel
-from posrocket.models.directory_phone import DirectoryPhoneModel
-from posrocket.models.directory_tag import DirectoryTagModel
+from posrocket.models.directory.address import DirectoryAddressModel
+from posrocket.models.directory.phone import DirectoryPhoneModel
+from posrocket.models.directory.tag import DirectoryTagModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
