@@ -1,7 +1,7 @@
 """Location Extra Charge Python model
 
 """
-from posrocket.models.location.location_extra_charge_tax import LocationExtraChargeTaxModel
+from posrocket.models import LocationExtraChargeTaxModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
