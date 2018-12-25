@@ -24,8 +24,12 @@ class DirectoryCustomerService(Requests):
     """
     service_url = "/directory/customers/"
     model_cls = DirectoryCustomerModel
-    get_customers = BaseServiceFactory.make_list_items_response()
-    get_customer_by_id = BaseServiceFactory.make_detail_item_response()
+
+    def get_customers(self, **kwargs):
+        return self.get_list(**kwargs)
+
+    def get_customer_by_id(self, pk):
+        return self.get_detail(pk)
 
     def create(self, customer: DirectoryCustomerModel):
         """Create new customer in POSRocket Customer Directory

@@ -4,7 +4,6 @@ Location Tab Service
 import logging
 
 from posrocket.models import LocationTabModel
-from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import LocationRequiredMixin, Requests
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -24,8 +23,12 @@ class TabService(LocationRequiredMixin, Requests):
     """
     service_url = "/locations/%s/tabs/"
     model_cls = LocationTabModel
-    get_tabs = BaseServiceFactory.make_list_items_response()
-    get_tab_by_id = BaseServiceFactory.make_detail_item_response()
+
+    def get_tabs(self, **kwargs):
+        return self.get_list(**kwargs)
+
+    def get_tab_by_id(self, pk):
+        return self.get_detail(pk)
 
     def assign_pickup(self, tab_id, pickup_object):
         """Assign pickup for a Tab

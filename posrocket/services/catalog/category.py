@@ -4,7 +4,6 @@ Catalog Category Service
 import logging
 
 from posrocket.models.catalog.category import CatalogCategoryModel
-from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -24,5 +23,9 @@ class CatalogCategoryService(Requests):
     """
     service_url = "/catalog/categories/"
     model_cls = CatalogCategoryModel
-    get_items = BaseServiceFactory.make_list_items_response()
-    get_item_by_id = BaseServiceFactory.make_detail_item_response()
+
+    def get_categories(self, **kwargs):
+        return self.get_list(**kwargs)
+
+    def get_category_by_id(self, pk):
+        return self.get_detail(pk)

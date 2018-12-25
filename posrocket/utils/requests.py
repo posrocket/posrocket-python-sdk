@@ -77,3 +77,18 @@ class Requests:
 
     def delete(self, url, **kwargs):
         return self.request("DELETE", url, **kwargs)
+
+    def get_list(self, page, **kwargs):
+        params = kwargs
+        params['page'] = page
+        url = self.get_service_url()
+        response = self.get(url, params=params)
+        result = []
+        for json_location in response['data']:
+            result.append(self.model_cls(**json_location))
+        return result
+
+    def get_detail(self, pk, **kwargs):
+        url = self.get_service_url()
+        response = self.get(f"{url}{pk}/")
+        return self.model_cls(**response)

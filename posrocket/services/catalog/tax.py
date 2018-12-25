@@ -4,7 +4,6 @@ Catalog Tax Service
 import logging
 
 from posrocket.models.catalog.tax import CatalogTaxModel
-from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -24,5 +23,9 @@ class CatalogTaxService(Requests):
     """
     service_url = "/catalog/taxes/"
     model_cls = CatalogTaxModel
-    get_taxes = BaseServiceFactory.make_list_items_response()
-    get_tax_by_id = BaseServiceFactory.make_detail_item_response()
+
+    def get_taxes(self, **kwargs):
+        return self.get_list(**kwargs)
+
+    def get_tax_by_id(self, pk):
+        return self.get_detail(pk)
