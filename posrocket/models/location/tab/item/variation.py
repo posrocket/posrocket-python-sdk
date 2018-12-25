@@ -25,7 +25,8 @@ class LocationTabItemVariationModel:
                  id=None,
                  name=None,
                  type=None,
-                 price=None
+                 price=None,
+                 **kwargs
                  ):
         """ map a dict to Location Tab Item Variation object
 

@@ -4,7 +4,6 @@ Directory Customer Service
 import logging
 
 from posrocket.models import DirectoryCustomerModel
-from posrocket.services.base_service import BaseServiceFactory
 from posrocket.utils.requests import Requests
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"

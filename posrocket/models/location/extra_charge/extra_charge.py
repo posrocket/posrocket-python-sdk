@@ -1,7 +1,7 @@
 """Location Extra Charge Python model
 
 """
-from posrocket.models import LocationExtraChargeTaxModel
+from posrocket.models.location.extra_charge.tax import LocationExtraChargeTaxModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -23,7 +23,7 @@ class LocationExtraChargeModel:
     amount: float
     _tax: LocationExtraChargeTaxModel
 
-    def __init__(self, id=None, name=None, type=None, amount=None, tax=None):
+    def __init__(self, id=None, name=None, type=None, amount=None, tax=None, **kwargs):
         """ map a dict to Location Extra Charge object
 
         :param kwargs: Location Extra Charge json dict

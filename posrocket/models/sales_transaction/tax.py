@@ -30,7 +30,8 @@ class SalesTransactionTaxModel:
                  rate=None,
                  inclusion_type=None,
                  is_custom_amount=None,
-                 applied_money=None
+                 applied_money=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction Tax object
 

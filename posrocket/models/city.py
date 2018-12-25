@@ -26,7 +26,8 @@ class CityModel:
     def __init__(self,
                  id=None,
                  name=None,
-                 areas=None
+                 areas=None,
+                 **kwargs
                  ):
         """ map a dict to City object
 

@@ -28,7 +28,8 @@ class LocationTabPickupModel:
                  eta=None,
                  company=None,
                  driver_name=None,
-                 driver_phone=None
+                 driver_phone=None,
+                 **kwargs
                  ):
         """ map a dict to Location Tab Pickup object
 

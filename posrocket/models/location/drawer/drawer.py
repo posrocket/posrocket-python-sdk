@@ -64,7 +64,8 @@ class LocationDrawerModel:
                  difference_money=None,
                  creator=None,
                  payments=None,
-                 payment_methods=None
+                 payment_methods=None,
+                 **kwargs
                  ):
         """ map a dict to Location Drawer object
 

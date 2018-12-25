@@ -22,7 +22,7 @@ class CatalogPricingModel:
     has_inventory_cost: bool
     available: bool
 
-    def __init__(self, id=None, location_id=None, price=None, has_inventory_cost=None, available=None):
+    def __init__(self, id=None, location_id=None, price=None, has_inventory_cost=None, available=None, **kwargs):
         """map a dict to Catalog Pricing object
 
         :param kwargs: Catalog Pricing json dict

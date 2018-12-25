@@ -24,6 +24,7 @@ class LocationTabCreatorModel:
                  id=None,
                  name=None,
                  email=None,
+                 **kwargs
                  ):
         """ map a dict to Location Tab creator object
 

@@ -18,7 +18,7 @@ class DirectoryTagModel:
     id: str
     name: str
 
-    def __init__(self, id=None, name=None):
+    def __init__(self, id=None, name=None, **kwargs):
         """ map a dict to Directory Tags object
 
         :param kwargs: Directory Tags json dict

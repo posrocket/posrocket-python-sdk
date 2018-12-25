@@ -78,9 +78,8 @@ class Requests:
     def delete(self, url, **kwargs):
         return self.request("DELETE", url, **kwargs)
 
-    def get_list(self, page, **kwargs):
+    def get_list(self, **kwargs):
         params = kwargs
-        params['page'] = page
         url = self.get_service_url()
         response = self.get(url, params=params)
         result = []

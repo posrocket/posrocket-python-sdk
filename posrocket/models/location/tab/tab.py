@@ -59,7 +59,8 @@ class LocationTabModel:
                  items=None,
                  customer=None,
                  pickup=None,
-                 creator=None
+                 creator=None,
+                 **kwargs
 
                  ):
         """ map a dict to Location Tab object

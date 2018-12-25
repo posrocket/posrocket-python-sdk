@@ -26,7 +26,8 @@ class LocationModel:
                  name=None,
                  tax_number=None,
                  phone=None,
-                 address=None
+                 address=None,
+                 **kwargs
                  ):
         """ map a dict to Location object
 

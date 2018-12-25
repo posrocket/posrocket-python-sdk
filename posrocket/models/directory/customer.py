@@ -43,7 +43,8 @@ class DirectoryCustomerModel:
                  country=None,
                  addresses=None,
                  phone_numbers=None,
-                 tags=None
+                 tags=None,
+                 **kwargs
                  ):
         """ map a dict to Directory Customer object
 

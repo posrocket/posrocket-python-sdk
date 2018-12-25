@@ -38,7 +38,8 @@ class LocationTabItemModel:
                  notes=None,
                  variation=None,
                  discounts=None,
-                 modifiers=None
+                 modifiers=None,
+                 **kwargs
                  ):
         """ map a dict to Location Tab Item object
 

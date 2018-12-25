@@ -21,7 +21,7 @@ class LocationDrawerPaymentModel:
     description: str
     time: str
 
-    def __init__(self, id=None, type=None, amount=None, description=None, time=None):
+    def __init__(self, id=None, type=None, amount=None, description=None, time=None, **kwargs):
         """ map a dict to Location Drawer Payment object
 
         :param kwargs: Location Drawer Payment json dict

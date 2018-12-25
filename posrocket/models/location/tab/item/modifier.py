@@ -27,7 +27,8 @@ class LocationTabItemModifierModel:
                  name=None,
                  quantity=None,
                  price=None,
-                 order=None
+                 order=None,
+                 **kwargs
                  ):
         """ map a dict to Location Tab Item Modifier object
 

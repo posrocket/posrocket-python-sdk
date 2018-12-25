@@ -24,7 +24,8 @@ class DirectoryPhoneModel:
                  id=None,
                  number=None,
                  is_primary=None,
-                 is_verified=None
+                 is_verified=None,
+                 **kwargs
                  ):
         """ map a dict to Directory Phone object
 

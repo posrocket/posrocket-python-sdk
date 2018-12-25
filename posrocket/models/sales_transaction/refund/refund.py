@@ -3,12 +3,11 @@
 """
 from typing import List
 
-from posrocket.models.sales_transaction_extra_charges import SalesTransactionExtraChargeModel
-from posrocket.models.sales_transaction_itemization import SalesTransactionItemizationModel
-from posrocket.models.sales_transaction_refund_creator import SalesTransactionRefundCreatorModel
-from posrocket.models.sales_transaction_tender import SalesTransactionTenderModel
-
 from posrocket.models.directory.customer import DirectoryCustomerModel
+from posrocket.models.sales_transaction.extra_charges import SalesTransactionExtraChargeModel
+from posrocket.models.sales_transaction.itemization.itemization import SalesTransactionItemizationModel
+from posrocket.models.sales_transaction.refund.creator import SalesTransactionRefundCreatorModel
+from posrocket.models.sales_transaction.tender import SalesTransactionTenderModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -50,6 +49,7 @@ class SalesTransactionRefundModel:
                  creator=None,
                  extra_charges=None,
                  itemization=None,
+                 **kwargs
 
                  ):
         """ map a dict to Sales Transaction Refund object

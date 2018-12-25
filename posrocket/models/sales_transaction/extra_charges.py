@@ -1,7 +1,7 @@
 """Location Sales Transaction Extra Charges Python model
 
 """
-from posrocket.models import SalesTransactionTaxModel
+from posrocket.models.sales_transaction.tax import SalesTransactionTaxModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -30,7 +30,8 @@ class SalesTransactionExtraChargeModel:
                  type=None,
                  rate=None,
                  amount=None,
-                 tax=None
+                 tax=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction Extra Charge object
 

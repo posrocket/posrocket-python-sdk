@@ -32,7 +32,8 @@ class LocationDiscountModel:
                  rate=None,
                  color=None,
                  pin_required=None,
-                 after_tax=None
+                 after_tax=None,
+                 **kwargs
                  ):
         """ map a dict to Location Discount object
 

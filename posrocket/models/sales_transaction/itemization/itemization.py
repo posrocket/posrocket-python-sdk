@@ -3,12 +3,11 @@
 """
 from typing import List
 
-from posrocket.models.sales_transaction_itemization_modifier import SalesTransactionItemizationModifierModel
-from posrocket.models.sales_transaction_tax import SalesTransactionTaxModel
-
 from posrocket.models.catalog.category import CatalogCategoryModel
 from posrocket.models.catalog.variation import CatalogVariationModel
 from posrocket.models.location.initial_money import LocationInitialMoneyModel
+from posrocket.models.sales_transaction.tax import SalesTransactionTaxModel
+from .modifier import SalesTransactionItemizationModifierModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -51,7 +50,8 @@ class SalesTransactionItemizationModel:
                  category=None,
                  variation=None,
                  taxes=None,
-                 modifiers=None
+                 modifiers=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction Itemization object
 

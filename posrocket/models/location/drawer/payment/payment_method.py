@@ -22,7 +22,7 @@ class LocationDrawerPaymentMethodModel:
     sales: float
     refunds: float
 
-    def __init__(self, id=None, name=None, label=None, type=None, sales=None, refunds=None):
+    def __init__(self, id=None, name=None, label=None, type=None, sales=None, refunds=None, **kwargs):
         """ map a dict to Location Drawer Payment method object
 
         :param kwargs: Location Drawer Payment method json dict

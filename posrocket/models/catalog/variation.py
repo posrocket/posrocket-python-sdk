@@ -29,7 +29,8 @@ class CatalogVariationModel(PricingMixin):
     image: str
     _pricing: List[CatalogPricingModel]
 
-    def __init__(self, id=None, name=None, pricing_type=None, barcode=None, sku=None, image=None, pricing=None):
+    def __init__(self, id=None, name=None, pricing_type=None, barcode=None, sku=None, image=None, pricing=None,
+                 **kwargs):
         """map a dict to Catalog Variation object
 
         :param kwargs: Catalog Variation json dict

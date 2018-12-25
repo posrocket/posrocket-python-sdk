@@ -39,7 +39,8 @@ class BusinessModel:
                  time_offset=None,
                  phone=None,
                  address=None,
-                 image=None
+                 image=None,
+                 **kwargs
                  ):
         """map a dict to Business object
 

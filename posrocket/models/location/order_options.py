@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from posrocket.models import LocationExtraChargeModel
+from posrocket.models.location.extra_charge import LocationExtraChargeModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -26,7 +26,8 @@ class LocationOrderOptionModel:
     def __init__(self,
                  id=None,
                  name=None,
-                 charges=None
+                 charges=None,
+                 **kwargs
                  ):
         """ map a dict to Location Order Option object
 

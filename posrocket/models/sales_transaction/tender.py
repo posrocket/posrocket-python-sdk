@@ -26,7 +26,8 @@ class SalesTransactionTenderModel:
                  type=None,
                  name=None,
                  card_brand=None,
-                 total_money=None
+                 total_money=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction Tender object
 

@@ -24,7 +24,7 @@ class CatalogModifierModel(PricingMixin):
     name: str
     _pricing: List[CatalogPricingModel]
 
-    def __init__(self, id=None, name=None, pricing=[]):
+    def __init__(self, id=None, name=None, pricing=None, **kwargs):
         """map a dict to Catalog Modifier object
 
         :param kwargs: Catalog Modifier json dict
@@ -56,7 +56,7 @@ class CatalogModifierModel(PricingMixin):
         :return: None
         """
         self._pricing = []
-        for json_price in json_pricing:
+        for json_price in json_pricing or []:
             self._pricing.append(CatalogPricingModel(**json_price))
 
     def is_available_in_location(self, location_id: str) -> float:

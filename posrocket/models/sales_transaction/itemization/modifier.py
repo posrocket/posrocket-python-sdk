@@ -26,7 +26,8 @@ class SalesTransactionItemizationModifierModel:
                  id=None,
                  name=None,
                  quantity=None,
-                 applied_money=None
+                 applied_money=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction Itemization Modifier object
 

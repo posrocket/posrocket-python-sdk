@@ -22,6 +22,7 @@ class LocationInitialMoneyModel:
     def __init__(self,
                  amount=None,
                  currency=None,
+                 **kwargs
 
                  ):
         """ map a dict to Location Initial Money object

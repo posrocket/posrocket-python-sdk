@@ -21,7 +21,7 @@ class CatalogTaxModel:
     rate: float
     inclusion_type: str
 
-    def __init__(self, id=None, name=None, rate=None, inclusion_type=None):
+    def __init__(self, id=None, name=None, rate=None, inclusion_type=None, **kwargs):
         """map a dict to Catalog Tax object
 
         :param kwargs: Catalog Tax json dict

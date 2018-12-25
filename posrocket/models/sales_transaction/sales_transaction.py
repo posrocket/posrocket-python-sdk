@@ -5,8 +5,12 @@ from datetime import date
 from typing import List
 
 from posrocket.models import DirectoryCustomerModel, LocationInitialMoneyModel, LocationTabCreatorModel, \
-    LocationTabModel, SalesTransactionExtraChargeModel, SalesTransactionItemizationModel, SalesTransactionRefundModel, \
-    SalesTransactionTaxModel, SalesTransactionTenderModel
+    LocationTabModel
+from .extra_charges import SalesTransactionExtraChargeModel
+from .itemization.itemization import SalesTransactionItemizationModel
+from .refund.refund import SalesTransactionRefundModel
+from .tax import SalesTransactionTaxModel
+from .tender import SalesTransactionTenderModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -67,7 +71,8 @@ class SalesTransactionModel:
                  taxes=None,
                  extra_charges=None,
                  itemization=None,
-                 refunds=None
+                 refunds=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction object
 

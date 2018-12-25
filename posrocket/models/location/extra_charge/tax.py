@@ -25,7 +25,8 @@ class LocationExtraChargeTaxModel:
                  id=None,
                  name=None,
                  inclusion_type=None,
-                 rate=None
+                 rate=None,
+                 **kwargs
                  ):
         """ map a dict to Location Extra Charge Tax object
 

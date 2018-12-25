@@ -27,6 +27,7 @@ class DirectoryAddressModel:
     apartment: str
     extras: str
     is_primary: bool
+    is_verified: bool
     _city: CityModel
     _area: AreaModel
 
@@ -40,8 +41,10 @@ class DirectoryAddressModel:
                  apartment=None,
                  extras=None,
                  is_primary=None,
+                 is_verified=None,
                  city=None,
-                 area=None
+                 area=None,
+                 **kwargs
                  ):
         """ map a dict to Directory Address object
 
@@ -56,6 +59,7 @@ class DirectoryAddressModel:
         self.apartment = apartment
         self.extras = extras
         self.is_primary = is_primary
+        self.is_verified = is_verified
         self.city = city
         self.area = area
 

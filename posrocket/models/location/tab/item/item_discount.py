@@ -29,7 +29,8 @@ class LocationTabItemDiscountModel:
                  type=None,
                  rate=None,
                  amount=None,
-                 value=None
+                 value=None,
+                 **kwargs
                  ):
         """ map a dict to Location Tab Item Discount object
 

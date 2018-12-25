@@ -23,7 +23,8 @@ class SalesTransactionRefundCreatorModel:
     def __init__(self,
                  id=None,
                  name=None,
-                 email=None
+                 email=None,
+                 **kwargs
                  ):
         """ map a dict to Sales Transaction Refund Creator object
 

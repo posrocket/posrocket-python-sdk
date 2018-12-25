@@ -27,7 +27,8 @@ class CatalogModifierListModel:
     price: float
     _modifiers: List[CatalogModifierModel]
 
-    def __init__(self, id=None, name=None, type=None, quantifiable=None, order=None, price=None, modifiers=[]):
+    def __init__(self, id=None, name=None, type=None, quantifiable=None, order=None, price=None, modifiers=None,
+                 **kwargs):
         """map a dict to Catalog Modifier list object
 
         :param kwargs: Catalog Modifier list json dict
@@ -63,5 +64,5 @@ class CatalogModifierListModel:
         :return: None
         """
         self._modifiers = []
-        for json_modifier in json_modifiers:
+        for json_modifier in json_modifiers or []:
             self._modifiers.append(CatalogModifierModel(**json_modifier))

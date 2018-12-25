@@ -20,7 +20,8 @@ class AreaModel:
 
     def __init__(self,
                  id=None,
-                 name=None
+                 name=None,
+                 **kwargs
                  ):
         """ map a dict to Area object
 

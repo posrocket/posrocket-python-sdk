@@ -19,7 +19,7 @@ class LocationDrawerCreatorModel:
     first_name: str
     last_name: str
 
-    def __init__(self, id=None, first_name=None, last_name=None):
+    def __init__(self, id=None, first_name=None, last_name=None, **kwargs):
         """ map a dict to Location Drawer Creator object
 
         :param kwargs: Location Drawer Creator json dict

@@ -19,7 +19,7 @@ class CatalogCategoryModel:
     id: str
     name: str
 
-    def __init__(self, id=None, name=None):
+    def __init__(self, id=None, name=None, **kwargs):
         """map a dict to Catalog Category object
 
         :param kwargs: Catalog Category json dict

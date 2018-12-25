@@ -45,10 +45,11 @@ class CatalogItemModel:
                  description=None,
                  image=None,
                  category=None,
-                 variations=[],
-                 modifier_lists=[],
+                 variations=None,
+                 modifier_lists=None,
                  taxes=None,
-                 tags=None):
+                 tags=None,
+                 **kwargs):
         """map a dict to Catalog Item object
 
         :param kwargs: Catalog Item json dict
@@ -87,8 +88,8 @@ class CatalogItemModel:
         :param json_category: json dict for category
         :return: None
         """
-        if self._category:
-            self._category = CatalogCategoryModel(**self._category)
+        if json_category:
+            self._category = CatalogCategoryModel(**json_category)
         else:
             self._category = None
 
@@ -108,7 +109,7 @@ class CatalogItemModel:
         :return: None
         """
         self._variations = []
-        for json_variation in json_variations:
+        for json_variation in json_variations or []:
             self._variations.append(CatalogVariationModel(**json_variation))
 
     @property
@@ -127,7 +128,7 @@ class CatalogItemModel:
         :return: None
         """
         self._modifier_lists = []
-        for json_modifier_list in json_modifier_lists:
+        for json_modifier_list in json_modifier_lists or []:
             self._modifier_lists.append(CatalogModifierListModel(**json_modifier_list))
 
     @property
@@ -146,7 +147,7 @@ class CatalogItemModel:
         :return: None
         """
         self._taxes = []
-        for json_tax in json_taxes:
+        for json_tax in json_taxes or []:
             self._taxes.append(CatalogTaxModel(**json_tax))
 
     @property
@@ -165,7 +166,7 @@ class CatalogItemModel:
         :return: None
         """
         self._tags = []
-        for json_tag in json_tags:
+        for json_tag in json_tags or []:
             self._tags.append(CatalogTagModel(**json_tag))
 
     def get_variation_by_id(self, variation_id):
@@ -185,8 +186,8 @@ class CatalogItemModel:
         :param modifier_id: modifier id to get the modifier if its in the modifier list of the item
         :return: the modifier if it exists
         """
-        for modifier_list in self.modifier_lists:
-            for modifier in modifier_list.modifiers:
+        for modifier_list in self.modifier_lists or []:
+            for modifier in modifier_list.modifiers or []:
                 if modifier.id == modifier_id:
                     return modifier
         return None

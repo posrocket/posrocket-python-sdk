@@ -17,7 +17,7 @@ class CountryModel:
     """
     country: str
 
-    def __init__(self, country=None):
+    def __init__(self, country=None, **kwargs):
         """ map a dict to Country object
 
         :param kwargs: Country json dict
