@@ -10,7 +10,7 @@ __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
 __credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
 __license__ = "GPL"
-__version__ = "1.0.1"
+__version__ = "0.1.0"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
@@ -21,7 +21,7 @@ logger = logging.getLogger("django")
 class LocationExtraChargeService(LocationRequiredMixin, Requests):
     """Extra Charge service class to allow retrieving location extra charge related data
     """
-    service_url = "/locations/%s/extra-charges/"
+    service_url = "/locations/%s/extra-charges"
     model_cls = LocationExtraChargeModel
 
     def get_extra_charges(self, **kwargs):

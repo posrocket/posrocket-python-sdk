@@ -42,9 +42,9 @@ class Requests:
         self.access_token = access_token
         self.client = OAuth2Session(token=access_token)
         if prod:
-            self.base_url = 'https://developer.posrocket.com/api/v1'
+            self.base_url = 'https://developer.posrocket.com/api/v0.1.0'
         else:
-            self.base_url = 'http://launchpad.rocketinfra.com/api/v1'
+            self.base_url = 'http://launchpad.rocketinfra.com/api/v0.1.0'
 
     def get_service_url(self):
         return self.service_url
@@ -89,5 +89,5 @@ class Requests:
 
     def get_detail(self, pk, **kwargs):
         url = self.get_service_url()
-        response = self.get(f"{url}{pk}/")
+        response = self.get(f"{url}/{pk}")
         return self.model_cls(**response)

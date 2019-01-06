@@ -10,7 +10,7 @@ __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
 __credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
 __license__ = "GPL"
-__version__ = "1.0.1"
+__version__ = "0.1.0"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
@@ -21,7 +21,7 @@ logger = logging.getLogger("pos-python")
 class DirectoryCustomerService(Requests):
     """Customer service class to allow retrieving customer related data
     """
-    service_url = "/directory/customers/"
+    service_url = "/directory/customers"
     model_cls = DirectoryCustomerModel
 
     def get_customers(self, **kwargs):
@@ -49,7 +49,7 @@ class DirectoryCustomerService(Requests):
         """
         data = self.prepare_payload(customer)
         logger.info(data)
-        response = self.put(f"{self.get_service_url()}{customer.id}/", data)
+        response = self.put(f"{self.get_service_url()}/{customer.id}", data)
         logger.info(response)
         result = self.model_cls(**response['data'])
         return result
