@@ -31,6 +31,7 @@ from posrocket.services.directory import DirectoryCustomerService
 from posrocket.services.geo import CountryService
 from posrocket.services.location import LocationService
 from posrocket.utils.assert_value import assert_value
+from posrocket.webhook import WebhookReceiver
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -121,6 +122,32 @@ class LaunchPadClient(object):
             auth=auth
         )
         return self.token
+
+    def hook_receiver(self,
+                      payload,
+                      headers,
+                      tab_create=None,
+                      tab_update=None,
+                      item_create=None,
+                      item_update=None,
+                      item_delete=None,
+                      sale_create=None,
+                      refund_create=None,
+                      customer_create=None,
+                      customer_update=None,
+                      customer_delete=None) -> LocationClient:
+        hookreciver = WebhookReceiver(self,
+                                      tab_create,
+                                      tab_update,
+                                      item_create,
+                                      item_update,
+                                      item_delete,
+                                      sale_create,
+                                      refund_create,
+                                      customer_create,
+                                      customer_update,
+                                      customer_delete)
+        return hookreciver.handle(payload, headers)
 
     def location(self, location_id: str) -> LocationClient:
         """ build location client to allow access to that location data
