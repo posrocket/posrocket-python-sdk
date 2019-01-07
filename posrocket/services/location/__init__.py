@@ -3,7 +3,7 @@ from posrocket.utils.requests import Requests
 
 
 class LocationService(Requests):
-    service_url = "/locations/"
+    service_url = "/locations"
     model_cls = LocationModel
 
     def get_locations(self, **kwargs):
