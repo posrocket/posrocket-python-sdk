@@ -32,9 +32,10 @@ class WebhookReceiver:
         self.events["customer. delete"] = customer_delete
 
     def verify_signature(self, payload, sig):
-        hashing = hmac.new(self.pos_client.client_secret, json.dumps(payload), hashlib.sha1)
+        hashing = hmac.new(bytearray(self.pos_client.client_secret, "utf-8"),
+                           bytearray(json.dumps(payload), "utf-8"), hashlib.sha1)
         return hashing == sig
 
     def handle(self, payload, headers):
-        assert self.verify_signature(payload, headers['X-Hook-Signature']), "invalid signature"
+        assert self.verify_signature(payload, headers['HTTP_X_HOOK_SIGNATURE']), "invalid signature"
         return self.events[headers['X-Hook-Event']](payload, headers)
