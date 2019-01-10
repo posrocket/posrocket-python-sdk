@@ -37,7 +37,6 @@ class WebhookReceiver:
                  ):
         """
         create web callback for the apps to deliver the data immediately when specific events occurs
-            :param self: 
             :param pos_client:  the event name that will trigger the callback when client data get modified
             :param tab_create= None:  the event name that will trigger the callback when a tab get created
             :param tab_update= None:  the event name that will trigger the callback when a tab get updated
@@ -65,7 +64,6 @@ class WebhookReceiver:
     def verify_signature(self, payload, sig):
         """
         verfiy if the client secret still truthful or not.
-            :param self: 
             :param payload: request data
             :param sig:  the request signiture
 
@@ -79,8 +77,7 @@ class WebhookReceiver:
 
     def handle(self, payload, headers):
         """
-        verify that the signiture is truthful then handle the web callback when a an event triggered
-            :param self: 
+        verify that the signiture is truthful then handle the web callback when an event triggered
             :param payload:  request data
             :param headers:  request header
             
