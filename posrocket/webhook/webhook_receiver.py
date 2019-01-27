@@ -1,9 +1,6 @@
 import hashlib
 import hmac
 import json
-import logging
-
-logger = logging.getLogger("django")
 
 
 class WebhookReceiver:
@@ -37,8 +34,6 @@ class WebhookReceiver:
     def verify_signature(self, payload, sig):
         hashing = hmac.new(bytes(self.pos_client.client_secret, "utf-8"),
                            bytes(json.dumps(payload), "utf-8"), hashlib.sha1)
-        logger.info(hashing.hexdigest())
-        logger.info(sig)
         return hashing.hexdigest() == sig
 
     def handle(self, payload, headers):

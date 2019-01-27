@@ -5,6 +5,7 @@ from requests_oauthlib import OAuth2Session
 from posrocket.excaptions import NotFoundException
 from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedException
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
+from posrocket.utils.pagination import Pagination
 
 logger = logging.getLogger("django")
 
@@ -82,10 +83,8 @@ class Requests:
         params = kwargs
         url = self.get_service_url()
         response = self.get(url, params=params)
-        result = []
-        for json_location in response['data']:
-            result.append(self.model_cls(**json_location))
-        return result
+        pagination = Pagination(response, self.model_cls)
+        return pagination
 
     def get_detail(self, pk, **kwargs):
         url = self.get_service_url()

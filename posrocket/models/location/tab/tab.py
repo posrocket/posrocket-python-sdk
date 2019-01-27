@@ -61,7 +61,6 @@ class LocationTabModel:
                  pickup=None,
                  creator=None,
                  **kwargs
-
                  ):
         """ map a dict to Location Tab object
 
