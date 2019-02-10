@@ -49,10 +49,12 @@ class TabService(LocationRequiredMixin, Requests):
     def create(self, tab: LocationTabModel):
         data = {
             "name": tab.name,
-            "customer": {"id": tab.customer.id, "address": {"id": tab.customer.address.id},
+            "customer": {"id": tab.customer.id,
                          "phone_number": {"id": tab.customer.phone_number.id}},
             "items": []
         }
+        if tab.customer.address:
+            data["customer"]["address"] = {"id": tab.customer.address.id}
         if tab.order_option:
             data['order_option'] = {"id": tab.order_option.id}
         for item in tab.items:
