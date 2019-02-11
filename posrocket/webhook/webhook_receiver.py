@@ -10,7 +10,7 @@ __author__ = "Ahmad Bazadough"
 __copyright__ = "Copyright 2019, POSRocket"
 __credits__ = ["Ahmad Bazadough"]
 __license__ = "GPL"
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __maintainer__ = "Ahmad Bazadough"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
@@ -21,19 +21,18 @@ logger = logging.getLogger("posrocket-sdk")
 class WebhookReceiver:
     events = {}
 
-
     def __init__(self,
                  pos_client,
-                 tab_create = None,
-                 tab_update = None,
-                 item_create = None,
-                 item_update = None,
-                 item_delete = None,
-                 sale_create = None,
-                 refund_create = None,
-                 customer_create = None,
-                 customer_update = None,
-                 customer_delete = None,
+                 tab_create=None,
+                 tab_update=None,
+                 item_create=None,
+                 item_update=None,
+                 item_delete=None,
+                 sale_create=None,
+                 refund_create=None,
+                 customer_create=None,
+                 customer_update=None,
+                 customer_delete=None,
                  ):
         """
         create web callback for the apps to deliver the data immediately when specific events occurs
