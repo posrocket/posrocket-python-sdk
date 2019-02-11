@@ -41,7 +41,7 @@ class TabService(LocationRequiredMixin, Requests):
             "driver_name": pickup_object.driver_name,
             "driver_phone": pickup_object.driver_phone
         }
-        assign_pickup_url = self.get_service_url() + str(tab_id) + '/assign_pickup/'
+        assign_pickup_url = f"{self.get_service_url()}/{str(tab_id)}/assign_pickup"
         response = self.post(assign_pickup_url, data)
         result = self.model_cls(**response)
         return result
