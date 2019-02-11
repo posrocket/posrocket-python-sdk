@@ -60,6 +60,7 @@ class LocationTabModel:
                  customer=None,
                  pickup=None,
                  creator=None,
+                 comments=None,
                  **kwargs
                  ):
         """ map a dict to Location Tab object
@@ -81,6 +82,7 @@ class LocationTabModel:
         self.customer = customer
         self.pickup = pickup
         self.creator = creator
+        self.comments = comments
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model

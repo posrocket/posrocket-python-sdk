@@ -6,7 +6,7 @@ from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
 from posrocket.utils.pagination import Pagination
 from requests_oauthlib import OAuth2Session
 
-logger = logging.getLogger("django")
+logger = logging.getLogger("posrocket-sdk")
 
 
 def _handle_response(result):
