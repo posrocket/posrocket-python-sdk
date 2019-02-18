@@ -51,7 +51,8 @@ class TabService(LocationRequiredMixin, Requests):
             "name": tab.name,
             "customer": {"id": tab.customer.id,
                          "phone_number": {"id": tab.customer.phone_number.id}},
-            "items": []
+            "items": [],
+            "custom_amount": []
         }
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
@@ -62,7 +63,10 @@ class TabService(LocationRequiredMixin, Requests):
                 "id": item.id,
                 "quantity": item.quantity,
                 "variation": {"id": item.variation.id},
-                "discounts": [
+                # "discounts": [
+                #     # {"id": "{{discount_id}}"}
+                # ],
+                "custom_discounts": [
                     # {"id": "{{discount_id}}"}
                 ],
                 "modifiers": []
@@ -75,7 +79,22 @@ class TabService(LocationRequiredMixin, Requests):
                     "quantity": modifier.quantity,
                     "order": modifier.order
                 })
+
+            for custom_discount in item.custom_discounts:
+                tmp_discount = {
+                    "name": custom_discount.name,
+                    "type": custom_discount.type,
+                }
+                if custom_discount.value:
+                    tmp_discount['value'] = custom_discount.value
+                if custom_discount.rate:
+                    tmp_discount['rate'] = custom_discount.rate
+                dict_item['custom_discounts'].append(tmp_discount)
             data['items'].append(dict_item)
+
+        for custom_amounts in tab.custom_amounts:
+            data['custom_amount'].append({"name": custom_amounts.name, "price": custom_amounts.price})
+
         logger.info(data)
         response = self.post(self.get_service_url(), data)
         print(response)

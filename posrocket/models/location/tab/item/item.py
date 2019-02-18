@@ -29,6 +29,7 @@ class LocationTabItemModel:
     notes: str
     _variation: LocationTabItemVariationModel
     _discounts: List[LocationTabItemDiscountModel]
+    _custom_discounts: List[LocationTabItemDiscountModel]
     _modifiers: List[LocationTabItemModifierModel]
 
     def __init__(self,
@@ -38,6 +39,7 @@ class LocationTabItemModel:
                  notes=None,
                  variation=None,
                  discounts=None,
+                 custom_discounts=None,
                  modifiers=None,
                  **kwargs
                  ):
@@ -51,6 +53,7 @@ class LocationTabItemModel:
         self.notes = notes
         self.variation = variation
         self.discounts = discounts
+        self.custom_discounts = custom_discounts
         self.modifiers = modifiers
 
     def __str__(self) -> str:
@@ -100,6 +103,25 @@ class LocationTabItemModel:
             self._discounts.append(LocationTabItemDiscountModel(**discount))
 
     @property
+    def custom_discounts(self) -> List[LocationTabItemDiscountModel]:
+        """getter for Tab item discounts
+
+        :return: list of discounts for the Tab item
+        """
+        return self._custom_discounts
+
+    @custom_discounts.setter
+    def custom_discounts(self, custom_discounts_list: list):
+        """setter for Tab item discounts
+
+        :param custom_discounts_list:json list of discount dicts
+        :return: None
+        """
+        self._custom_discounts = []
+        for custom_discount in custom_discounts_list or []:
+            self._custom_discounts.append(LocationTabItemDiscountModel(**custom_discount))
+
+    @property
     def modifiers(self) -> List[LocationTabItemModifierModel]:
         """getter for Tab item modifiers
 
@@ -127,3 +149,6 @@ class LocationTabItemModel:
         self._modifiers.append(LocationTabItemModifierModel(id=modifier.id, name=modifier.name, quantity=quantity,
                                                             price=modifier.get_price_for_location(location_id),
                                                             order=order))
+
+    def add_custom_discount(self, custom_discount):
+        self._custom_discounts.append(LocationTabItemDiscountModel(**custom_discount))

@@ -15,7 +15,7 @@ __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
-logger = logging.getLogger("pos-python")
+logger = logging.getLogger("posrocket-sdk")
 
 
 class DirectoryCustomerService(Requests):
@@ -94,6 +94,7 @@ class DirectoryCustomerService(Requests):
                 "is_primary": phone_number.is_primary,
                 "is_verified": phone_number.is_verified,
             }
+            logger.info(phone_number)
             if phone_number.id:
                 tmp_phone['id'] = phone_number.id
             data['phone_numbers'].append(tmp_phone)
