@@ -228,7 +228,7 @@ class LocationTabModel:
             order += 1
         self.items.append(tab_item)
 
-        for custom_discount in custom_discounts:
+        for custom_discount in custom_discounts or []:
             tab_item.add_custom_discount(custom_discount)
         return tab_item
 
