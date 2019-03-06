@@ -26,7 +26,8 @@ from requests_oauthlib import OAuth2Session
 
 from posrocket.location_client import LocationClient
 from posrocket.services.business import BusinessService
-from posrocket.services.catalog import CatalogCategoryService, CatalogItemService
+from posrocket.services.catalog import CatalogCategoryService, CatalogItemService, CatalogModifierListService, \
+    CatalogTagService, CatalogTaxService
 from posrocket.services.directory import DirectoryCustomerService
 from posrocket.services.geo import CountryService
 from posrocket.services.location import LocationService
@@ -210,3 +211,30 @@ class LaunchPadClient(object):
         """
         assert_value(self.token)
         return CountryService(self.token, prod=self.prod)
+
+    @property
+    def catalog_modifier_list_service(self) -> CatalogModifierListService:
+        """build country service object to inquire about countries
+
+        :return: country service object
+        """
+        assert_value(self.token)
+        return CatalogModifierListService(self.token, prod=self.prod)
+
+    @property
+    def catalog_tax_service(self) -> CatalogTaxService:
+        """build country service object to inquire about countries
+
+        :return: country service object
+        """
+        assert_value(self.token)
+        return CatalogTaxService(self.token, prod=self.prod)
+
+    @property
+    def catalog_tag_service(self) -> CatalogTagService:
+        """build country service object to inquire about countries
+
+        :return: country service object
+        """
+        assert_value(self.token)
+        return CatalogTagService(self.token, prod=self.prod)
