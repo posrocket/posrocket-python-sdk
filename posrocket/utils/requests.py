@@ -1,10 +1,11 @@
 import logging
 
+from requests_oauthlib import OAuth2Session
+
 from posrocket.excaptions import NotFoundException
 from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedException
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
 from posrocket.utils.pagination import Pagination
-from requests_oauthlib import OAuth2Session
 
 logger = logging.getLogger("django")
 
@@ -20,7 +21,9 @@ def _handle_response(result):
         raise NotAuthenticatedException(
             "Invalid Access Token")
     if result.content:
-        return result.json()
+        output = result.json()
+        logger.info(output)
+        return output
     else:
         return ""
 
