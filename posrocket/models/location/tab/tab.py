@@ -190,6 +190,7 @@ class LocationTabModel:
         getter for Tab Pickup
         :return: Tab Pickup object
         """
+
         return self._pickup
 
     @pickup.setter
@@ -201,6 +202,8 @@ class LocationTabModel:
         """
         if pickup_dict:
             self._pickup = LocationTabPickupModel(**pickup_dict)
+        else:
+            self._pickup=None
 
     @property
     def creator(self) -> LocationTabCreatorModel:
