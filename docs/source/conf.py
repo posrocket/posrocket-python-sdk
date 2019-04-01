@@ -17,7 +17,6 @@ import sys
 
 sys.path.insert(0, os.path.abspath('../..'))
 
-
 # -- Project information -----------------------------------------------------
 
 project = u'posrocket-python-sdk'
@@ -25,10 +24,9 @@ copyright = u'2018, POSRocket'
 author = u'Ahmad Bazadough & Hamzeh Darwish'
 
 # The short X.Y version
-version = u'0.1'
+version = u'0.2'
 # The full version, including alpha/beta/rc tags
-release = u'0.1.0'
-
+release = u'0.2.0'
 
 # -- General configuration ---------------------------------------------------
 
@@ -71,7 +69,6 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = None
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -108,7 +105,6 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'posrocket-python-sdkdoc'
 
-
 # -- Options for LaTeX output ------------------------------------------------
 
 latex_elements = {
@@ -137,7 +133,6 @@ latex_documents = [
      u'Ahmad Bazadough \\& Hamzeh Darwish', 'manual'),
 ]
 
-
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
@@ -146,7 +141,6 @@ man_pages = [
     (master_doc, 'posrocket-python-sdk', u'posrocket-python-sdk Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -158,7 +152,6 @@ texinfo_documents = [
      author, 'posrocket-python-sdk', 'One line description of project.',
      'Miscellaneous'),
 ]
-
 
 # -- Options for Epub output -------------------------------------------------
 
@@ -176,6 +169,5 @@ epub_title = project
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
-
 
 # -- Extension configuration -------------------------------------------------

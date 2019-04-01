@@ -10,6 +10,7 @@ from posrocket.utils.pagination import Pagination
 logger = logging.getLogger("django")
 
 
+
 def _handle_response(result):
     if result.status_code == 404:
         raise NotFoundException("The endpoint you requested does not exist")
@@ -20,6 +21,7 @@ def _handle_response(result):
     if result.status_code == 401:
         raise NotAuthenticatedException(
             "Invalid Access Token")
+    logger.info(result.content)
     if result.content:
         output = result.json()
         logger.info(output)
@@ -44,9 +46,9 @@ class Requests:
         self.access_token = access_token
         self.client = OAuth2Session(token=access_token)
         if prod:
-            self.base_url = 'https://developer.posrocket.com/api/v0.1.0'
+            self.base_url = 'https://developer.posrocket.com/api/v0.2.0'
         else:
-            self.base_url = 'http://launchpad.rocketinfra.com/api/v0.1.0'
+            self.base_url = 'http://launchpad.rocketinfra.com/api/v0.2.0'
 
     def get_service_url(self):
         return self.service_url
@@ -78,6 +80,8 @@ class Requests:
         return self.request("PATCH", url, json=data, **kwargs)
 
     def delete(self, url, **kwargs):
+        logger.info('***********8')
+        logger.info(url)
         return self.request("DELETE", url, **kwargs)
 
     def get_list(self, **kwargs):
