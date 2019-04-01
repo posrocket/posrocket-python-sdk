@@ -10,6 +10,7 @@ from posrocket.utils.pagination import Pagination
 logger = logging.getLogger("posrocket-sdk")
 
 
+
 def _handle_response(result):
     if result.status_code == 404:
         raise NotFoundException("The endpoint you requested does not exist")
@@ -20,6 +21,7 @@ def _handle_response(result):
     if result.status_code == 401:
         raise NotAuthenticatedException(
             "Invalid Access Token")
+    logger.info(result.content)
     if result.content:
         output = result.json()
         logger.info(output)
@@ -78,6 +80,8 @@ class Requests:
         return self.request("PATCH", url, json=data, **kwargs)
 
     def delete(self, url, **kwargs):
+        logger.info('***********8')
+        logger.info(url)
         return self.request("DELETE", url, **kwargs)
 
     def get_list(self, **kwargs):

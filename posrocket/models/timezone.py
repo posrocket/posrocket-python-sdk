@@ -1,4 +1,4 @@
-"""Country Python model
+"""Area Python model
 
 """
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -11,27 +11,31 @@ __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
 
-class CountryModel:
-    """ mapper class for City object from Json Dict
+class TimezoneModel:
+    """ mapper class for Area object from Json Dict
 
     """
     id: str
     name: str
-    code: str
+    offset: int
 
-    def __init__(self, id=None, name=None, code=None, **kwargs):
-        """ map a dict to Country object
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 offset=None,
+                 **kwargs
+                 ):
+        """ map a dict to Area object
 
-        :param kwargs: Country json dict
+        :param kwargs: Area json dict
         """
-
         self.id = id
         self.name = name
-        self.code = code
+        self.offset = offset
 
     def __str__(self) -> str:
-        """ String representation for the Country model
+        """ String representation for the Area model
 
-        :return: Country name
+        :return: Area name
         """
         return f'{self.name}'

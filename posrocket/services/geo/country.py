@@ -28,13 +28,16 @@ class CountryService(Requests):
     def get_countries(self, **kwargs):
         return self.get_list(**kwargs)
 
-    def get_country_by_name(self, country_code):
+    def get_country_by_code(self, country_code):
         result = []
         url = self.get_service_url()
         response = self.get(f"{url}/{country_code}")
+        logger.info('****************************************************')
         logger.info(response)
         for json_location in response['data']:
             result.append(CityModel(**json_location))
+        logger.info('&&&&&&&&&&&&&&&&&&&&&&')
+        logger.info(result)
         return result
 
     def get_country_city_areas(self, country_code, city_id):
