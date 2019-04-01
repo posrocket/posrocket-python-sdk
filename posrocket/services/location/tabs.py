@@ -15,7 +15,7 @@ __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
-logger = logging.getLogger("django")
+logger = logging.getLogger("posrocket-sdk")
 
 
 class TabService(LocationRequiredMixin, Requests):
@@ -52,7 +52,8 @@ class TabService(LocationRequiredMixin, Requests):
             "customer": {"id": tab.customer.id,
                          "phone_number": {"id": tab.customer.phone_number.id}},
             "items": [],
-            "custom_amount": []
+            "custom_amount": [],
+            "comments": tab.comments
         }
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
@@ -97,6 +98,5 @@ class TabService(LocationRequiredMixin, Requests):
 
         logger.info(data)
         response = self.post(self.get_service_url(), data)
-        print(response)
         result = self.model_cls(**response)
         return result

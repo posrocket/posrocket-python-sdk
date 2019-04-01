@@ -15,19 +15,23 @@ class CountryModel:
     """ mapper class for City object from Json Dict
 
     """
-    country: str
+    id: str
+    name: str
+    code: str
 
-    def __init__(self, country=None, **kwargs):
+    def __init__(self, id=None, name=None, code=None, **kwargs):
         """ map a dict to Country object
 
         :param kwargs: Country json dict
         """
 
-        self.country = country
+        self.id = id
+        self.name = name
+        self.code = code
 
     def __str__(self) -> str:
         """ String representation for the Country model
 
         :return: Country name
         """
-        return f'{self.country}'
+        return f'{self.name}'

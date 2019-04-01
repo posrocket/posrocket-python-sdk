@@ -64,6 +64,7 @@ class LocationTabModel:
                  customer=None,
                  pickup=None,
                  creator=None,
+                 comments=None,
                  **kwargs
                  ):
         """ map a dict to Location Tab object
@@ -86,6 +87,7 @@ class LocationTabModel:
         self.customer = customer
         self.pickup = pickup
         self.creator = creator
+        self.comments = comments
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model
@@ -188,6 +190,7 @@ class LocationTabModel:
         getter for Tab Pickup
         :return: Tab Pickup object
         """
+
         return self._pickup
 
     @pickup.setter
@@ -199,6 +202,8 @@ class LocationTabModel:
         """
         if pickup_dict:
             self._pickup = LocationTabPickupModel(**pickup_dict)
+        else:
+            self._pickup=None
 
     @property
     def creator(self) -> LocationTabCreatorModel:
