@@ -7,7 +7,7 @@ from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedExc
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
 from posrocket.utils.pagination import Pagination
 
-logger = logging.getLogger("django")
+logger = logging.getLogger("posrocket-sdk")
 
 
 
