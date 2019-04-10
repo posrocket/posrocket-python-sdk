@@ -53,7 +53,7 @@ class TabService(LocationRequiredMixin, Requests):
                          "phone_number": {"id": tab.customer.phone_number.id}},
             "items": [],
             "custom_amount": [],
-            "comments": tab.comments
+            # "comments": tab.comments
         }
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
