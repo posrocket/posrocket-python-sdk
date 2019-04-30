@@ -21,9 +21,10 @@ class LocationExtraChargeModel:
     name: str
     type: str
     amount: float
+    rate: float
     _tax: LocationExtraChargeTaxModel
 
-    def __init__(self, id=None, name=None, type=None, amount=None, tax=None, **kwargs):
+    def __init__(self, id=None, name=None, type=None, amount=None, rate=None, tax=None, **kwargs):
         """ map a dict to Location Extra Charge object
 
         :param kwargs: Location Extra Charge json dict
@@ -33,6 +34,7 @@ class LocationExtraChargeModel:
         self.name = name
         self.type = type
         self.amount = amount
+        self.rate = rate
         self.tax = tax
 
     def __str__(self) -> str:
