@@ -66,7 +66,7 @@ class CatalogVariationModel(PricingMixin):
         :return: None
         """
         self._pricing = []
-        for json_price in json_pricing:
+        for json_price in json_pricing or []:
             self._pricing.append(CatalogPricingModel(**json_price))
 
     def get_price_for_location(self, location_id: str) -> float:

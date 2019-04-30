@@ -1,12 +1,14 @@
 import logging
 
+from requests_oauthlib import OAuth2Session
+
 from posrocket.excaptions import NotFoundException
 from posrocket.excaptions.not_authenticated_exception import NotAuthenticatedException
 from posrocket.excaptions.not_authorized_exception import NotAuthorizedException
 from posrocket.utils.pagination import Pagination
-from requests_oauthlib import OAuth2Session
 
 logger = logging.getLogger("posrocket-sdk")
+
 
 
 def _handle_response(result):
@@ -19,8 +21,11 @@ def _handle_response(result):
     if result.status_code == 401:
         raise NotAuthenticatedException(
             "Invalid Access Token")
+    logger.info(result.content)
     if result.content:
-        return result.json()
+        output = result.json()
+        logger.info(output)
+        return output
     else:
         return ""
 
@@ -75,6 +80,8 @@ class Requests:
         return self.request("PATCH", url, json=data, **kwargs)
 
     def delete(self, url, **kwargs):
+        logger.info('***********8')
+        logger.info(url)
         return self.request("DELETE", url, **kwargs)
 
     def get_list(self, **kwargs):

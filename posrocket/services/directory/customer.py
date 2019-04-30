@@ -35,15 +35,19 @@ class DirectoryCustomerService(Requests):
 
         :param customer: DirectoryCustomerModel type object
         """
+
+        logger.info(customer)
         data = self.prepare_payload(customer)
         print(data)
+        logger.info(data)
         response = self.post(self.get_service_url(), data)
+        logger.info(response)
         print(response)
         result = self.model_cls(**response['data'])
         return result
 
     def update(self, customer: DirectoryCustomerModel):
-        """Create new customer in POSRocket Customer Directory
+        """Update customer in POSRocket Customer Directory
 
         :param customer: DirectoryCustomerModel type object
         """
@@ -53,6 +57,13 @@ class DirectoryCustomerService(Requests):
         logger.info(response)
         result = self.model_cls(**response['data'])
         return result
+
+    def remove(self, customer_id):
+        """Delete customer in POSRocket Customer Directory
+        """
+        response = self.delete(f"{self.get_service_url()}/{customer_id}")
+        logger.info(response)
+        return response
 
     def prepare_payload(self, customer):
         data = {
