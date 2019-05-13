@@ -10,10 +10,12 @@ from posrocket.models.catalog.modifier import CatalogModifierModel
 from posrocket.models.catalog.variation import CatalogVariationModel
 from posrocket.models.directory.customer import DirectoryCustomerModel, SaleCustomerModel
 from posrocket.models.location.order_options import LocationOrderOptionModel
+from posrocket.models.location.tab.category import LocationTabCategoryModel
 from posrocket.models.location.tab.creator import LocationTabCreatorModel
 from posrocket.models.location.tab.custom_amount import LocationTabCustomAmountModel
 from posrocket.models.location.tab.item.item import LocationTabItemModel
 from posrocket.models.location.tab.pickup import LocationTabPickupModel
+from posrocket.models.location.tab.template import LocationTabTemplateModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -46,6 +48,8 @@ class LocationTabModel:
     _customer: SaleCustomerModel
     _pickup: LocationTabPickupModel
     _creator: LocationTabCreatorModel
+    _category: LocationTabCategoryModel
+    _template: LocationTabTemplateModel
 
     def __init__(self,
                  id=None,
@@ -65,6 +69,8 @@ class LocationTabModel:
                  pickup=None,
                  creator=None,
                  comments=None,
+                 category=None,
+                 template=None,
                  **kwargs
                  ):
         """ map a dict to Location Tab object
@@ -88,6 +94,8 @@ class LocationTabModel:
         self.pickup = pickup
         self.creator = creator
         self.comments = comments
+        self.category = category
+        self.template = template
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model
@@ -203,7 +211,7 @@ class LocationTabModel:
         if pickup_dict:
             self._pickup = LocationTabPickupModel(**pickup_dict)
         else:
-            self._pickup=None
+            self._pickup = None
 
     @property
     def creator(self) -> LocationTabCreatorModel:
@@ -223,8 +231,45 @@ class LocationTabModel:
         if creator_dict:
             self._creator = LocationTabCreatorModel(**creator_dict)
 
+    @property
+    def category(self) -> LocationTabCategoryModel:
+        """
+        getter for Tab category
+        :return: Tab category object
+        """
+        return self._category
+
+    @category.setter
+    def category(self, category_dict: dict):
+        """setter for Tab category
+
+        :param customer_dict: json dict for category
+        :return: None
+        """
+        if category_dict:
+            self._category = LocationTabCategoryModel(**category_dict)
+
+    @property
+    def template(self) -> LocationTabTemplateModel:
+        """
+        getter for Tab template
+        :return: Tab template object
+        """
+        return self._template
+
+    @template.setter
+    def template(self, template_dict: dict):
+        """setter for Tab template
+
+        :param customer_dict: json dict for template
+        :return: None
+        """
+        if template_dict:
+            self._template = LocationTabTemplateModel(**template_dict)
+
     def add_item(self, item: CatalogItemModel, item_quantity: int, notes: str, variation: CatalogVariationModel,
-                 modifiers: List[Dict[CatalogModifierModel, int]] = [], custom_discounts=None) -> LocationTabItemModel:
+                 modifiers: List[Dict[CatalogModifierModel, int]] = [], custom_discounts=None,
+                 discounts=None) -> LocationTabItemModel:
         tab_item = LocationTabItemModel(id=item.id, name=item.name, quantity=item_quantity, notes=notes)
         tab_item.add_variation(variation, self.location_id)
         order = 0
@@ -235,6 +280,8 @@ class LocationTabModel:
 
         for custom_discount in custom_discounts or []:
             tab_item.add_custom_discount(custom_discount)
+        for discount in discounts or []:
+            tab_item.add_discount(discount)
         return tab_item
 
     def add_custom_amount(self, name: str, price: int) -> LocationTabCustomAmountModel:
