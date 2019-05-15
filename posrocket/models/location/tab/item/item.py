@@ -152,3 +152,6 @@ class LocationTabItemModel:
 
     def add_custom_discount(self, custom_discount):
         self._custom_discounts.append(LocationTabItemDiscountModel(**custom_discount))
+
+    def add_discount(self, discount):
+        self.discounts.append(discount)

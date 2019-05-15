@@ -64,9 +64,9 @@ class TabService(LocationRequiredMixin, Requests):
                 "id": item.id,
                 "quantity": item.quantity,
                 "variation": {"id": item.variation.id},
-                # "discounts": [
-                #     # {"id": "{{discount_id}}"}
-                # ],
+                "discounts": [
+                    #     # {"id": "{{discount_id}}"}
+                ],
                 "custom_discounts": [
                     # {"id": "{{discount_id}}"}
                 ],
@@ -91,6 +91,9 @@ class TabService(LocationRequiredMixin, Requests):
                 if custom_discount.rate:
                     tmp_discount['rate'] = custom_discount.rate
                 dict_item['custom_discounts'].append(tmp_discount)
+
+            for discount in item.discounts:
+                dict_item['discounts'].append({"id": discount.id})
             data['items'].append(dict_item)
 
         for custom_amounts in tab.custom_amounts:
