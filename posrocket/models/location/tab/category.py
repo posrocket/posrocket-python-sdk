@@ -1,4 +1,4 @@
-"""Location Tab Creator Python model
+"""Location Tab category Python model
 
 """
 
@@ -13,7 +13,7 @@ __status__ = "Beta"
 
 
 class LocationTabCategoryModel:
-    """ mapper class for Location Tab Creator object from Json Dict
+    """ mapper class for Location Tab category object from Json Dict
 
     """
     id: str
@@ -24,16 +24,16 @@ class LocationTabCategoryModel:
                  name=None,
                  **kwargs
                  ):
-        """ map a dict to Location Tab creator object
+        """ map a dict to Location Tab category object
 
-        :param kwargs: Location Tab json creator dict
+        :param kwargs: Location Tab json category dict
         """
         self.id = id
         self.name = name
 
     def __str__(self) -> str:
-        """ String representation for the Location Tab creator model
+        """ String representation for the Location Tab category model
 
-        :return: Location Tab creator name
+        :return: Location Tab category name
         """
         return f'{self.name}'
