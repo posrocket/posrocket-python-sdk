@@ -46,6 +46,20 @@ class TabService(LocationRequiredMixin, Requests):
         result = self.model_cls(**response)
         return result
 
+    def cancel(self, tab: LocationTabModel):
+        """Assign pickup for a Tab
+
+        :param tab: POSRocket Tab
+        """
+        data = {
+            "id": tab.id,
+            "location_id": tab.location_id,
+        }
+        cancle_tab_url = f"{self.get_service_url()}/locations/{str(tab.location_id)}/tabs/{str(tab.id)}/cancel"
+        response = self.post(cancle_tab_url, data)
+        result = self.model_cls(**response)
+        return result
+
     def create(self, tab: LocationTabModel):
         data = {
             "name": tab.name,
