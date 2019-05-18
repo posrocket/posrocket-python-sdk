@@ -52,7 +52,7 @@ class TabService(LocationRequiredMixin, Requests):
         :param tab: POSRocket Tab
         """
         cancel_tab_url = f"{self.get_service_url()}/{str(tab.id)}/cancel"
-        response = self.post(cancel_tab_url)
+        response = self.post(cancel_tab_url, {})
         result = self.model_cls(**response)
         return result
 
