@@ -1,6 +1,7 @@
 """Business Python model
 
 """
+from posrocket.models.timezone import TimezoneModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -23,10 +24,10 @@ class BusinessModel:
     country: str
     currency: str
     end_of_fiscal_day: str
-    time_offset: str
     phone: str
     address: str
     image: str
+    _timezone: TimezoneModel
 
     def __init__(self,
                  id=None,
@@ -36,7 +37,7 @@ class BusinessModel:
                  country=None,
                  currency=None,
                  end_of_fiscal_day=None,
-                 time_offset=None,
+                 timezone=None,
                  phone=None,
                  address=None,
                  image=None,
@@ -53,10 +54,30 @@ class BusinessModel:
         self.country = country
         self.currency = currency
         self.end_of_fiscal_day = end_of_fiscal_day
-        self.time_offset = time_offset
         self.phone = phone
         self.address = address
         self.image = image
+        self.timezone = timezone
+
+    @property
+    def timezone(self) -> TimezoneModel:
+        """
+        getter for timezone
+        :return: timezone
+        """
+        return self._timezone
+
+    @timezone.setter
+    def timezone(self, json_timezone: dict):
+        """setter for timezone
+
+        :param json_timezone: json timezone dicts
+        :return: None
+        """
+        if json_timezone:
+            self._timezone = TimezoneModel(**json_timezone)
+        else:
+            self._timezone = None
 
     def __str__(self) -> str:
         """ String representation for the Business model

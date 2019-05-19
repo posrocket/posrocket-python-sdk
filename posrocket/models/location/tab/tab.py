@@ -10,9 +10,12 @@ from posrocket.models.catalog.modifier import CatalogModifierModel
 from posrocket.models.catalog.variation import CatalogVariationModel
 from posrocket.models.directory.customer import DirectoryCustomerModel, SaleCustomerModel
 from posrocket.models.location.order_options import LocationOrderOptionModel
+from posrocket.models.location.tab.category import LocationTabCategoryModel
 from posrocket.models.location.tab.creator import LocationTabCreatorModel
+from posrocket.models.location.tab.custom_amount import LocationTabCustomAmountModel
 from posrocket.models.location.tab.item.item import LocationTabItemModel
 from posrocket.models.location.tab.pickup import LocationTabPickupModel
+from posrocket.models.location.tab.template import LocationTabTemplateModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
@@ -40,9 +43,13 @@ class LocationTabModel:
     total_amount: float
     _order_option: LocationOrderOptionModel
     _items: List[LocationTabItemModel]
+    _custom_amounts: [LocationTabCustomAmountModel]
+
     _customer: SaleCustomerModel
     _pickup: LocationTabPickupModel
     _creator: LocationTabCreatorModel
+    _category: LocationTabCategoryModel
+    _template: LocationTabTemplateModel
 
     def __init__(self,
                  id=None,
@@ -57,11 +64,14 @@ class LocationTabModel:
                  total_amount=None,
                  order_option=None,
                  items=None,
+                 custom_amounts=None,
                  customer=None,
                  pickup=None,
                  creator=None,
+                 comments=None,
+                 category=None,
+                 template=None,
                  **kwargs
-
                  ):
         """ map a dict to Location Tab object
 
@@ -79,9 +89,13 @@ class LocationTabModel:
         self.total_amount = total_amount
         self.order_option = order_option
         self.items = items
+        self.custom_amounts = custom_amounts
         self.customer = customer
         self.pickup = pickup
         self.creator = creator
+        self.comments = comments
+        self.category = category
+        self.template = template
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model
@@ -135,6 +149,28 @@ class LocationTabModel:
                 self._items.append(LocationTabItemModel(**item))
 
     @property
+    def custom_amounts(self) -> List[LocationTabCustomAmountModel]:
+        """getter for Tab items
+
+        :return: list of items for the Tab
+        """
+        return self._custom_amounts
+
+    @custom_amounts.setter
+    def custom_amounts(self, custom_amounts_list: List[dict]):
+        """setter for Tab items
+
+        :param items_list:json list of item dicts
+        :return: None
+        """
+        self._custom_amounts = []
+        for custom_amount in custom_amounts_list or []:
+            if type(custom_amount) is LocationTabItemModel:
+                self._custom_amounts.append(custom_amount)
+            else:
+                self._items.append(LocationTabItemModel(**custom_amount))
+
+    @property
     def customer(self) -> SaleCustomerModel:
         """
         getter for Tab Customer
@@ -162,6 +198,7 @@ class LocationTabModel:
         getter for Tab Pickup
         :return: Tab Pickup object
         """
+
         return self._pickup
 
     @pickup.setter
@@ -173,6 +210,8 @@ class LocationTabModel:
         """
         if pickup_dict:
             self._pickup = LocationTabPickupModel(**pickup_dict)
+        else:
+            self._pickup = None
 
     @property
     def creator(self) -> LocationTabCreatorModel:
@@ -192,8 +231,45 @@ class LocationTabModel:
         if creator_dict:
             self._creator = LocationTabCreatorModel(**creator_dict)
 
+    @property
+    def category(self) -> LocationTabCategoryModel:
+        """
+        getter for Tab category
+        :return: Tab category object
+        """
+        return self._category
+
+    @category.setter
+    def category(self, category_dict: dict):
+        """setter for Tab category
+
+        :param customer_dict: json dict for category
+        :return: None
+        """
+        if category_dict:
+            self._category = LocationTabCategoryModel(**category_dict)
+
+    @property
+    def template(self) -> LocationTabTemplateModel:
+        """
+        getter for Tab template
+        :return: Tab template object
+        """
+        return self._template
+
+    @template.setter
+    def template(self, template_dict: dict):
+        """setter for Tab template
+
+        :param customer_dict: json dict for template
+        :return: None
+        """
+        if template_dict:
+            self._template = LocationTabTemplateModel(**template_dict)
+
     def add_item(self, item: CatalogItemModel, item_quantity: int, notes: str, variation: CatalogVariationModel,
-                 modifiers: List[Dict[CatalogModifierModel, int]] = []) -> LocationTabItemModel:
+                 modifiers: List[Dict[CatalogModifierModel, int]] = [], custom_discounts=None,
+                 discounts=None) -> LocationTabItemModel:
         tab_item = LocationTabItemModel(id=item.id, name=item.name, quantity=item_quantity, notes=notes)
         tab_item.add_variation(variation, self.location_id)
         order = 0
@@ -201,7 +277,17 @@ class LocationTabModel:
             tab_item.add_modifier(modifier['modifier'], modifier['quantity'], self.location_id, order)
             order += 1
         self.items.append(tab_item)
+
+        for custom_discount in custom_discounts or []:
+            tab_item.add_custom_discount(custom_discount)
+        for discount in discounts or []:
+            tab_item.add_discount(discount)
         return tab_item
+
+    def add_custom_amount(self, name: str, price: int) -> LocationTabCustomAmountModel:
+        custom_amount_item = LocationTabCustomAmountModel(name=name, price=price)
+        self.custom_amounts.append(custom_amount_item)
+        return custom_amount_item
 
     def set_customer(self, customer: DirectoryCustomerModel, address: DirectoryAddressModel,
                      phone: DirectoryPhoneModel):

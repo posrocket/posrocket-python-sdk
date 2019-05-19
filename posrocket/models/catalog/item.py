@@ -59,7 +59,7 @@ class CatalogItemModel:
         self.name = name
         self.color = color
         self.description = description
-        self.image = image
+        self.image = image['256'] if image and '256' in image else None
         self.category = category
         self.variations = variations
         self.modifier_lists = modifier_lists
