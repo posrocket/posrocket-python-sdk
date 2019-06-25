@@ -29,6 +29,7 @@ class CatalogItemModel:
     """
     id: str
     name: str
+    local_name: str
     color: str
     description: str
     image: str
@@ -41,6 +42,7 @@ class CatalogItemModel:
     def __init__(self,
                  id=None,
                  name=None,
+                 local_name=None,
                  color=None,
                  description=None,
                  image=None,
@@ -57,6 +59,7 @@ class CatalogItemModel:
 
         self.id = id
         self.name = name
+        self.local_name = local_name
         self.color = color
         self.description = description
         self.image = image['256'] if image and '256' in image else None

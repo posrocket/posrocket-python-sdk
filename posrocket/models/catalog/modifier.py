@@ -22,15 +22,17 @@ class CatalogModifierModel(PricingMixin):
     """
     id: str
     name: str
+    local_name: str
     _pricing: List[CatalogPricingModel]
 
-    def __init__(self, id=None, name=None, pricing=None, **kwargs):
+    def __init__(self, id=None, name=None, local_name=None, pricing=None, **kwargs):
         """map a dict to Catalog Modifier object
 
         :param kwargs: Catalog Modifier json dict
         """
         self.id = id
         self.name = name
+        self.local_name = local_name
         self.pricing = pricing
 
     def __str__(self) -> str:

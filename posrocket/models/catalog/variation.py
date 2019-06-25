@@ -23,13 +23,14 @@ class CatalogVariationModel(PricingMixin):
     """
     id: str
     name: str
+    local_name: str
     pricing_type: str
     barcode: str
     sku: str
     image: str
     _pricing: List[CatalogPricingModel]
 
-    def __init__(self, id=None, name=None, pricing_type=None, barcode=None, sku=None, image=None, pricing=None,
+    def __init__(self, id=None, name=None, local_name=None, pricing_type=None, barcode=None, sku=None, image=None, pricing=None,
                  **kwargs):
         """map a dict to Catalog Variation object
 
@@ -37,6 +38,7 @@ class CatalogVariationModel(PricingMixin):
         """
         self.id = id
         self.name = name
+        self.local_name = local_name
         self.pricing_type = pricing_type
         self.barcode = barcode
         self.sku = sku
