@@ -18,14 +18,16 @@ class CatalogCategoryModel:
     """
     id: str
     name: str
+    local_name: str
 
-    def __init__(self, id=None, name=None, **kwargs):
+    def __init__(self, id=None, name=None, local_name=None, **kwargs):
         """map a dict to Catalog Category object
 
         :param kwargs: Catalog Category json dict
         """
         self.id = id
         self.name = name
+        self.local_name = local_name
 
     def __str__(self) -> str:
         """ String representation for the Catalog Category model
