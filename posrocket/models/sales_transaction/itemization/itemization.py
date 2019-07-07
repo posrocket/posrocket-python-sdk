@@ -4,8 +4,8 @@
 from typing import List
 
 from posrocket.models.catalog.category import CatalogCategoryModel
-from posrocket.models.catalog.variation import CatalogVariationModel
 from posrocket.models.location.initial_money import LocationInitialMoneyModel
+from posrocket.models.sales_transaction.itemization.variation import SalesTransactionItemizationVariationModel
 from posrocket.models.sales_transaction.tax import SalesTransactionTaxModel
 from .modifier import SalesTransactionItemizationModifierModel
 
@@ -33,7 +33,7 @@ class SalesTransactionItemizationModel:
     _discount_money: LocationInitialMoneyModel
     _net_sales_money: LocationInitialMoneyModel
     _category: CatalogCategoryModel
-    _variation: CatalogVariationModel
+    _variation: SalesTransactionItemizationVariationModel
     _taxes: List[SalesTransactionTaxModel]
     _modifiers: List[SalesTransactionItemizationModifierModel]
 
@@ -212,7 +212,7 @@ class SalesTransactionItemizationModel:
             self._category = CatalogCategoryModel(**category_dict)
 
     @property
-    def variation(self) -> CatalogVariationModel:
+    def variation(self) -> SalesTransactionItemizationVariationModel:
         """
         getter for Sales Transaction Itemization Variation
         :return: Sales Transaction Itemization Variation object
@@ -228,7 +228,7 @@ class SalesTransactionItemizationModel:
         """
         self._variation = None
         if variation_dict:
-            self._variation = CatalogVariationModel(**variation_dict)
+            self._variation = SalesTransactionItemizationVariationModel(**variation_dict)
 
     @property
     def modifiers(self) -> List[SalesTransactionItemizationModifierModel]:
