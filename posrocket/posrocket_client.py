@@ -31,6 +31,7 @@ from posrocket.services.catalog import CatalogCategoryService, CatalogItemServic
 from posrocket.services.directory import DirectoryCustomerService
 from posrocket.services.geo import CountryService
 from posrocket.services.location import LocationService
+from posrocket.services.payment_method import PaymentMethodService
 from posrocket.utils.assert_value import assert_value
 from posrocket.webhook import WebhookReceiver
 
@@ -238,3 +239,12 @@ class LaunchPadClient(object):
         """
         assert_value(self.token)
         return CatalogTagService(self.token, prod=self.prod)
+
+    @property
+    def payment_methods_service(self) -> PaymentMethodService:
+        """build catalog item service to inquire about catalog item
+
+        :return: catalog item service
+        """
+        assert_value(self.token)
+        return PaymentMethodService(self.token, prod=self.prod)
