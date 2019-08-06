@@ -32,6 +32,7 @@ class CatalogItemModel:
     local_name: str
     color: str
     description: str
+    local_description: str
     image: str
     _category: CatalogCategoryModel
     _variations: List[CatalogVariationModel]
@@ -45,6 +46,7 @@ class CatalogItemModel:
                  local_name=None,
                  color=None,
                  description=None,
+                 local_description=None,
                  image=None,
                  category=None,
                  variations=None,
@@ -62,6 +64,7 @@ class CatalogItemModel:
         self.local_name = local_name
         self.color = color
         self.description = description
+        self.local_description = local_description
         self.image = image['256'] if image and '256' in image else None
         self.category = category
         self.variations = variations
