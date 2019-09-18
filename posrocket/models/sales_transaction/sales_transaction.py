@@ -1,6 +1,7 @@
 """Location Sales Transaction Python model
 
 """
+import logging
 from datetime import date
 from typing import List
 
@@ -20,7 +21,7 @@ __version__ = "0.1.0"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
-
+logger = logging.getLogger("django")
 
 class SalesTransactionModel:
     """ mapper class for Sales Transaction object from Json Dict
@@ -384,6 +385,8 @@ class SalesTransactionModel:
         """
         self._extra_charges = []
         for extra_charge in extra_charges_list or []:
+            logging.info('HAHAHHAHAHHAHA')
+            logging.info(extra_charge)
             self._extra_charges.append(SalesTransactionExtraChargeModel(**extra_charge))
 
     @property
