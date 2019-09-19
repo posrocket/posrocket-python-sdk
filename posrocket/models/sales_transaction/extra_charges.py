@@ -28,8 +28,9 @@ class SalesTransactionExtraChargeModel:
     rate: float
     amount: float
     _tax: SalesTransactionTaxModel
-    _applied_money: LocationInitialMoneyModel
-    _total_money: LocationInitialMoneyModel
+
+    # _applied_money: LocationInitialMoneyModel
+    # _total_money: LocationInitialMoneyModel
 
     def __init__(self,
                  id=None,
@@ -65,15 +66,15 @@ class SalesTransactionExtraChargeModel:
     @property
     def tax(self) -> SalesTransactionTaxModel:
         """
-        getter for Sales Transaction Extra Charge
-        :return: Sales Transaction Extra Charge object
+        getter for Sales Transaction Extra Charge Tax
+        :return: Sales Transaction Extra Charge Tax object
         """
         return self._tax
 
     @tax.setter
     def tax(self, tax_dict: dict):
-        """setter for Sales Transaction Extra Charge Discount
-        :param tax_dict: json dict for extra charge
+        """setter for Sales Transaction Extra Charge Tax
+        :param tax_dict: json dict for extra charge tax
         :return: None
         """
         if tax_dict:
@@ -84,18 +85,37 @@ class SalesTransactionExtraChargeModel:
     @property
     def applied_money(self) -> LocationInitialMoneyModel:
         """
-        getter for Sales Transaction Extra Charge
-        :return: Sales Transaction Extra Charge object
+        getter for Sales Transaction Extra Charge Applied Money
+        :return: Sales Transaction Extra Charge Applied Money object
         """
         return self._applied_money
 
     @applied_money.setter
     def applied_money(self, applied_money_dict: dict):
-        """setter for Sales Transaction Extra Charge Discount
-        :param applied_money_dict: json dict for extra charge
+        """setter for Sales Transaction Extra Charge Applied Money
+        :param applied_money_dict: json dict for extra charge applied money
         :return: None
         """
         if applied_money_dict:
-            self.applied_money = LocationInitialMoneyModel(**applied_money_dict)
+            self._applied_money = LocationInitialMoneyModel(**applied_money_dict)
         else:
-            self.applied_money = None
+            self._applied_money = None
+
+    @property
+    def total_money(self) -> LocationInitialMoneyModel:
+        """
+        getter for Sales Transaction Extra Charge Total Money
+        :return: Sales Transaction Extra Charge Total Money object
+        """
+        return self._total_money
+
+    @total_money.setter
+    def total_money(self, total_money_dict: dict):
+        """setter for Sales Transaction Extra Charge Total Money
+        :param total_money_dict: json dict for extra charge total money
+        :return: None
+        """
+        if total_money_dict:
+            self._total_money = LocationInitialMoneyModel(**total_money_dict)
+        else:
+            self._total_money = None
