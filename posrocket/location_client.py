@@ -4,6 +4,7 @@ Launchpad Location Client
 from posrocket.services.location.discount import LocationDiscountService
 from posrocket.services.location.drawer import LocationDrawerService
 from posrocket.services.location.extra_charge import LocationExtraChargeService
+from posrocket.services.location.item import LocationItemService
 from posrocket.services.location.order_option import LocationOrderOptionService
 from posrocket.services.location.sales import LocationSaleService
 from posrocket.services.location.tabs import TabService
@@ -87,3 +88,12 @@ class LocationClient(object):
         """
         assert_value(self.launch_pad_client.token)
         return LocationSaleService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
+
+    @property
+    def location_item_service(self) -> LocationItemService:
+        """build location item service to inquire about catalog item
+
+        :return: location item service
+        """
+        assert_value(self.launch_pad_client.token)
+        return LocationItemService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)

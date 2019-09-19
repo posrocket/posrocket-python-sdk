@@ -7,8 +7,12 @@ class Pagination:
         self.has_previous = True if 'previous' in response and response['previous'] else False
         self.previous = response['previous'] if 'previous' in response else None
 
-        for json_location in response['data']:
-            self.records.append(self.model_cls(**json_location))
+        try:
+            for json_location in response['data']:
+                self.records.append(self.model_cls(**json_location))
+        except Exception as e:
+            for item in response:
+                self.records.append(self.model_cls(**item))
 
     def __iter__(self):
         return iter(self.records)
