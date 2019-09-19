@@ -28,9 +28,8 @@ class SalesTransactionExtraChargeModel:
     rate: float
     amount: float
     _tax: SalesTransactionTaxModel
-
-    # _applied_money: LocationInitialMoneyModel
-    # _total_money: LocationInitialMoneyModel
+    _applied_money: LocationInitialMoneyModel
+    _total_money: LocationInitialMoneyModel
 
     def __init__(self,
                  id=None,
