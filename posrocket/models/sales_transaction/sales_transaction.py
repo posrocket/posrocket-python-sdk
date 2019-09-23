@@ -1,6 +1,7 @@
 """Location Sales Transaction Python model
 
 """
+import logging
 from datetime import date
 from typing import List
 
@@ -20,6 +21,7 @@ __version__ = "0.1.0"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
+logger = logging.getLogger("posrocket-sdk")
 
 
 class SalesTransactionModel:
