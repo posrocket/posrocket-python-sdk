@@ -72,7 +72,7 @@ class DirectoryCustomerService(Requests):
             "email": customer.email,
             "gender": customer.gender,
             "dob": customer.dob,
-            "country": customer.country,
+            "country": customer.country if customer.country else "JO",
             "addresses": [],
             "phone_numbers": []
         }
