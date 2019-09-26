@@ -6,6 +6,7 @@ from typing import List
 
 from posrocket.models import DirectoryCustomerModel, LocationInitialMoneyModel, LocationTabCreatorModel, \
     LocationTabModel
+from posrocket.models.directory.customer import SaleCustomerModel
 from .extra_charges import SalesTransactionExtraChargeModel
 from .itemization.itemization import SalesTransactionItemizationModel
 from .refund.refund import SalesTransactionRefundModel
@@ -41,7 +42,7 @@ class SalesTransactionModel:
     _total_collected_money: LocationInitialMoneyModel
     _extra_charges_money: LocationInitialMoneyModel
     _creator: LocationTabCreatorModel
-    _customer: DirectoryCustomerModel
+    _customer: SaleCustomerModel
     _tab: LocationTabModel
     _tenders: List[SalesTransactionTenderModel]
     _taxes: List[SalesTransactionTaxModel]
@@ -309,7 +310,7 @@ class SalesTransactionModel:
             self._creator = None
 
     @property
-    def customer(self) -> DirectoryCustomerModel:
+    def customer(self) -> SaleCustomerModel:
         """
         getter for Sales Transaction Customer
         :return: Sales Transaction Customer object
@@ -324,7 +325,7 @@ class SalesTransactionModel:
         :return: None
         """
         if customer_dict:
-            self._customer = DirectoryCustomerModel(**customer_dict)
+            self._customer = SaleCustomerModel(**customer_dict)
         else:
             self._customer = None
 
