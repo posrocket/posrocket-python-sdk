@@ -66,7 +66,7 @@ class LaunchPadClient(object):
         if prod:
             self.base_url = "https://developer.posrocket.com"
         else:
-            self.base_url = "http://launchpad.rocketinfra.com"
+            self.base_url = "https://launchpad.rocketinfra.com"
 
     @property
     def state(self) -> str:
@@ -97,7 +97,7 @@ class LaunchPadClient(object):
         """Method for fetching an access token from the token endpoint.
 
         :param authorization_response_url: Authorization response URL, the callback
-                                           URL of the request back to you.
+                      h                     URL of the request back to you.
         :param redirect_uri:Redirect URI you registered as callback
         :return: A token dict
         """
