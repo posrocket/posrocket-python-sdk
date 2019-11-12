@@ -66,7 +66,7 @@ class LaunchPadClient(object):
         if prod:
             self.base_url = "https://developer.posrocket.com"
         else:
-            self.base_url = "http://launchpad.rocketinfra.com"
+            self.base_url = "https://launchpad.rocketinfra.com"
 
     @property
     def state(self) -> str:
