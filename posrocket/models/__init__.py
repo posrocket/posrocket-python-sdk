@@ -56,4 +56,5 @@ __all__ = [
     'SalesTransactionRefundModel',
     'SalesTransactionRefundCreatorModel',
     'SalesTransactionExtraChargeModel',
+    'SalesTransactionModel'
 ]
