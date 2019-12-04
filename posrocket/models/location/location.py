@@ -1,7 +1,6 @@
 """Location Python model
 
 """
-from posrocket.models import position
 from posrocket.models.position import PositionModel
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
