@@ -1,6 +1,9 @@
 """Location Python model
 
 """
+from posrocket.models import position
+from posrocket.models.position import PositionModel
+
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
 __credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
@@ -20,6 +23,7 @@ class LocationModel:
     tax_number: str
     phone: str
     address: str
+    _position:PositionModel
 
     def __init__(self,
                  id=None,
@@ -27,6 +31,7 @@ class LocationModel:
                  tax_number=None,
                  phone=None,
                  address=None,
+                 position=None,
                  **kwargs
                  ):
         """ map a dict to Location object
@@ -38,6 +43,7 @@ class LocationModel:
         self.tax_number = tax_number
         self.phone = phone
         self.address = address
+        self.position = position
 
     def __str__(self) -> str:
         """ String representation for the Location model
@@ -45,3 +51,23 @@ class LocationModel:
         :return: Location name
         """
         return f'{self.name}'
+
+    @property
+    def position(self) -> PositionModel:
+        """
+        getter for Location position
+        :return: Location Position object
+        """
+        return self._position
+
+    @position.setter
+    def position(self, json_position: dict):
+        """setter for Location position
+
+        :param json_position: json dict for Location position
+        :return: None
+        """
+        if json_position:
+            self._position = PositionModel(**json_position)
+        else:
+            self.position = None

@@ -1,6 +1,8 @@
 """Directory Address Python model
 
 """
+from posrocket.models.position import PositionModel
+
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
 __credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
@@ -30,6 +32,7 @@ class DirectoryAddressModel:
     is_verified: bool
     _city: CityModel
     _area: AreaModel
+    _position: PositionModel
 
     def __init__(self,
                  id=None,
@@ -44,6 +47,7 @@ class DirectoryAddressModel:
                  is_verified=None,
                  city=None,
                  area=None,
+                 position=None,
                  **kwargs
                  ):
         """ map a dict to Directory Address object
@@ -62,6 +66,7 @@ class DirectoryAddressModel:
         self.is_verified = is_verified
         self.city = city
         self.area = area
+        self.position = position
 
     def __str__(self) -> str:
         """ String representation for the Directory Address model
@@ -113,3 +118,23 @@ class DirectoryAddressModel:
             self._area = json_area
         else:
             self._area = AreaModel(**json_area)
+
+    @property
+    def position(self) -> PositionModel:
+        """
+        getter for Customer Address Position
+        :return: Customer Address Position object
+        """
+        return self._position
+
+    @position.setter
+    def position(self, json_position: dict):
+        """setter for Customer Address Position
+
+        :param json_position: json dict for Customer Address Position
+        :return: None
+        """
+        if json_position:
+            self._position = PositionModel(**json_position)
+        else:
+            self.position = None
