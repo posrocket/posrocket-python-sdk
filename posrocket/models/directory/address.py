@@ -138,3 +138,4 @@ class DirectoryAddressModel:
             self._position = PositionModel(**json_position)
         else:
             self.position = None
+
