@@ -1,4 +1,5 @@
 from .area import AreaModel
+from .position import PositionModel
 from .business import BusinessModel
 from .catalog import *
 from .city import CityModel
@@ -34,6 +35,7 @@ __all__ = [
     'DirectoryTagModel',
     'CityModel',
     'AreaModel',
+    'PositionModel',
     'LocationDiscountModel',
     'LocationDrawerModel',
     'LocationDrawerCreatorModel',
