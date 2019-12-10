@@ -69,4 +69,4 @@ class LocationModel:
         if json_position:
             self._position = PositionModel(**json_position)
         else:
-            self.position = None
+            self._position = None
