@@ -52,6 +52,7 @@ Location Client
         launch_pad.location(<your_location_id>).extra_charge_service
         launch_pad.location(<your_location_id>).order_option_service
         launch_pad.location(<your_location_id>).sale_service
+        launch_pad.location(<your_location_id>).register_service
 
     - Each Service has 2 Getter functions which are:
         * Get by ID:
