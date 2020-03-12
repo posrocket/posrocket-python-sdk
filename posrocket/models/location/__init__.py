@@ -7,6 +7,7 @@ from .drawer.payment import *
 from .extra_charge import *
 from .tab import *
 from .tab.item import *
+from .register import *
 
 __all__ = [
     'LocationDiscountModel',
@@ -26,4 +27,5 @@ __all__ = [
     'LocationTabItemDiscountModel',
     'LocationTabItemModifierModel',
     'LocationTabItemVariationModel',
+    'LocationRegisterModel'
 ]

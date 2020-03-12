@@ -5,6 +5,7 @@ from posrocket.services.location.discount import LocationDiscountService
 from posrocket.services.location.drawer import LocationDrawerService
 from posrocket.services.location.extra_charge import LocationExtraChargeService
 from posrocket.services.location.order_option import LocationOrderOptionService
+from posrocket.services.location.register import LocationRegisterService
 from posrocket.services.location.sales import LocationSaleService
 from posrocket.services.location.tabs import TabService
 from posrocket.utils.assert_value import assert_value
@@ -68,6 +69,16 @@ class LocationClient(object):
         assert_value(self.launch_pad_client.token)
         return LocationExtraChargeService(self.launch_pad_client.token, self.location_id,
                                           prod=self.launch_pad_client.prod)
+
+    @property
+    def register_service(self) -> LocationRegisterService:
+        """build register service object to inquire about location register
+
+        :return: register service object
+        """
+        assert_value(self.launch_pad_client.token)
+        return LocationRegisterService(self.launch_pad_client.token, self.location_id,
+                                       prod=self.launch_pad_client.prod)
 
     @property
     def order_option_service(self) -> LocationOrderOptionService:
