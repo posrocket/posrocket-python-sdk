@@ -4,6 +4,7 @@ from .good import InventoryGoodModel
 from .ingredient import InventoryIngredientModel
 from .recipe import InventoryRecipeModel
 from .sub_recipe import InventorySubRecipeModel
+from .trackable import InventoryTrackableModel
 
 __all__ = [
     'InventoryCategoryModel',
@@ -12,4 +13,5 @@ __all__ = [
     'InventoryIngredientModel',
     'InventoryRecipeModel',
     'InventorySubRecipeModel',
+    'InventoryTrackableModel',
 ]
