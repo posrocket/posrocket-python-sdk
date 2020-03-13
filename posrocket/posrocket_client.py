@@ -29,6 +29,7 @@ from posrocket.services.business import BusinessService
 from posrocket.services.catalog import CatalogCategoryService, CatalogItemService, CatalogModifierListService, \
     CatalogTagService, CatalogTaxService
 from posrocket.services.directory import DirectoryCustomerService
+from posrocket.services.employee import EmployeeService
 from posrocket.services.geo import CountryService
 from posrocket.services.inventory import InventoryCategoryService, InventoryComponentService, InventoryGoodService, \
     InventoryIngredientService, InventoryRecipeService, InventorySubRecipeService
@@ -197,6 +198,15 @@ class LaunchPadClient(object):
         """
         assert_value(self.token)
         return BusinessService(self.token, prod=self.prod)
+
+    @property
+    def employee_service(self) -> EmployeeService:
+        """build employee service object to inquire about employees
+
+        :return: employee service object
+        """
+        assert_value(self.token)
+        return EmployeeService(self.token, prod=self.prod)
 
     @property
     def directory_customers_service(self) -> DirectoryCustomerService:
