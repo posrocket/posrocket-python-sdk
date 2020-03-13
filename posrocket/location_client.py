@@ -7,6 +7,7 @@ from posrocket.services.location.extra_charge import LocationExtraChargeService
 from posrocket.services.location.order_option import LocationOrderOptionService
 from posrocket.services.location.register import LocationRegisterService
 from posrocket.services.location.sales import LocationSaleService
+from posrocket.services.location.summary_report import SummaryReportService
 from posrocket.services.location.tabs import TabService
 from posrocket.utils.assert_value import assert_value
 
@@ -98,3 +99,12 @@ class LocationClient(object):
         """
         assert_value(self.launch_pad_client.token)
         return LocationSaleService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
+
+    @property
+    def summary_report_service(self) -> SummaryReportService:
+        """build summary report service object to inquire about report
+
+        :return: summary report service object
+        """
+        assert_value(self.launch_pad_client.token)
+        return SummaryReportService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
