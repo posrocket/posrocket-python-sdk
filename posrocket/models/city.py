@@ -21,11 +21,13 @@ class CityModel:
     """
     id: str
     name: str
+    country: str
     _areas: List[AreaModel]
 
     def __init__(self,
                  id=None,
                  name=None,
+                 country=None,
                  areas=None,
                  **kwargs
                  ):
@@ -35,6 +37,7 @@ class CityModel:
         """
         self.id = id
         self.name = name
+        self.country = country
         self.areas = areas
 
     def __str__(self) -> str:

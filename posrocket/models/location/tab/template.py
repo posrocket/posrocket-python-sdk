@@ -18,10 +18,12 @@ class LocationTabTemplateModel:
     """
     id: str
     name: str
+    category_id: str
 
     def __init__(self,
                  id=None,
                  name=None,
+                 category_id=None,
                  **kwargs
                  ):
         """ map a dict to Location Tab template object
@@ -30,6 +32,7 @@ class LocationTabTemplateModel:
         """
         self.id = id
         self.name = name
+        self.category_id = category_id
 
     def __str__(self) -> str:
         """ String representation for the Location Tab template model

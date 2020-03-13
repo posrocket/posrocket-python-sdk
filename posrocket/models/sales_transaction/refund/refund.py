@@ -30,6 +30,7 @@ class SalesTransactionRefundModel:
     notes: str
     serial_number: str
     creation_time: str
+    location_id: str
     _customer: DirectoryCustomerModel
     _tender: SalesTransactionTenderModel
     _creator: SalesTransactionRefundCreatorModel
@@ -47,6 +48,7 @@ class SalesTransactionRefundModel:
                  customer=None,
                  tender=None,
                  creator=None,
+                 location_id=None,
                  extra_charges=None,
                  itemization=None,
                  **kwargs
@@ -64,6 +66,7 @@ class SalesTransactionRefundModel:
         self.serial_number = serial_number
         self.creation_time = creation_time
         self.customer = customer
+        self.location_id = location_id
         self.tender = tender
         self.creator = creator
         self.extra_charges = extra_charges
