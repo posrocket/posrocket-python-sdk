@@ -2,13 +2,13 @@
 
 """
 
-__author__ = "Rawan Amro"
+__author__ = "Rawan Amro, Lujain Battikhi"
 __copyright__ = "Copyright 2019, POSRocket"
-__credits__ = ["Rawan Amro"]
+__credits__ = ["Rawan Amro", "Lujain Battikhi"]
 __license__ = "GPL"
-__version__ = "0.1.0"
-__maintainer__ = "Rawan Amro"
-__email__ = "a.bazadough@posrocket.com"
+__version__ = "1"
+__maintainer__ = "Rawan Amro, Lujain Battikhi"
+__email__ ="Launchpad@posrocket.com"
 __status__ = "Beta"
 
 
