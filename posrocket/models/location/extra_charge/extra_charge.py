@@ -6,6 +6,7 @@ from posrocket.models.location.extra_charge.tax import LocationExtraChargeTaxMod
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
 __copyright__ = "Copyright 2019, POSRocket"
 __credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
+__license__ = "GPL"
 __version__ = "1"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
