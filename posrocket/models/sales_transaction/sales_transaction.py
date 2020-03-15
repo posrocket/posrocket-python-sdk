@@ -33,6 +33,7 @@ class SalesTransactionModel:
     receipt_id: str
     serial_number: int
     dining_option: str
+    location_id: str
     creation_time: date
     _discount_money: LocationInitialMoneyModel
     _refunded_money: LocationInitialMoneyModel
@@ -60,6 +61,7 @@ class SalesTransactionModel:
                  creation_time=None,
                  discount_money=None,
                  refunded_money=None,
+                 location_id=None,
                  additive_tax_money=None,
                  inclusive_tax_money=None,
                  tax_money=None,
@@ -88,6 +90,7 @@ class SalesTransactionModel:
         self.creation_time = creation_time
         self.discount_money = discount_money
         self.refunded_money = refunded_money
+        self.location_id = location_id
         self.additive_tax_money = additive_tax_money
         self.inclusive_tax_money = inclusive_tax_money
         self.tax_money = tax_money

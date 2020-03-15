@@ -22,6 +22,7 @@ class LocationModel:
     tax_number: str
     phone: str
     address: str
+    footer: str
     _position:PositionModel
 
     def __init__(self,
@@ -30,6 +31,7 @@ class LocationModel:
                  tax_number=None,
                  phone=None,
                  address=None,
+                 footer=None,
                  position=None,
                  **kwargs
                  ):
@@ -42,6 +44,7 @@ class LocationModel:
         self.tax_number = tax_number
         self.phone = phone
         self.address = address
+        self.footer = footer
         self.position = position
 
     def __str__(self) -> str:

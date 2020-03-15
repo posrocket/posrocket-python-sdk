@@ -29,7 +29,11 @@ from posrocket.services.business import BusinessService
 from posrocket.services.catalog import CatalogCategoryService, CatalogItemService, CatalogModifierListService, \
     CatalogTagService, CatalogTaxService
 from posrocket.services.directory import DirectoryCustomerService
+from posrocket.services.employee import EmployeeService
 from posrocket.services.geo import CountryService
+from posrocket.services.inventory import InventoryCategoryService, InventoryComponentService, InventoryGoodService, \
+    InventoryIngredientService, InventoryRecipeService, InventorySubRecipeService
+from posrocket.services.inventory.inventory_trackable import InventoryTrackableService
 from posrocket.services.location import LocationService
 from posrocket.services.payment_method import PaymentMethodService
 from posrocket.utils.assert_value import assert_value
@@ -196,6 +200,15 @@ class LaunchPadClient(object):
         return BusinessService(self.token, prod=self.prod)
 
     @property
+    def employee_service(self) -> EmployeeService:
+        """build employee service object to inquire about employees
+
+        :return: employee service object
+        """
+        assert_value(self.token)
+        return EmployeeService(self.token, prod=self.prod)
+
+    @property
     def directory_customers_service(self) -> DirectoryCustomerService:
         """build directory customers service object to inquire about customers
 
@@ -215,36 +228,99 @@ class LaunchPadClient(object):
 
     @property
     def catalog_modifier_list_service(self) -> CatalogModifierListService:
-        """build country service object to inquire about countries
+        """build catalog modifier list service object to inquire about catalog modifier lists
 
-        :return: country service object
+        :return: catalog modifier list service object
         """
         assert_value(self.token)
         return CatalogModifierListService(self.token, prod=self.prod)
 
     @property
     def catalog_tax_service(self) -> CatalogTaxService:
-        """build country service object to inquire about countries
+        """build catalog tax service object to inquire about catalog taxes
 
-        :return: country service object
+        :return: catalog tax service object
         """
         assert_value(self.token)
         return CatalogTaxService(self.token, prod=self.prod)
 
     @property
     def catalog_tag_service(self) -> CatalogTagService:
-        """build country service object to inquire about countries
+        """build catalog tag service object to inquire about catalog tags
 
-        :return: country service object
+        :return: catalog tag service object
         """
         assert_value(self.token)
         return CatalogTagService(self.token, prod=self.prod)
 
     @property
     def payment_methods_service(self) -> PaymentMethodService:
-        """build catalog item service to inquire about catalog item
+        """build payment methods service to inquire about payment methods
 
-        :return: catalog item service
+        :return: payment methods service
         """
         assert_value(self.token)
         return PaymentMethodService(self.token, prod=self.prod)
+
+    @property
+    def inventory_category_service(self) -> InventoryCategoryService:
+        """build inventory category service to inquire about inventory categories
+
+        :return: inventory category service
+        """
+        assert_value(self.token)
+        return InventoryCategoryService(self.token, prod=self.prod)
+
+    @property
+    def inventory_component_service(self) -> InventoryComponentService:
+        """build inventory component service to inquire about inventory component
+
+        :return: inventory component service
+        """
+        assert_value(self.token)
+        return InventoryComponentService(self.token, prod=self.prod)
+
+    @property
+    def inventory_good_service(self) -> InventoryGoodService:
+        """build inventory good service to inquire about inventory good
+
+        :return: inventory good service
+        """
+        assert_value(self.token)
+        return InventoryGoodService(self.token, prod=self.prod)
+
+    @property
+    def inventory_ingredient_service(self) -> InventoryIngredientService:
+        """build inventory ingredient service to inquire about inventory ingredient
+
+        :return: inventory ingredient service
+        """
+        assert_value(self.token)
+        return InventoryIngredientService(self.token, prod=self.prod)
+
+    @property
+    def inventory_recipe_service(self) -> InventoryRecipeService:
+        """build inventory recipe service to inquire about inventory recipe
+
+        :return: inventory recipe item service
+        """
+        assert_value(self.token)
+        return InventoryRecipeService(self.token, prod=self.prod)
+
+    @property
+    def inventory_sub_recipe_service(self) -> InventorySubRecipeService:
+        """build inventory sub-recipe service to inquire about inventory sub-recipe
+
+        :return: inventory sub-recipe service
+        """
+        assert_value(self.token)
+        return InventorySubRecipeService(self.token, prod=self.prod)
+
+    @property
+    def inventory_trackable_service(self) -> InventoryTrackableService:
+        """build inventory trackable service to inquire about inventory trackable
+
+        :return: inventory trackable service
+        """
+        assert_value(self.token)
+        return InventoryTrackableService(self.token, prod=self.prod)

@@ -38,13 +38,13 @@ class LocationTabModel:
     name: str
     ticket_number: str
     creation_time: datetime
+    end_time: datetime
     status: str
     acknowledged: bool
     total_amount: float
     _order_option: LocationOrderOptionModel
     _items: List[LocationTabItemModel]
     _custom_amounts: [LocationTabCustomAmountModel]
-
     _customer: SaleCustomerModel
     _pickup: LocationTabPickupModel
     _creator: LocationTabCreatorModel
@@ -59,6 +59,7 @@ class LocationTabModel:
                  name=None,
                  ticket_number=None,
                  creation_time=None,
+                 end_time=None,
                  status=None,
                  acknowledged=None,
                  total_amount=None,
@@ -84,6 +85,7 @@ class LocationTabModel:
         self.name = name
         self.ticket_number = ticket_number
         self.creation_time = creation_time
+        self.end_time = end_time
         self.status = status
         self.acknowledged = acknowledged
         self.total_amount = total_amount
