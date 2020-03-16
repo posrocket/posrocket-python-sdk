@@ -2,13 +2,13 @@
 
 """
 
-__author__ = "Ahmad Bazadough, Hamzah Darwish"
+__author__ = "Lujain Battikhi, Rawan Amro"
 __copyright__ = "Copyright 2019, POSRocket"
-__credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
+__credits__ = ["Lujain Battikhi", "Rawan Amro"]
 __license__ = "GPL"
-__version__ = "0.1.0"
-__maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
-__email__ = "a.bazadough@posrocket.com"
+__version__ = "1"
+__maintainer__ = "Lujain Battikhi, Rawan Amro"
+__email__ = "launchpad@posrocket.com"
 __status__ = "Beta"
 
 
