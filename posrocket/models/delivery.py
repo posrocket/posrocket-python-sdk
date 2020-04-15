@@ -2,8 +2,8 @@
 
 """
 
-from posrocket.models.driver import DriverModel
-from posrocket.models.driver_category import DriverCategoryModel
+from posrocket.models.driver import LocationDriverModel
+from posrocket.models.driver_category import LocationDriverCategoryModel
 
 __author__ = "Rawan Amro, Lujain Battikhi"
 __copyright__ = "Copyright 2020, POSRocket"
@@ -21,9 +21,9 @@ class DeliveryModel:
     """
     id: str
     ride_id: str
-    status: int
-    _category: DriverCategoryModel
-    _driver: DriverModel
+    status: str
+    _category: LocationDriverCategoryModel
+    _driver: LocationDriverModel
 
     def __init__(self,
                  id=None,
@@ -44,33 +44,41 @@ class DeliveryModel:
         self.driver = driver
 
     @property
-    def category(self) -> DriverCategoryModel:
-        """getter for  Driver Category
+    def category(self) -> LocationDriverCategoryModel:
+        """getter for location driver Category
 
         :return: Drivers Category object
         """
         return self._category
 
     @category.setter
-    def category(self, category):
-        """setter for  driver category
+    def category(self, json_category: dict):
+        """setter for location driver category
 
-        :param: category:json driver category
+        :param: json_category:json driver category
         :return: None
         """
+        if json_category:
+            self._category = LocationDriverCategoryModel(**json_category)
+        else:
+            self._category = None
 
     @property
-    def driver(self) -> DriverModel:
-        """getter for Driver
+    def driver(self) -> LocationDriverModel:
+        """getter for location driver
 
         :return: list of driver
         """
         return self._driver
 
     @driver.setter
-    def driver(self, driver):
-        """setter for driver
+    def driver(self, json_driver):
+        """setter for location driver
 
-        :param driver:json of driver
+        :param json_driver:json of driver
         :return: None
         """
+        if json_driver:
+            self._driver = LocationDriverCategoryModel(**json_driver)
+        else:
+            self._driver = None
