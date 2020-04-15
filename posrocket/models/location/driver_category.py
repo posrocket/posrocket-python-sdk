@@ -1,9 +1,9 @@
-"""Driver Category Python model
+"""Location Driver Category Python model
 
 """
 from typing import List
 
-from posrocket.models.driver import LocationDriverModel
+from posrocket.models.location.driver import LocationDriverModel
 
 __author__ = "Rawan Amro, Lujain Battikhi"
 __copyright__ = "Copyright 2020, POSRocket"

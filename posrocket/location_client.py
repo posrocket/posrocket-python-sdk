@@ -3,6 +3,8 @@ Launchpad Location Client
 """
 from posrocket.services.location.discount import LocationDiscountService
 from posrocket.services.location.drawer import LocationDrawerService
+from posrocket.services.location.driver import LocationDriverService
+from posrocket.services.location.driver_category import LocationDriverCategoryService
 from posrocket.services.location.extra_charge import LocationExtraChargeService
 from posrocket.services.location.order_option import LocationOrderOptionService
 from posrocket.services.location.register import LocationRegisterService
@@ -108,3 +110,23 @@ class LocationClient(object):
         """
         assert_value(self.launch_pad_client.token)
         return SummaryReportService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
+
+    @property
+    def driver_category_service(self) -> LocationDriverCategoryService:
+        """build driver category service object to inquire about report
+
+        :return: driver category service object
+        """
+        assert_value(self.launch_pad_client.token)
+        return LocationDriverCategoryService(self.launch_pad_client.token, self.location_id,
+                                             prod=self.launch_pad_client.prod)
+
+    @property
+    def driver_service(self) -> LocationDriverService:
+        """build driver service object to inquire about report
+
+        :return: driver service object
+        """
+        assert_value(self.launch_pad_client.token)
+        return LocationDriverService(self.launch_pad_client.token, self.location_id,
+                                     prod=self.launch_pad_client.prod)

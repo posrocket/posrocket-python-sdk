@@ -2,7 +2,7 @@
 Location Driver Service
 """
 
-from posrocket.models.driver import LocationDriverModel
+from posrocket.models.location.driver import LocationDriverModel
 from posrocket.utils.requests import LocationRequiredMixin, Requests
 
 __author__ = "Lujain Battiki, Rawan Amro"

@@ -2,8 +2,8 @@
 
 """
 
-from posrocket.models.driver import LocationDriverModel
-from posrocket.models.driver_category import LocationDriverCategoryModel
+from posrocket.models.location.driver import LocationDriverModel
+from posrocket.models.location.driver_category import LocationDriverCategoryModel
 
 __author__ = "Rawan Amro, Lujain Battikhi"
 __copyright__ = "Copyright 2020, POSRocket"
@@ -79,6 +79,6 @@ class DeliveryModel:
         :return: None
         """
         if json_driver:
-            self._driver = LocationDriverCategoryModel(**json_driver)
+            self._driver = LocationDriverModel(**json_driver)
         else:
             self._driver = None

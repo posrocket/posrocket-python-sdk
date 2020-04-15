@@ -3,7 +3,7 @@ Location Driver Category Service
 """
 import logging
 
-from posrocket.models.driver_category import LocationDriverCategoryModel
+from posrocket.models.location.driver_category import LocationDriverCategoryModel
 from posrocket.utils.requests import LocationRequiredMixin, Requests
 
 __author__ = "Lujain Battiki, Rawan Amro"

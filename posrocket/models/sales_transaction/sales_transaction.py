@@ -5,10 +5,10 @@ import logging
 from datetime import date
 from typing import List
 
-from posrocket.models import DirectoryCustomerModel, LocationInitialMoneyModel, LocationTabCreatorModel, \
+from posrocket.models import LocationInitialMoneyModel, LocationTabCreatorModel, \
     LocationTabModel
 from posrocket.models.directory.customer import SaleCustomerModel
-from posrocket.models.delivery import DeliveryModel
+from posrocket.models.location.delivery import DeliveryModel
 from posrocket.models.external_fees import ExternalFeesModel
 from .extra_charges import SalesTransactionExtraChargeModel
 from .itemization.itemization import SalesTransactionItemizationModel

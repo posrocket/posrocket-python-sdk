@@ -8,7 +8,7 @@ from posrocket.models import DirectoryAddressModel, DirectoryPhoneModel
 from posrocket.models.catalog.item import CatalogItemModel
 from posrocket.models.catalog.modifier import CatalogModifierModel
 from posrocket.models.catalog.variation import CatalogVariationModel
-from posrocket.models.delivery import DeliveryModel
+from posrocket.models.location.delivery import DeliveryModel
 from posrocket.models.directory.customer import DirectoryCustomerModel, SaleCustomerModel
 from posrocket.models.external_fees import ExternalFeesModel
 from posrocket.models.location.order_options import LocationOrderOptionModel
