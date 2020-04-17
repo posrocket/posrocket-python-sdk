@@ -8,7 +8,9 @@ from posrocket.models import DirectoryAddressModel, DirectoryPhoneModel
 from posrocket.models.catalog.item import CatalogItemModel
 from posrocket.models.catalog.modifier import CatalogModifierModel
 from posrocket.models.catalog.variation import CatalogVariationModel
+from posrocket.models.location.delivery import DeliveryModel
 from posrocket.models.directory.customer import DirectoryCustomerModel, SaleCustomerModel
+from posrocket.models.external_fees import ExternalFeesModel
 from posrocket.models.location.order_options import LocationOrderOptionModel
 from posrocket.models.location.tab.category import LocationTabCategoryModel
 from posrocket.models.location.tab.creator import LocationTabCreatorModel
@@ -50,6 +52,8 @@ class LocationTabModel:
     _creator: LocationTabCreatorModel
     _category: LocationTabCategoryModel
     _template: LocationTabTemplateModel
+    _external_fees: List[ExternalFeesModel]
+    _delivery: DeliveryModel
 
     def __init__(self,
                  id=None,
@@ -72,6 +76,8 @@ class LocationTabModel:
                  comments=None,
                  category=None,
                  template=None,
+                 external_fees=None,
+                 delivery=None,
                  **kwargs
                  ):
         """ map a dict to Location Tab object
@@ -98,6 +104,8 @@ class LocationTabModel:
         self.comments = comments
         self.category = category
         self.template = template
+        self.external_fees = external_fees
+        self.delivery = delivery
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model
@@ -305,3 +313,47 @@ class LocationTabModel:
         tab_customer.phone_number = phone
         tab_customer.tags = customer.tags
         self._customer = tab_customer
+
+    @property
+    def external_fees(self) -> List[ExternalFeesModel]:
+        """getter for Tab External Fees
+
+        :return: list of External Fees for the Tab
+        """
+        return self._external_fees
+
+    @external_fees.setter
+    def external_fees(self, external_fees_list: List[dict]):
+        """setter for Tab external_fees
+
+        :param: external_fees_list:json list of external fees dicts
+        :return: None
+        """
+        self._external_fees = []
+        for external_fee in external_fees_list or []:
+            if type(external_fee) is ExternalFeesModel:
+                self.external_fees.append(external_fee)
+            else:
+                self._external_fees.append(ExternalFeesModel(**external_fee))
+
+    @property
+    def delivery(self) -> DeliveryModel:
+        """
+        getter for Tab delivery
+        :return: Tab delivery object
+        """
+        return self._delivery
+
+    @delivery.setter
+    def delivery(self, delivery_dict: dict):
+        """setter for Tab delivery
+
+        :param delivery_dict: json dict for delivery
+        :return: None
+        """
+        if not delivery_dict:
+            self._delivery = None
+        elif isinstance(delivery_dict, DeliveryModel):
+            self._delivery = delivery_dict
+        else:
+            self._delivery = DeliveryModel(**delivery_dict)
