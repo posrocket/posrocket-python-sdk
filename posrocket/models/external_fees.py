@@ -20,6 +20,8 @@ class ExternalFeesModel:
     name: str
     fees_type: str
     amount: int
+    is_locked: bool
+    is_disabled: bool
     rate: int
     tax: None
 
@@ -29,6 +31,8 @@ class ExternalFeesModel:
                  fees_type=None,
                  amount=None,
                  rate=None,
+                 is_locked=None,
+                 is_disabled=None,
                  tax=None,
                  **kwargs
                  ):
@@ -40,6 +44,8 @@ class ExternalFeesModel:
         self.name = name
         self.fees_type = fees_type
         self.amount = amount
+        self.is_disabled = is_disabled
+        self.is_locked = is_locked
         self.rate = rate
         self.tax = None
 
