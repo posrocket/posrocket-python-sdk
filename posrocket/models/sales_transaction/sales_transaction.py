@@ -5,22 +5,25 @@ import logging
 from datetime import date
 from typing import List
 
-from posrocket.models import DirectoryCustomerModel, LocationInitialMoneyModel, LocationTabCreatorModel, \
+from posrocket.models import LocationInitialMoneyModel, LocationTabCreatorModel, \
     LocationTabModel
 from posrocket.models.directory.customer import SaleCustomerModel
+from posrocket.models.location.delivery import DeliveryModel
+from posrocket.models.external_fees import ExternalFeesModel
 from .extra_charges import SalesTransactionExtraChargeModel
 from .itemization.itemization import SalesTransactionItemizationModel
 from .refund.refund import SalesTransactionRefundModel
 from .tax import SalesTransactionTaxModel
 from .tender import SalesTransactionTenderModel
 
-__author__ = "Ahmad Bazadough, Hamzah Darwish"
-__copyright__ = "Copyright 2019, POSRocket"
-__credits__ = ["Ahmad Bazadough", "Hamzah Darwish"]
+
+__author__ = "Rawan Amro, Lujain Battikhi"
+__copyright__ = "Copyright 2020, POSRocket"
+__credits__ = ["Rawan Amro, Lujain Battikhi"]
 __license__ = "GPL"
 __version__ = "1.0.0"
-__maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
-__email__ = "a.bazadough@posrocket.com"
+__maintainer__ = "Rawan Amro, Lujain Battikhi"
+__email__ = "Launchpad@posrocket.com"
 __status__ = "Beta"
 logger = logging.getLogger("posrocket-sdk")
 
@@ -52,6 +55,8 @@ class SalesTransactionModel:
     _extra_charges: List[SalesTransactionExtraChargeModel]
     _itemization: List[SalesTransactionItemizationModel]
     _refunds: List[SalesTransactionRefundModel]
+    _external_fees: List[ExternalFeesModel]
+    _delivery: DeliveryModel
 
     def __init__(self,
                  id=None,
@@ -77,6 +82,8 @@ class SalesTransactionModel:
                  extra_charges=None,
                  itemization=None,
                  refunds=None,
+                 external_fees=None,
+                 delivery=None,
                  **kwargs
                  ):
         """ map a dict to Sales Transaction object
@@ -106,6 +113,8 @@ class SalesTransactionModel:
         self.extra_charges = extra_charges
         self.itemization = itemization
         self.refunds = refunds
+        self.external_fees = external_fees
+        self.delivery = delivery
 
     def __str__(self) -> str:
         """ String representation for the Sales Transaction model
@@ -448,3 +457,47 @@ class SalesTransactionModel:
         self._refunds = []
         for refund in refunds_list or []:
             self._refunds.append(SalesTransactionRefundModel(**refund))
+
+    @property
+    def external_fees(self) -> List[ExternalFeesModel]:
+        """getter for Sales Transaction External Fees
+
+        :return: list of External Fees for the Sales Transaction
+        """
+        return self._external_fees
+
+    @external_fees.setter
+    def external_fees(self, external_fees_list: List[dict]):
+        """setter for Sales Transaction external_fees
+
+        :param: external_fees_list:json list of external fees dicts
+        :return: None
+        """
+        self._external_fees = []
+        for external_fee in external_fees_list or []:
+            if type(external_fee) is ExternalFeesModel:
+                self.external_fees.append(external_fee)
+            else:
+                self._external_fees.append(ExternalFeesModel(**external_fee))
+
+    @property
+    def delivery(self) -> DeliveryModel:
+        """
+        getter for Sales Transaction delivery
+        :return: Sales Transaction delivery object
+        """
+        return self._delivery
+
+    @delivery.setter
+    def delivery(self, delivery_dict: dict):
+        """setter for Sales Transaction delivery
+
+        :param delivery_dict: json dict for delivery
+        :return: None
+        """
+        if not delivery_dict:
+            self._delivery = None
+        elif isinstance(delivery_dict, DeliveryModel):
+            self._delivery = delivery_dict
+        else:
+            self._delivery = DeliveryModel(**delivery_dict)

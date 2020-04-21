@@ -63,12 +63,16 @@ class TabService(LocationRequiredMixin, Requests):
                          "phone_number": {"id": tab.customer.phone_number.id}},
             "items": [],
             "custom_amount": [],
+            "external_fees": [],
+            "delivery": {},
             "comments": tab.comments
         }
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
         if tab.order_option:
             data['order_option'] = {"id": tab.order_option.id}
+            if data['order_option']['name'] == 'Delivery' and data['status'] == "OPENED":
+                data['external_fees'] = {"id": tab.external_fees.id}
         for item in tab.items:
             dict_item = {
                 "id": item.id,
