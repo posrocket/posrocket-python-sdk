@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from posrocket.models.location.driver_category import LocationDriverCategoryModel
+from posrocket.models.driver_category import DriverCategoryModel
 
 __author__ = "Rawan Amro, Lujain Battikhi"
 __copyright__ = "Copyright 2020, POSRocket"
@@ -22,7 +22,7 @@ class LocationDriverModel:
 
     id: str
     name: str
-    _driver_categories: List[LocationDriverCategoryModel]
+    _driver_categories: List[DriverCategoryModel]
 
     def __init__(self,
                  id=None,
@@ -39,7 +39,7 @@ class LocationDriverModel:
         self.driver_categories = driver_categories
 
     @property
-    def driver_categories(self) -> List[LocationDriverCategoryModel]:
+    def driver_categories(self) -> List[DriverCategoryModel]:
         """
         getter for location driver categories
         :return: list of location driver categories
@@ -55,4 +55,4 @@ class LocationDriverModel:
         """
         self._driver_categories = []
         for json_driver_category in json_driver_categories or []:
-            self._driver_categories.append(LocationDriverCategoryModel(**json_driver_category))
+            self._driver_categories.append(DriverCategoryModel(**json_driver_category))

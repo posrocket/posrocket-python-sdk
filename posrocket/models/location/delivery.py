@@ -2,8 +2,8 @@
 
 """
 
-from posrocket.models.location.driver import LocationDriverModel
-from posrocket.models.location.driver_category import LocationDriverCategoryModel
+from posrocket.models.driver import DriverModel
+from posrocket.models.driver_category import DriverCategoryModel
 
 __author__ = "Rawan Amro, Lujain Battikhi"
 __copyright__ = "Copyright 2020, POSRocket"
@@ -22,8 +22,8 @@ class DeliveryModel:
     id: str
     ride_id: str
     status: str
-    _category: LocationDriverCategoryModel
-    _driver: LocationDriverModel
+    _category: DriverCategoryModel
+    _driver: DriverModel
 
     def __init__(self,
                  id=None,
@@ -44,7 +44,7 @@ class DeliveryModel:
         self.driver = driver
 
     @property
-    def category(self) -> LocationDriverCategoryModel:
+    def category(self) -> DriverCategoryModel:
         """getter for location driver Category
 
         :return: Drivers Category object
@@ -59,12 +59,12 @@ class DeliveryModel:
         :return: None
         """
         if json_category:
-            self._category = LocationDriverCategoryModel(**json_category)
+            self._category = DriverCategoryModel(**json_category)
         else:
             self._category = None
 
     @property
-    def driver(self) -> LocationDriverModel:
+    def driver(self) -> DriverModel:
         """getter for location driver
 
         :return: list of driver
@@ -79,6 +79,6 @@ class DeliveryModel:
         :return: None
         """
         if json_driver:
-            self._driver = LocationDriverModel(**json_driver)
+            self._driver = DriverModel(**json_driver)
         else:
             self._driver = None
