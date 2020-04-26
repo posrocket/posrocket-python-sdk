@@ -2,6 +2,7 @@
 Location Tab Service
 """
 import logging
+import uuid
 
 from posrocket.models import LocationTabModel
 from posrocket.utils.requests import LocationRequiredMixin, Requests
@@ -71,8 +72,16 @@ class TabService(LocationRequiredMixin, Requests):
             data["customer"]["address"] = {"id": tab.customer.address.id}
         if tab.order_option:
             data['order_option'] = {"id": tab.order_option.id}
-            if 'name' in data['order_option'] and data['order_option']['name'] == 'Delivery' and data['status'] == "OPENED":
-                data['external_fees'] = {"id": tab.external_fees.id}
+        for external_fee in tab.external_fees:
+            external_fee_obj ={
+                'name': external_fee.name,
+                'type': "FIXED",
+                'amount': external_fee.amount,
+                'is_locked': external_fee.is_locked,
+                'is_disabled': external_fee.is_disabled,
+                'id': str(uuid.uuid4())
+            }
+            data['external_fees'].append(external_fee_obj)
         for item in tab.items:
             dict_item = {
                 "id": item.id,
