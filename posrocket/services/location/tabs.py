@@ -72,7 +72,8 @@ class TabService(LocationRequiredMixin, Requests):
         result = self.model_cls(**response)
         return result
 
-    def prepare_payload(self, tab):
+    @staticmethod
+    def prepare_payload(tab):
         data = {"name": tab.name,
                 "customer": {"id": tab.customer.id, "phone_number": {"id": tab.customer.phone_number.id}}, "items": [],
                 "custom_amount": [], "external_fees": [], "delivery": {}, "comments": tab.comments}
