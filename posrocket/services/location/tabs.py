@@ -15,7 +15,7 @@ __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
-logger = logging.getLogger("posrocket-sdk")
+logger = logging.getLogger("django")
 
 
 class TabService(LocationRequiredMixin, Requests):
