@@ -64,11 +64,11 @@ class TabService(LocationRequiredMixin, Requests):
         return result
 
     def update(self, tab: LocationTabModel):
-        logger.info("----- Update Tab 1 -----")
         data = self.prepare_payload(tab)
-        logger.info("----- Update Tab data -----")
+        data['status'] = tab.status
+        del data['delivery']
+        logger.info("updated data:")
         logger.info(data)
-        logger.info(self.get_update_service_url())
         response = self.post(self.get_update_service_url(), data)
         result = self.model_cls(**response)
         return result
