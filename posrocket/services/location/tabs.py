@@ -15,7 +15,7 @@ __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
-logger = logging.getLogger("django")
+logger = logging.getLogger("posrocket-sdk")
 
 
 class TabService(LocationRequiredMixin, Requests):
@@ -65,7 +65,7 @@ class TabService(LocationRequiredMixin, Requests):
 
     def update(self, tab: LocationTabModel):
         data = self.prepare_payload(tab)
-        data['status'] = 'ACCEPTED'
+        data['status'] = tab.status
         del data['delivery']
         logger.info("updated data:")
         logger.info(data)
