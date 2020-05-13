@@ -65,7 +65,7 @@ class TabService(LocationRequiredMixin, Requests):
 
     def update(self, tab: LocationTabModel):
         data = self.prepare_payload(tab)
-        data['status'] = tab.status
+        data['status'] = 'ACCEPTED'
         del data['delivery']
         logger.info("updated data:")
         logger.info(data)
