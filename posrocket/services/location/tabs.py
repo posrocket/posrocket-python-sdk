@@ -83,7 +83,7 @@ class TabService(LocationRequiredMixin, Requests):
         if tab.order_option:
             data['order_option'] = {"id": tab.order_option.id}
         for external_fee in tab.external_fees:
-            external_fee_obj = {'name': external_fee.name, 'type': "FIXED", 'amount': external_fee.amount,
+            external_fee_obj = {'name': external_fee.name, 'type': external_fee.fees_type, 'amount': external_fee.amount,
                                 'is_locked': external_fee.is_locked, 'is_disabled': external_fee.is_disabled,
                                 'id': str(external_fee.id)}
             data['external_fees'].append(external_fee_obj)
