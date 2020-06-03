@@ -8,9 +8,9 @@ from posrocket.models import DirectoryAddressModel, DirectoryPhoneModel
 from posrocket.models.catalog.item import CatalogItemModel
 from posrocket.models.catalog.modifier import CatalogModifierModel
 from posrocket.models.catalog.variation import CatalogVariationModel
-from posrocket.models.location.delivery import DeliveryModel
 from posrocket.models.directory.customer import DirectoryCustomerModel, SaleCustomerModel
 from posrocket.models.external_fees import ExternalFeesModel
+from posrocket.models.location.delivery import DeliveryModel
 from posrocket.models.location.order_options import LocationOrderOptionModel
 from posrocket.models.location.tab.category import LocationTabCategoryModel
 from posrocket.models.location.tab.creator import LocationTabCreatorModel
@@ -55,31 +55,10 @@ class LocationTabModel:
     _external_fees: List[ExternalFeesModel]
     _delivery: DeliveryModel
 
-    def __init__(self,
-                 id=None,
-                 location_id=None,
-                 issuer_id=None,
-                 sequence_number=None,
-                 name=None,
-                 ticket_number=None,
-                 creation_time=None,
-                 end_time=None,
-                 status=None,
-                 acknowledged=None,
-                 total_amount=None,
-                 order_option=None,
-                 items=None,
-                 custom_amounts=None,
-                 customer=None,
-                 pickup=None,
-                 creator=None,
-                 comments=None,
-                 category=None,
-                 template=None,
-                 external_fees=None,
-                 delivery=None,
-                 **kwargs
-                 ):
+    def __init__(self, id=None, location_id=None, issuer_id=None, sequence_number=None, name=None, ticket_number=None,
+                 creation_time=None, end_time=None, status=None, acknowledged=None, total_amount=None,
+                 order_option=None, items=None, custom_amounts=None, customer=None, pickup=None, creator=None,
+                 comments=None, category=None, template=None, external_fees=None, delivery=None, **kwargs):
         """ map a dict to Location Tab object
 
         :param kwargs: Location Tab json dict
@@ -298,6 +277,13 @@ class LocationTabModel:
         custom_amount_item = LocationTabCustomAmountModel(name=name, price=price)
         self.custom_amounts.append(custom_amount_item)
         return custom_amount_item
+
+    def add_external_fee(self, id: str, name: str, fees_type: str, amount: float, is_locked: bool, is_disabled: bool,
+                         rate: float) -> ExternalFeesModel:
+        external_fee_item = ExternalFeesModel(name=name, fees_type=fees_type, amount=amount, is_locked=is_locked,
+                                              is_disabled=is_disabled, rate=rate, id=id)
+        self.external_fees.append(external_fee_item)
+        return external_fee_item
 
     def set_customer(self, customer: DirectoryCustomerModel, address: DirectoryAddressModel,
                      phone: DirectoryPhoneModel):

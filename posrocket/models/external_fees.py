@@ -19,10 +19,10 @@ class ExternalFeesModel:
     id: str
     name: str
     fees_type: str
-    amount: int
+    amount: float
     is_locked: bool
     is_disabled: bool
-    rate: int
+    rate: float
     tax: None
 
     def __init__(self,
