@@ -60,6 +60,9 @@ class TabService(LocationRequiredMixin, Requests):
         logger.info("----- Create Tab -----")
         logger.info(data)
         response = self.post(self.get_service_url(), data)
+        logger.info("*************response of create tab****************")
+        logger.info(response)
+        logger.info("*************response of create tab*****************")
         result = self.model_cls(**response)
         return result
 
