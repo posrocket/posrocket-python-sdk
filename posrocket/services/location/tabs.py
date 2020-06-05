@@ -112,4 +112,6 @@ class TabService(LocationRequiredMixin, Requests):
         logger.info(data)
         response = self.post(self.get_service_url(), data)
         result = self.model_cls(**response)
+        logger.info(f'data is :*******************************{data}*******************')
+        logger.info(f'data is :*******************************{result}*******************')
         return result
