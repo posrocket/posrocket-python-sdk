@@ -14,6 +14,8 @@ __status__ = "Beta"
 
 from posrocket.models.area import AreaModel
 from posrocket.models.city import CityModel
+from posrocket.models.avenue_info import AvenueInfoModel
+from posrocket.models.block_info import BlockInfoModel
 
 
 class DirectoryAddressModel:
@@ -32,6 +34,8 @@ class DirectoryAddressModel:
     is_verified: bool
     _city: CityModel
     _area: AreaModel
+    _avenue: AvenueInfoModel
+    _block: BlockInfoModel
     _position: PositionModel
 
     def __init__(self,
@@ -47,6 +51,8 @@ class DirectoryAddressModel:
                  is_verified=None,
                  city=None,
                  area=None,
+                 avenue=None,
+                 block=None,
                  position=None,
                  **kwargs
                  ):
@@ -66,6 +72,8 @@ class DirectoryAddressModel:
         self.is_verified = is_verified
         self.city = city
         self.area = area
+        self.avenue = avenue
+        self.block = block
         self.position = position
 
     def __str__(self) -> str:
@@ -118,6 +126,51 @@ class DirectoryAddressModel:
             self._area = json_area
         else:
             self._area = AreaModel(**json_area)
+
+    @property
+    def avenue(self) -> AvenueModel:
+        """
+        getter for Address City Area Avenue
+        :return: Address City Area Avenue object
+        """
+        return self._avenue
+
+    @avenue.setter
+    def avenue(self, json_avenue: dict):
+        """setter for Address City Area Avenue
+
+        :param json_avenue: json dict for City Area Avenue
+        :return: None
+        """
+        if not json_avenue:
+            self._avenue = None
+        elif isinstance(json_avenue, AvenueModel):
+            self.avenue = json_avenue
+        else:
+            self._avenue = AvenueModel(**json_avenue)
+
+    @property
+    def block(self) -> BlockModel:
+        """
+        getter for Address City Area Avenue
+        :return: Address City Area Avenue object
+        """
+        return self._block
+
+    @block.setter
+    def block(self, json_block: dict):
+        """setter for Address City Area Avenue Block
+
+        :param json_block: json dict for City Area Avenue Block
+        :return: None
+        """
+        if not json_block:
+            self._block = None
+        elif isinstance(json_block, BlockModel):
+            self.block = json_block
+        else:
+            self._block = BlockModel(**json_block)
+
 
     @property
     def position(self) -> PositionModel:

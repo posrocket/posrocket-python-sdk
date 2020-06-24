@@ -1,4 +1,6 @@
 from .area import AreaModel
+from.avenue import AvenueModel
+from.block import BlockModel
 from .position import PositionModel
 from .business import BusinessModel
 from .catalog import *
@@ -17,7 +19,9 @@ from .sales_transaction.itemization import *
 from .sales_transaction.refund import *
 
 __all__ = [
+    'AvenueModel',
     'BusinessModel',
+    'BlockModel',
     'LocationModel',
     'LocationTabModel',
     'CatalogItemModel',
