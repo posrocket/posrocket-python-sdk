@@ -10,6 +10,10 @@ __maintainer__ = "Rawan Amro"
 __email__ = "r.amro@posrocket.com"
 __status__ = "Beta"
 
+from typing import List
+
+from posrocket.models import BlockModel
+
 
 class AvenueModel:
     """ mapper class for Avenue object from Json Dict
@@ -17,18 +21,16 @@ class AvenueModel:
     """
     id: str
     name: str
+    _blocks: List[BlockModel]
 
-    def __init__(self,
-                 id=None,
-                 name=None,
-                 **kwargs
-                 ):
+    def __init__(self, id=None, name=None, blocks=None, **kwargs):
         """ map a dict to Avenue object
 
         :param kwargs: Avenue json dict
         """
         self.id = id
         self.name = name
+        self.blocks = blocks
 
     def __str__(self) -> str:
         """ String representation for the Avenue model
@@ -36,3 +38,23 @@ class AvenueModel:
         :return: Avenue name
         """
         return f'{self.name}'
+
+    @property
+    def blocks(self) -> List[BlockModel]:
+        """
+        getter for Item variations
+        :return: list of variations for the item
+        """
+        return self._blocks
+
+    @blocks.setter
+    def blocks(self, json_blocks: List[dict]):
+        """setter for item variations
+
+        :param json_variations: json list of variation dicts
+        :return: None
+        """
+        self._blocks = []
+        for json_block in json_blocks or []:
+            if json_block:
+                self._blocks.append(BlockModel(**json_block))
