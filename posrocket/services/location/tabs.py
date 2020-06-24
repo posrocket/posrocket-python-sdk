@@ -87,6 +87,8 @@ class TabService(LocationRequiredMixin, Requests):
                                 'is_locked': external_fee.is_locked, 'is_disabled': external_fee.is_disabled,
                                 'id': str(external_fee.id)}
             data['external_fees'].append(external_fee_obj)
+        if not data['external_fees']:
+            del data['external_fees']
         for item in tab.items:
             dict_item = {"id": item.id, "quantity": item.quantity, "variation": {"id": item.variation.id},
                          "discounts": [  # # {"id": "{{discount_id}}"}
