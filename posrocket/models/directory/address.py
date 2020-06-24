@@ -128,7 +128,7 @@ class DirectoryAddressModel:
             self._area = AreaModel(**json_area)
 
     @property
-    def avenue(self) -> AvenueModel:
+    def avenue(self) -> AvenueInfoModel:
         """
         getter for Address City Area Avenue
         :return: Address City Area Avenue object
@@ -144,13 +144,13 @@ class DirectoryAddressModel:
         """
         if not json_avenue:
             self._avenue = None
-        elif isinstance(json_avenue, AvenueModel):
+        elif isinstance(json_avenue, AvenueInfoModel):
             self.avenue = json_avenue
         else:
-            self._avenue = AvenueModel(**json_avenue)
+            self._avenue = AvenueInfoModel(**json_avenue)
 
     @property
-    def block(self) -> BlockModel:
+    def block(self) -> BlockInfoModel:
         """
         getter for Address City Area Avenue
         :return: Address City Area Avenue object
@@ -166,10 +166,10 @@ class DirectoryAddressModel:
         """
         if not json_block:
             self._block = None
-        elif isinstance(json_block, BlockModel):
+        elif isinstance(json_block, BlockInfoModel):
             self.block = json_block
         else:
-            self._block = BlockModel(**json_block)
+            self._block = BlockInfoModel(**json_block)
 
 
     @property
