@@ -92,7 +92,11 @@ class DirectoryCustomerService(Requests):
                 },
                 "area": {
                     "id": address.area.id,
-                }
+                },
+                "avenue_id": address.avenue.id,
+
+                "block_id":  address.block.id,
+
             }
             if address.id:
                 tmp_address["id"] = address.id
