@@ -44,6 +44,7 @@ class LocationTabModel:
     status: str
     acknowledged: bool
     total_amount: float
+    applied_on: str
     _order_option: LocationOrderOptionModel
     _items: List[LocationTabItemModel]
     _custom_amounts: [LocationTabCustomAmountModel]
@@ -56,7 +57,7 @@ class LocationTabModel:
     _delivery: DeliveryModel
 
     def __init__(self, id=None, location_id=None, issuer_id=None, sequence_number=None, name=None, ticket_number=None,
-                 creation_time=None, end_time=None, status=None, acknowledged=None, total_amount=None,
+                 creation_time=None, end_time=None, status=None, acknowledged=None,  total_amount=None,  applied_on=None,
                  order_option=None, items=None, custom_amounts=None, customer=None, pickup=None, creator=None,
                  comments=None, category=None, template=None, external_fees=None, delivery=None, **kwargs):
         """ map a dict to Location Tab object
@@ -74,6 +75,7 @@ class LocationTabModel:
         self.status = status
         self.acknowledged = acknowledged
         self.total_amount = total_amount
+        self.applied_on = applied_on
         self.order_option = order_option
         self.items = items
         self.custom_amounts = custom_amounts
