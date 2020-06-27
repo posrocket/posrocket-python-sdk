@@ -1,5 +1,5 @@
-from .avenue import AvenueModel
 from .block import BlockModel
+from .avenue import AvenueModel
 from .area import AreaModel
 from .position import PositionModel
 from .business import BusinessModel
