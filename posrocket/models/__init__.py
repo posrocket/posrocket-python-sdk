@@ -1,6 +1,6 @@
 from .area import AreaModel
-from.avenue import AvenueModel
-from.block import BlockModel
+from .avenue import AvenueModel
+from .block import BlockModel
 from .position import PositionModel
 from .business import BusinessModel
 from .catalog import *

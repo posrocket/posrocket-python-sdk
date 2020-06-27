@@ -12,10 +12,10 @@ __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
 
+from posrocket.models import AvenueModel
 
 
 class AreaModel:
-    from posrocket.models import AvenueModel
     """ mapper class for Area object from Json Dict
 
     """
@@ -58,5 +58,4 @@ class AreaModel:
         self._areas = []
         for json_avenue in json_avenues or []:
             if json_avenue:
-                from posrocket.models import AvenueModel
                 self._avenues.append(AvenueModel(**json_avenue))
