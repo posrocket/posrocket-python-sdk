@@ -11,11 +11,10 @@ __version__ = "1.0.0"
 __maintainer__ = "Ahmad Bazadough, Hamzah Darwish"
 __email__ = "a.bazadough@posrocket.com"
 __status__ = "Beta"
-
+from posrocket.models.block import BlockModel
+from posrocket.models.avenue import AvenueModel
 from posrocket.models.area import AreaModel
 from posrocket.models.city import CityModel
-from posrocket.models.avenue_info import AvenueInfoModel
-from posrocket.models.block_info import BlockInfoModel
 
 
 class DirectoryAddressModel:
@@ -34,8 +33,8 @@ class DirectoryAddressModel:
     is_verified: bool
     _city: CityModel
     _area: AreaModel
-    _avenue: AvenueInfoModel
-    _block: BlockInfoModel
+    _avenue: AvenueModel
+    _block: BlockModel
     _position: PositionModel
 
     def __init__(self,
@@ -128,7 +127,7 @@ class DirectoryAddressModel:
             self._area = AreaModel(**json_area)
 
     @property
-    def avenue(self) -> AvenueInfoModel:
+    def avenue(self) -> AvenueModel:
         """
         getter for Address City Area Avenue
         :return: Address City Area Avenue object
@@ -144,13 +143,13 @@ class DirectoryAddressModel:
         """
         if not json_avenue:
             self._avenue = None
-        elif isinstance(json_avenue, AvenueInfoModel):
+        elif isinstance(json_avenue, AvenueModel):
             self.avenue = json_avenue
         else:
-            self._avenue = AvenueInfoModel(**json_avenue)
+            self._avenue = AvenueModel(**json_avenue)
 
     @property
-    def block(self) -> BlockInfoModel:
+    def block(self) -> BlockModel:
         """
         getter for Address City Area Avenue
         :return: Address City Area Avenue object
@@ -166,10 +165,10 @@ class DirectoryAddressModel:
         """
         if not json_block:
             self._block = None
-        elif isinstance(json_block, BlockInfoModel):
+        elif isinstance(json_block, BlockModel):
             self.block = json_block
         else:
-            self._block = BlockInfoModel(**json_block)
+            self._block = BlockModel(**json_block)
 
 
     @property
