@@ -20,16 +20,18 @@ class AvenueModel:
 
     """
     id: str
-    name: str
+    en: str
+    ar: str
     _blocks: List[BlockModel]
 
-    def __init__(self, id=None, name=None, blocks=None, **kwargs):
+    def __init__(self, id=None, en=None,ar=None, blocks=None, **kwargs):
         """ map a dict to Avenue object
 
         :param kwargs: Avenue json dict
         """
         self.id = id
-        self.name = name
+        self.en = en
+        self.ar = ar
         self.blocks = blocks
 
     def __str__(self) -> str:
@@ -37,7 +39,7 @@ class AvenueModel:
 
         :return: Avenue name
         """
-        return f'{self.name}'
+        return f'{self.en}'
 
     @property
     def blocks(self) -> List[BlockModel]:

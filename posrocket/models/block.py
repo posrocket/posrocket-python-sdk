@@ -16,11 +16,13 @@ class BlockModel:
 
     """
     id: str
-    name: str
+    en: str
+    ar: str
 
     def __init__(self,
                  id=None,
-                 name=None,
+                 en=None,
+                 ar=None,
                  **kwargs
                  ):
         """ map a dict to Block object
@@ -28,11 +30,11 @@ class BlockModel:
         :param kwargs: Block json dict
         """
         self.id = id
-        self.name = name
+        self.en = ar
 
     def __str__(self) -> str:
         """ String representation for the Block model
 
         :return: Block name
         """
-        return f'{self.name}'
+        return f'{self.en}'
