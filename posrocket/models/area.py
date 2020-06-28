@@ -55,7 +55,7 @@ class AreaModel:
         :param json_variations: json list of variation dicts
         :return: None
         """
-        self._areas = []
+        self._avenues = []
         for json_avenue in json_avenues or []:
             if json_avenue:
                 self._avenues.append(AvenueModel(**json_avenue))
