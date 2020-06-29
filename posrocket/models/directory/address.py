@@ -144,7 +144,7 @@ class DirectoryAddressModel:
         if not json_avenue:
             self._avenue = None
         elif isinstance(json_avenue, AvenueModel):
-            self.avenue = json_avenue
+            self._avenue = json_avenue
         else:
             self._avenue = AvenueModel(**json_avenue)
 
@@ -166,7 +166,7 @@ class DirectoryAddressModel:
         if not json_block:
             self._block = None
         elif isinstance(json_block, BlockModel):
-            self.block = json_block
+            self._block = json_block
         else:
             self._block = BlockModel(**json_block)
 
