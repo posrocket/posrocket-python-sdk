@@ -81,7 +81,7 @@ class TabService(LocationRequiredMixin, Requests):
         del data['delivery']
         logger.info("calculated data:")
         logger.info(data)
-        response = self.post(self.get_update_service_url(), data)
+        response = self.post(self.get_calculate_service_url(), data)
         result = SaleCalculationModel(**response)
         return result
 
