@@ -82,7 +82,10 @@ class TabService(LocationRequiredMixin, Requests):
         logger.info("calculated data:")
         logger.info(data)
         response = self.post(self.get_calculate_service_url(), data)
+        print("response: ", response)
+        print("response: **", **response)
         result = SaleCalculationModel(**response)
+        print("result:", result )
         return result
 
     @staticmethod
