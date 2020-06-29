@@ -24,6 +24,7 @@ __all__ = [
     'BlockModel',
     'LocationModel',
     'LocationTabModel',
+    'SaleCalculationModel',
     'CatalogItemModel',
     'CatalogCategoryModel',
     'CatalogModifierModel',

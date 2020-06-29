@@ -18,11 +18,13 @@ class BlockModel:
     id: str
     en: str
     ar: str
+    avenue_id: str
 
     def __init__(self,
                  id=None,
                  en=None,
                  ar=None,
+                 avenue_id=None,
                  **kwargs
                  ):
         """ map a dict to Block object
@@ -32,6 +34,7 @@ class BlockModel:
         self.id = id
         self.en = en
         self.ar = ar
+        self.avenue_id = avenue_id
 
     def __str__(self) -> str:
         """ String representation for the Block model

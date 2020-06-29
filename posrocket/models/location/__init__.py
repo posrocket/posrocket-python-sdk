@@ -26,6 +26,7 @@ __all__ = [
     'LocationTabCreatorModel',
     'LocationTabPickupModel',
     'LocationTabModel',
+    'SaleCalculationModel',
     'LocationTabItemModel',
     'LocationTabItemDiscountModel',
     'LocationTabItemModifierModel',

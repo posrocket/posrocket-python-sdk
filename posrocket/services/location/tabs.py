@@ -4,6 +4,7 @@ Location Tab Service
 import logging
 
 from posrocket.models import LocationTabModel
+from posrocket.models.location.tab.sale import SaleCalculationModel
 from posrocket.utils.requests import LocationRequiredMixin, Requests
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -24,6 +25,7 @@ class TabService(LocationRequiredMixin, Requests):
     service_url = "/locations/%s/tabs"
     model_cls = LocationTabModel
     update_service_url = '/locations/%s/tabs/%s/update-tab'
+    calculate_service_url = 'locations/%s/tabs/calculate-tab'
     tab_id = None
 
     def get_tabs(self, **kwargs):
@@ -71,6 +73,16 @@ class TabService(LocationRequiredMixin, Requests):
         logger.info(data)
         response = self.post(self.get_update_service_url(), data)
         result = self.model_cls(**response)
+        return result
+
+    def calculate(self, tab: LocationTabModel):
+        data = self.prepare_payload(tab)
+        data['status'] = tab.status
+        del data['delivery']
+        logger.info("calculated data:")
+        logger.info(data)
+        response = self.post(self.get_update_service_url(), data)
+        result = SaleCalculationModel(**response)
         return result
 
     @staticmethod

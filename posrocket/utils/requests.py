@@ -42,6 +42,9 @@ class LocationRequiredMixin:
     def get_update_service_url(self):
         return self.update_service_url % (self.location_id, self.tab_id)
 
+    def get_calculate_service_url(self):
+        return self.calculate_service_url % self.location_id
+
 
 class Requests:
 
