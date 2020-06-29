@@ -41,7 +41,7 @@ class TabService(LocationRequiredMixin, Requests):
         :param data: POSRocket Tab Pickup json dict
         """
         data = {"eta": pickup_object.eta, "driver_name": pickup_object.driver_name,
-            "driver_phone": pickup_object.driver_phone}
+                "driver_phone": pickup_object.driver_phone}
         assign_pickup_url = f"{self.get_service_url()}/{str(tab_id)}/assign_pickup"
         response = self.post(assign_pickup_url, data)
         result = self.model_cls(**response)
@@ -83,9 +83,8 @@ class TabService(LocationRequiredMixin, Requests):
         logger.info(data)
         response = self.post(self.get_calculate_service_url(), data)
         print("response: ", response)
-        print("response: **", **response)
         result = SaleCalculationModel(**response)
-        print("result:", result )
+        print("result:", result)
         return result
 
     @staticmethod
@@ -98,9 +97,9 @@ class TabService(LocationRequiredMixin, Requests):
         if tab.order_option:
             data['order_option'] = {"id": tab.order_option.id}
         for external_fee in tab.external_fees:
-            external_fee_obj = {'name': external_fee.name, 'type': external_fee.fees_type, 'amount': external_fee.amount,
-                                'is_locked': external_fee.is_locked, 'is_disabled': external_fee.is_disabled,
-                                'id': str(external_fee.id)}
+            external_fee_obj = {'name': external_fee.name, 'type': external_fee.fees_type,
+                                'amount': external_fee.amount, 'is_locked': external_fee.is_locked,
+                                'is_disabled': external_fee.is_disabled, 'id': str(external_fee.id)}
             data['external_fees'].append(external_fee_obj)
         if not data['external_fees']:
             del data['external_fees']
