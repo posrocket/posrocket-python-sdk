@@ -30,7 +30,8 @@ class BlockModel:
         :param kwargs: Block json dict
         """
         self.id = id
-        self.en = ar
+        self.en = en
+        self.ar = ar
 
     def __str__(self) -> str:
         """ String representation for the Block model
