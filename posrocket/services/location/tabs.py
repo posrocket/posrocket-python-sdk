@@ -4,7 +4,6 @@ Location Tab Service
 import logging
 
 from posrocket.models import LocationTabModel
-from posrocket.models.location.tab.sale import SaleCalculationModel
 from posrocket.utils.requests import LocationRequiredMixin, Requests
 
 __author__ = "Ahmad Bazadough, Hamzah Darwish"
@@ -121,7 +120,7 @@ class TabService(LocationRequiredMixin, Requests):
                 dict_item['custom_discounts'].append(tmp_discount)
 
             for discount in item.discounts:
-                dict_item['discounts'].append({"id": discount.id})
+                dict_item['discounts'].append({"id": discount.id, "applied_on": discount.applied_on})
             data['items'].append(dict_item)
         for custom_amounts in tab.custom_amounts:
             data['custom_amount'].append({"name": custom_amounts.name, "price": custom_amounts.price})
