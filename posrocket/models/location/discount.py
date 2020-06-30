@@ -23,6 +23,8 @@ class LocationDiscountModel:
     color: str
     pin_required: bool
     after_tax: bool
+    applied_on: str
+
 
     def __init__(self,
                  id=None,
@@ -33,6 +35,7 @@ class LocationDiscountModel:
                  color=None,
                  pin_required=None,
                  after_tax=None,
+                 applied_on=None,
                  **kwargs
                  ):
         """ map a dict to Location Discount object
@@ -47,6 +50,7 @@ class LocationDiscountModel:
         self.color = color
         self.pin_required = pin_required
         self.after_tax = after_tax
+        self.applied_on = applied_on
 
     def __str__(self) -> str:
         """ String representation for the Location Discount model
