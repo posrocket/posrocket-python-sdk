@@ -8,6 +8,9 @@ from .extra_charge import *
 from .tab import *
 from .tab.item import *
 from .register import *
+from .delivery import *
+from .driver import *
+from .driver_category import *
 
 __all__ = [
     'LocationDiscountModel',
@@ -23,9 +26,13 @@ __all__ = [
     'LocationTabCreatorModel',
     'LocationTabPickupModel',
     'LocationTabModel',
+    'SaleCalculationModel',
     'LocationTabItemModel',
     'LocationTabItemDiscountModel',
     'LocationTabItemModifierModel',
     'LocationTabItemVariationModel',
-    'LocationRegisterModel'
+    'LocationRegisterModel',
+    'DeliveryModel',
+    'LocationDriverModel',
+    'LocationDriverCategoryModel'
 ]

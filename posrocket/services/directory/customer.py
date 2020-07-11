@@ -66,45 +66,25 @@ class DirectoryCustomerService(Requests):
         return response
 
     def prepare_payload(self, customer):
-        data = {
-            "first_name": customer.first_name,
-            "last_name": customer.last_name,
-            "email": customer.email,
-            "gender": customer.gender,
-            "dob": customer.dob,
-            "country": customer.country if customer.country else "JO",
-            "addresses": [],
-            "phone_numbers": []
-        }
+        data = {"first_name": customer.first_name, "last_name": customer.last_name, "email": customer.email,
+                "gender": customer.gender, "dob": customer.dob,
+                "country": customer.country if customer.country else "JO", "addresses": [], "phone_numbers": []}
         for address in customer.addresses:
-            tmp_address = {
-                "label": address.label,
-                "residence": address.residence,
-                "street": address.street,
-                "building": address.building,
-                "floor": address.floor,
-                "apartment": address.apartment,
-                "extras": address.extras,
-                "is_primary": address.is_primary,
-                "is_verified": address.is_verified,
-                "city": {
-                    "id": address.city.id,
-                },
-                "area": {
-                    "id": address.area.id,
-                }
-            }
+            tmp_address = {"label": address.label, "residence": address.residence, "street": address.street,
+                           "building": address.building, "floor": address.floor, "apartment": address.apartment,
+                           "extras": address.extras, "is_primary": address.is_primary,
+                           "is_verified": address.is_verified, "city": {"id": address.city.id, },
+                           "area": {"id": address.area.id, }, }
+            if address.avenue:
+                tmp_address["avenue_id"] = address.avenue.id
+            if address.block and address.block:
+                tmp_address["block_id"] = address.block.id
             if address.id:
                 tmp_address["id"] = address.id
-            data['addresses'].append(
-                tmp_address
-            )
+            data['addresses'].append(tmp_address)
         for phone_number in customer.phone_numbers:
-            tmp_phone = {
-                "number": phone_number.number,
-                "is_primary": phone_number.is_primary,
-                "is_verified": phone_number.is_verified,
-            }
+            tmp_phone = {"number": phone_number.number, "is_primary": phone_number.is_primary,
+                         "is_verified": phone_number.is_verified, }
             logger.info(phone_number)
             if phone_number.id:
                 tmp_phone['id'] = phone_number.id

@@ -23,6 +23,7 @@ class LocationTabItemDiscountModel:
     amount: float
     value: float
     after_tax: bool
+    applied_on: str
 
     def __init__(self,
                  id=None,
@@ -32,6 +33,7 @@ class LocationTabItemDiscountModel:
                  amount=None,
                  value=None,
                  after_tax=None,
+                 applied_on=None,
                  **kwargs
                  ):
         """ map a dict to Location Tab Item Discount object
@@ -45,6 +47,7 @@ class LocationTabItemDiscountModel:
         self.amount = amount
         self.value = value
         self.after_tax = after_tax
+        self.applied_on = applied_on
 
     def __str__(self) -> str:
         """ String representation for the Location Tab Item Discount model
