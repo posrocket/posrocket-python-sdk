@@ -1,6 +1,7 @@
 """
 Directory Customer Service
 """
+import json
 import logging
 
 from posrocket.models import DirectoryCustomerModel
@@ -43,9 +44,10 @@ class DirectoryCustomerService(Requests):
         response = self.post(self.get_service_url(), data)
         logger.info(response)
         print(response)
-        if 'data' in response:
+        res = json.loads(response.text)
+        if 'data' in res:
             result = self.model_cls(**response['data'])
-        elif 'error' in response:
+        elif 'error' in res:
             result = self.model_cls(**response['error'])
         else:
             result = response
@@ -60,9 +62,10 @@ class DirectoryCustomerService(Requests):
         logger.info(data)
         response = self.put(f"{self.get_service_url()}/{customer.id}", data)
         logger.info(response)
-        if 'data' in response:
+        res = json.loads(response.text)
+        if 'data' in res:
             result = self.model_cls(**response['data'])
-        elif 'error' in response:
+        elif 'error' in res:
             result = self.model_cls(**response['error'])
         else:
             result = response
