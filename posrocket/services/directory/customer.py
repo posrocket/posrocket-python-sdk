@@ -63,7 +63,7 @@ class DirectoryCustomerService(Requests):
         if 'data' in response:
             result = self.model_cls(**response['data'])
         elif 'error' in response:
-            result = self.model_cls(**response['error'])
+            result = response
         else:
             result = response
         return result
