@@ -42,9 +42,9 @@ class DirectoryCustomerService(Requests):
         print(data)
         logger.info(data)
         response = self.post(self.get_service_url(), data)
-        logger.info(response)
-        print(response)
         res = json.loads(response.text)
+        print(res)
+        logger.info(res)
         if 'data' in res:
             result = self.model_cls(**response['data'])
         elif 'error' in res:
