@@ -42,8 +42,6 @@ class DirectoryCustomerService(Requests):
         print(data)
         logger.info(data)
         response = self.post(self.get_service_url(), data)
-        # res = json.loads(response.text)
-        # print(res)
         logger.info(response)
         if 'data' in response:
             result = self.model_cls(**response['data'])
@@ -62,10 +60,9 @@ class DirectoryCustomerService(Requests):
         logger.info(data)
         response = self.put(f"{self.get_service_url()}/{customer.id}", data)
         logger.info(response)
-        res = json.loads(response.text)
-        if 'data' in res:
+        if 'data' in response:
             result = self.model_cls(**response['data'])
-        elif 'error' in res:
+        elif 'error' in response:
             result = self.model_cls(**response['error'])
         else:
             result = response
