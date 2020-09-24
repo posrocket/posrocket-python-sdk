@@ -43,7 +43,12 @@ class DirectoryCustomerService(Requests):
         response = self.post(self.get_service_url(), data)
         logger.info(response)
         print(response)
-        result = self.model_cls(**response['data'])
+        if 'data' in response:
+            result = self.model_cls(**response['data'])
+        elif 'error' in response:
+            result = self.model_cls(**response['error'])
+        else:
+            result = response
         return result
 
     def update(self, customer: DirectoryCustomerModel):
@@ -55,7 +60,12 @@ class DirectoryCustomerService(Requests):
         logger.info(data)
         response = self.put(f"{self.get_service_url()}/{customer.id}", data)
         logger.info(response)
-        result = self.model_cls(**response['data'])
+        if 'data' in response:
+            result = self.model_cls(**response['data'])
+        elif 'error' in response:
+            result = self.model_cls(**response['error'])
+        else:
+            result = response
         return result
 
     def remove(self, customer_id):
