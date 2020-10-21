@@ -10,17 +10,14 @@ from posrocket.utils.pagination import Pagination
 logger = logging.getLogger("posrocket-sdk")
 
 
-
 def _handle_response(result):
     if result.status_code == 404:
         raise NotFoundException("The endpoint you requested does not exist")
     if result.status_code == 403:
-        raise NotAuthorizedException(
-            "You don't have access to this endpoint, "
-            "please check if you provide a valid and active token and your have the correct scopes.")
+        raise NotAuthorizedException("You don't have access to this endpoint, "
+                                     "please check if you provide a valid and active token and your have the correct scopes.")
     if result.status_code == 401:
-        raise NotAuthenticatedException(
-            "Invalid Access Token")
+        raise NotAuthenticatedException("Invalid Access Token")
     logger.info(result.content)
     if result.content:
         output = result.json()
@@ -100,4 +97,9 @@ class Requests:
     def get_detail(self, pk, **kwargs):
         url = self.get_service_url()
         response = self.get(f"{url}/{pk}")
+        return self.model_cls(**response)
+
+    def get_with_filter(self, query_string, **kwargs):
+        url = self.get_service_url()
+        response = self.get(f"{url}?{query_string}")
         return self.model_cls(**response)
