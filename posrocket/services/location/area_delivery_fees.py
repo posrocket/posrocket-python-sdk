@@ -14,7 +14,7 @@ __email__ = "Lanuchpad@posrocket.com"
 __status__ = "Beta"
 
 
-class AreaDeliveryFeesModelService(LocationRequiredMixin, Requests):
+class AreaDeliveryFeesService(LocationRequiredMixin, Requests):
     """location driver service class to allow retrieving location driver related data
     """
     # locations/{{location_id}}/delivery-costs?area_id={{area_id}}
