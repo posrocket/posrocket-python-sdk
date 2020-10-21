@@ -35,7 +35,6 @@ from posrocket.services.inventory import InventoryCategoryService, InventoryComp
     InventoryIngredientService, InventoryRecipeService, InventorySubRecipeService
 from posrocket.services.inventory.inventory_trackable import InventoryTrackableService
 from posrocket.services.location import LocationService
-from posrocket.services.location.area_delivery_fees import AreaDeliveryFeesService
 from posrocket.services.payment_method import PaymentMethodService
 from posrocket.utils.assert_value import assert_value
 from posrocket.webhook import WebhookReceiver
@@ -326,12 +325,3 @@ class LaunchPadClient(object):
         """
         assert_value(self.token)
         return InventoryTrackableService(self.token, prod=self.prod)
-
-    @property
-    def area_delivery_fees_service(self) -> AreaDeliveryFeesService:
-        """build inventory trackable service to inquire about inventory trackable
-
-        :return: inventory trackable service
-        """
-        assert_value(self.token)
-        return AreaDeliveryFeesService(self.token, prod=self.prod)

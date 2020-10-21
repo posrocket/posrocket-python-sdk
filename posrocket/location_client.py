@@ -1,6 +1,7 @@
 """
 Launchpad Location Client
 """
+from posrocket.services.location.area_delivery_fees import AreaDeliveryFeesService
 from posrocket.services.location.discount import LocationDiscountService
 from posrocket.services.location.drawer import LocationDrawerService
 from posrocket.services.location.driver import LocationDriverService
@@ -130,3 +131,12 @@ class LocationClient(object):
         assert_value(self.launch_pad_client.token)
         return LocationDriverService(self.launch_pad_client.token, self.location_id,
                                      prod=self.launch_pad_client.prod)
+
+    @property
+    def area_delivery_fees_service(self) -> AreaDeliveryFeesService:
+        """build inventory trackable service to inquire about inventory trackable
+
+        :return: inventory trackable service
+        """
+        assert_value(self.token)
+        return AreaDeliveryFeesService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
