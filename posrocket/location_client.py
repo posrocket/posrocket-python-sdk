@@ -138,5 +138,5 @@ class LocationClient(object):
 
         :return: inventory trackable service
         """
-        assert_value(self.token)
+        assert_value(self.launch_pad_client.token)
         return AreaDeliveryFeesService(self.launch_pad_client.token, self.location_id, prod=self.launch_pad_client.prod)
