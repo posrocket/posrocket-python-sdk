@@ -102,4 +102,7 @@ class Requests:
     def get_with_filter(self, query_string, **kwargs):
         url = self.get_service_url()
         response = self.get(f"{url}?{query_string}")
-        return self.model_cls(**response)
+        if 'count' in response and response['count']:
+            if 'data' in response and response['data']:
+                return self.model_cls(**response['data'][0])
+        return None
