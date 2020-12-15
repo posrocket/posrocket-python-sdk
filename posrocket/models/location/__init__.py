@@ -1,4 +1,6 @@
 from .discount import LocationDiscountModel
+from .location import LocationModel
+from .discount_days import *
 from .initial_money import LocationInitialMoneyModel
 from .location import LocationModel
 from .order_options import LocationOrderOptionModel
@@ -14,8 +16,10 @@ from .driver_category import *
 
 __all__ = [
     'LocationDiscountModel',
-    'LocationInitialMoneyModel',
     'LocationModel',
+    'LocationDiscountDaysModel',
+    'LocationDiscountDaysTimeModel',
+    'LocationInitialMoneyModel',
     'LocationOrderOptionModel',
     'LocationDrawerCreatorModel',
     'LocationDrawerModel',

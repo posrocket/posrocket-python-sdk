@@ -23,7 +23,7 @@ class LocationModel:
     phone: str
     address: str
     footer: str
-    _position:PositionModel
+    _position: PositionModel
 
     def __init__(self,
                  id=None,
