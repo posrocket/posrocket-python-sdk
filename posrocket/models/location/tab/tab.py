@@ -44,6 +44,8 @@ class LocationTabModel:
     status: str
     acknowledged: bool
     total_amount: float
+    notes: dict
+    payment_methods: list
     _order_option: LocationOrderOptionModel
     _items: List[LocationTabItemModel]
     _custom_amounts: [LocationTabCustomAmountModel]
@@ -58,7 +60,7 @@ class LocationTabModel:
     def __init__(self, id=None, location_id=None, issuer_id=None, sequence_number=None, name=None, ticket_number=None,
                  creation_time=None, end_time=None, status=None, acknowledged=None, total_amount=None,
                  order_option=None, items=None, custom_amounts=None, customer=None, pickup=None, creator=None,
-                 comments=None, category=None, template=None, external_fees=None, delivery=None, **kwargs):
+                 comments=None, category=None, template=None, external_fees=None, delivery=None,  notes=None,payment_methods=None, **kwargs):
         """ map a dict to Location Tab object
 
         :param kwargs: Location Tab json dict
@@ -85,6 +87,8 @@ class LocationTabModel:
         self.template = template
         self.external_fees = external_fees
         self.delivery = delivery
+        self.notes = notes
+        self.payment_methods = payment_methods
 
     def __str__(self) -> str:
         """ String representation for the Location Tab model
