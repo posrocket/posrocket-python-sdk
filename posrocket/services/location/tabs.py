@@ -90,9 +90,12 @@ class TabService(LocationRequiredMixin, Requests):
                 "customer": {"id": tab.customer.id, "phone_number": {"id": tab.customer.phone_number.id}}, "items": [],
                 "custom_amount": [], "external_fees": [], "delivery": {}, "comments": tab.comments, "notes": tab.notes}
         data['payment_methods']=[]
-        if tab.payment_methods and len(tab.payment_methods)>0:
-            for payment_method_id in tab.payment_methods:
-                data['payment_methods'].append({"id":payment_method_id,"name":"Payment Method"})
+        if hasattr(tab,'payment_methods')  and len(tab.payment_methods)>0:
+            for payment_method in tab.payment_methods:
+                payment_method = payment_method.split(',')
+                payment_method_id = payment_method[0]
+                payment_method_name = payment_method[1] if len(payment_method)>1 else 'payment method'
+                data['payment_methods'].append({"id":payment_method_id,"name":payment_method_name})
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
         if tab.order_option:
