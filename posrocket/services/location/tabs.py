@@ -88,7 +88,11 @@ class TabService(LocationRequiredMixin, Requests):
     def prepare_payload(tab):
         data = {"name": tab.name,
                 "customer": {"id": tab.customer.id, "phone_number": {"id": tab.customer.phone_number.id}}, "items": [],
-                "custom_amount": [], "external_fees": [], "delivery": {}, "comments": tab.comments, "notes": tab.notes,"payment_methods":tab.payment_methods}
+                "custom_amount": [], "external_fees": [], "delivery": {}, "comments": tab.comments, "notes": tab.notes}
+        data['payment_methods']=[]
+        if tab.payment_methods and len(tab.payment_methods)>0:
+            for payment_method_id in tab.payment_methods:
+                data['payment_methods'].append({"id":payment_method_id,"name":"xxxxxxxxxxxxxxx"})
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
         if tab.order_option:
