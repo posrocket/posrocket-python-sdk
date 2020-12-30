@@ -92,7 +92,7 @@ class TabService(LocationRequiredMixin, Requests):
         data['payment_methods']=[]
         if tab.payment_methods and len(tab.payment_methods)>0:
             for payment_method_id in tab.payment_methods:
-                data['payment_methods'].append({"id":payment_method_id})
+                data['payment_methods'].append({"id":payment_method_id,"name":"Payment Method"})
         if tab.customer.address:
             data["customer"]["address"] = {"id": tab.customer.address.id}
         if tab.order_option:
