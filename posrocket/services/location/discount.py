@@ -21,7 +21,8 @@ logger = logging.getLogger("posrocket-sdk")
 class LocationDiscountService(LocationRequiredMixin, Requests):
     """Discount service class to allow retrieving location discount related data
     """
-    service_url = "/locations/%s/discounts"
+    # service_url = "/locations/%s/discounts"
+    service_url = "/business/discounts"
     model_cls = LocationDiscountModel
 
     def get_discounts(self, **kwargs):
