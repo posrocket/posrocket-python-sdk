@@ -26,9 +26,10 @@ class CatalogModifierListModel:
     quantifiable: bool
     order: int
     price: float
+    cost: float
     _modifiers: List[CatalogModifierModel]
 
-    def __init__(self, id=None, name=None,local_name=None, type=None, quantifiable=None, order=None, price=None, modifiers=None,
+    def __init__(self, id=None, name=None,local_name=None, type=None, quantifiable=None, order=None, price=None, cost=None, modifiers=None,
                  **kwargs):
         """map a dict to Catalog Modifier list object
 
@@ -41,6 +42,7 @@ class CatalogModifierListModel:
         self.quantifiable = quantifiable
         self.order = order
         self.price = price
+        self.cost=cost
         self.modifiers = modifiers
 
     def __str__(self) -> str:
