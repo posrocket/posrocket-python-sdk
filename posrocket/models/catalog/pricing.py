@@ -19,10 +19,11 @@ class CatalogPricingModel:
     id: str
     location_id: str
     price: float
+    cost: float
     has_inventory_cost: bool
     available: bool
 
-    def __init__(self, id=None, location_id=None, price=None, has_inventory_cost=None, available=None, **kwargs):
+    def __init__(self, id=None, location_id=None, price=None, cost=None, has_inventory_cost=None, available=None, **kwargs):
         """map a dict to Catalog Pricing object
 
         :param kwargs: Catalog Pricing json dict
@@ -30,6 +31,7 @@ class CatalogPricingModel:
         self.id = id
         self.location_id = location_id
         self.price = price
+        self.cost = cost
         self.has_inventory_cost = has_inventory_cost
         self.available = available
 
