@@ -51,7 +51,7 @@ class Requests:
         if prod:
             self.base_url = 'https://developer.posrocket.com/api/v1'
         else:
-            self.base_url = 'https://launchpad.rocketinfra.com/api/v1'
+            self.base_url = 'https://stg-devportal.rocketinfra.com/api/v1'
 
     def get_service_url(self):
         return self.service_url
