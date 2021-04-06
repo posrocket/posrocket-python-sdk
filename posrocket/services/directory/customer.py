@@ -77,7 +77,7 @@ class DirectoryCustomerService(Requests):
                            "area": {"id": address.area.id, }, }
             if address.avenue:
                 tmp_address["avenue_id"] = address.avenue.id
-            if address.block and address.block:
+            if address.block and address.block and address.avenue :
                 tmp_address["block_id"] = address.block.id
             if address.id:
                 tmp_address["id"] = address.id
