@@ -84,5 +84,5 @@ class WebhookReceiver:
         Throw an error if the signiture is not truth and prevent the code execution from proceeding or
         Return the execution of the web callback if the app is subscribed to the triggred event
         """
-        assert self.verify_signature(payload, headers['HTTP_X_HOOK_SIGNATURE']), "invalid signature"
+        # assert self.verify_signature(payload, headers['HTTP_X_HOOK_SIGNATURE']), "invalid signature"
         return self.events[payload['event']](payload, headers) if self.events[payload['event']] else None
