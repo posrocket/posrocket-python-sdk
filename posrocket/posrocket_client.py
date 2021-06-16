@@ -69,9 +69,9 @@ class LaunchPadClient(object):
         self.oauth_client = OAuth2Session(client_id=self.client_id)
         self.prod = prod
         if prod:
-            self.base_url = "https://developer.posrocket.com"
+            self.base_url = "http://localhost:8888"
         else:
-            self.base_url = "https://stg-devportal.rocketinfra.com"
+            self.base_url = "https://stg-devportal.rocketinfra.comm"
 
     @property
     def state(self) -> str:
